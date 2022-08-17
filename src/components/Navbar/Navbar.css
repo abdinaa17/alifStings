@@ -1,0 +1,36 @@
+header {
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav__logo{
+    font-size: 1.5rem;
+}
+.nav__logo span {
+    color: var(--light-blue);
+}
+nav a:hover {
+    color:var(--light-blue)
+}
+
+.nav__items {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    align-items: center;
+}
+.nav__items ul {
+    margin: 0 auto;
+}
+.nav__items a{
+    padding: 0 1rem;
+}
+
+/* Custom color for my bootstrap btn */
+.btn-custom {
+    background-color: var(--light-blue);
+    color: #fff;
+    margin:0 1rem;
+}
