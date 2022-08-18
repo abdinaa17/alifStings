@@ -5,6 +5,9 @@ header {
     justify-content: center;
     align-items: center;
 }
+.nav {
+    position: relative;
+}
 .nav__logo{
     font-size: 1.5rem;
 }
@@ -18,19 +21,60 @@ nav a:hover {
 .nav__items {
     display: flex;
     justify-content: space-between;
-    width: 60%;
     align-items: center;
+    width: 80vw;
 }
 .nav__items ul {
     margin: 0 auto;
 }
 .nav__items a{
     padding: 0 1rem;
+    text-transform: uppercase;
 }
-
+.nav__btns {
+    margin-left: 5rem;
+}
 /* Custom color for my bootstrap btn */
 .btn-custom {
     background-color: var(--light-blue);
     color: #fff;
     margin:0 1rem;
+}
+
+.nav__toggle-btn {
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and(min-width:768px){
+    .nav__toggle-btn {
+        display: none;
+    }
+}
+@media screen and (max-width: 768px) {
+    .nav__toggle-btn {
+        display: inline-flex;
+    }
+     .nav__items {
+        position: absolute;
+        background-color: red;
+        top: 80px;
+        height: 80vh;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav__items ul {
+        display: flex;
+        flex-direction: column;
+        background-color: green;
+    }
+    .nav__items ul li{
+        padding: 1rem;
+    } 
+    .nav__btn{
+        display: flex;
+        flex-direction: column;
+    }  
 }
