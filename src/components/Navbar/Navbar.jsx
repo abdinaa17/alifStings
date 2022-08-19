@@ -1,19 +1,25 @@
 // Global Imports
-import { BiMenuAltRight } from "react-icons/bi";
+import {useState} from 'react'
+import { BiMenuAltRight, BiX } from "react-icons/bi";
 import { Button } from "react-bootstrap";
 
 // Local Imports
 import "../Navbar/Navbar.css"
 
 const Navbar = () => {
+  const [mobileMenu, setMobileMenu] = useState(false)
+
+  const handleToggle = () => {
+    setMobileMenu(!mobileMenu)
+  }
   return (
     <header>
       <nav className="container">
-        <div className="d-flex justify-content-between align-items-center nav">
+        <div className="nav">
             <div className="nav__logo">
               <a href="/"><span><em>biz</em></span>Listings</a>
             </div>
-            <div className="nav__items">
+            <div className={mobileMenu ? "nav__items": "nav__items show"}>
               <ul className="d-flex">
                 <li>
                   <a href="/listings">Listings</a>
@@ -37,7 +43,7 @@ const Navbar = () => {
             </div>
             </div>
             <div className="nav__toggle-btn">
-              <BiMenuAltRight size={30} />
+              {mobileMenu ? <BiX size={30} onClick={handleToggle} />: <BiMenuAltRight size={30} onClick={handleToggle} />}
             </div>
         </div>
     </nav>
