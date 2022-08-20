@@ -32,7 +32,9 @@ a {
 ul li {
     list-style: none;
 }
-
+button {
+  cursor: pointer;
+}
 body {
    font-family: 'Rubik', sans-serif;
    color: var(--black);

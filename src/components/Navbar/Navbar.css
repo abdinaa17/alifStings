@@ -1,92 +1,93 @@
-
-
 header {
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+
 }
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
-.nav__logo{
-    font-size: 1.5rem;
-}
-.nav__logo span {
-    color: var(--light-blue);
-}
-nav a:hover {
+.nav a:hover {
     color:var(--light-blue)
 }
-
-.nav__items {
-    display: flex;
+.logo {
+    font-size: 1.5rem;
+}
+.logo span {
+    color: var(--light-blue);
+}
+.nav__content {
+    display:flex;
     justify-content: space-between;
     align-items: center;
-    width: 80vw;
 }
-.nav__items ul {
-    margin: 0 auto;
+.nav__content a {
+    padding: 1rem;
 }
-.nav__items a{
-    padding: 0 1rem;
-    text-transform: uppercase;
-}
-.nav__btns {
-    margin-left: 5rem;
+.nav__links {
+    margin-right: 2rem;
 }
 /* Custom color for my bootstrap btn */
 .btn-custom {
     background-color: var(--light-blue);
     color: #fff;
-    margin:0 1rem;
 }
-
-.nav__toggle-btn {
+.nav__bars {
     cursor: pointer;
-    display: none;
+    transition: all .3s ease;
 }
-
-@media screen and(min-width:768px){
-    .nav__toggle-btn {
+@media screen and (max-width: 768px) {
+    .nav {
+        position: relative;
+    }
+    .logo {
+        margin-left: 1rem;
+    }
+    .nav__content {
+        position: absolute;
+        top: 55px;
+        left: -3%;
+        flex-direction: column;
+        align-items:center;
+        justify-content: space-around;
+        width: 50%;
+        height: 80vh;
+        background: var(--blue);
+        color: #fff;
+        transition: all .3s ease-in-out;
+    }
+    .nav__content.show {
+        left: -101%;
+    }
+    .nav__links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav__btns {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav__btns button {
+        margin: .5rem 0;
+    }
+   
+}
+@media screen and (min-width: 768px) {
+    .nav__bars {
         display: none;
     }
 }
-@media screen and (max-width: 768px) {
-    .nav__toggle-btn {
-        display: block;
+@media screen and (max-width: 991px) {
+    .nav__links{
+        margin-right: 0;
     }
-     .nav__items {
-        position: absolute;
-        top: 82px;
-        height: 80vh;
-        left: 0;
-        width: 100vw;
-        flex-direction: column;
-        background: var(--blue);
-        color: #fff;
-    }
-    .nav__items ul {
-        flex-direction: column;
-    }
-    .nav__items ul li{
-        padding: 1rem;
-    } 
-    .nav__btns{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        margin: 0.5rem;
-        height: 20%;
-        padding: 1rem 0;
-        transition: all .5s ease-in-out;
-    } 
-    .nav__items.show {
-        left:   -101%;
+    .nav__btns {
+        margin-left: 0;
     }
 }
