@@ -25,6 +25,9 @@ textarea,
 select {
 font: inherit;
 }
+input:focus {
+  outline: none !important;
+}
 a {
     text-decoration: none;
     color: inherit;
@@ -35,7 +38,18 @@ ul li {
 button {
   cursor: pointer;
 }
+p, h1, h2, h3, h4 {
+  max-width: 60ch;
+}
 body {
    font-family: 'Rubik', sans-serif;
    color: var(--black);
+}
+/* Custom color for my bootstrap btn */
+.btn-custom {
+  background-color: var(--light-blue);
+  color: #fff;
+}
+.btn-custom:hover {
+  background-color: var(--blue);
 }

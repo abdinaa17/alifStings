@@ -32,11 +32,6 @@ header {
 .nav__links {
     margin-right: 2rem;
 }
-/* Custom color for my bootstrap btn */
-.btn-custom {
-    background-color: var(--light-blue);
-    color: #fff;
-}
 .nav__bars {
     cursor: pointer;
     transition: all .3s ease;
@@ -46,11 +41,11 @@ header {
         position: relative;
     }
     .logo {
-        margin-left: 1rem;
+        margin-left: .5rem;
     }
     .nav__content {
         position: absolute;
-        top: 55px;
+        top: 58px;
         left: -3%;
         flex-direction: column;
         align-items:center;
@@ -60,6 +55,7 @@ header {
         background: var(--blue);
         color: #fff;
         transition: all .3s ease-in-out;
+        z-index: 999;
     }
     .nav__content.show {
         left: -101%;
