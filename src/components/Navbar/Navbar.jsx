@@ -14,12 +14,12 @@ const Navbar = () => {
   return (
     <header>
             <nav className="container nav">
-                <div className="logo"><Link to='/'><span><em>alif</em></span> Listings</Link></div>
+                <div className="logo"><Link to='/'><em>alif</em>Stings</Link></div>
                 <div className={mobileMenu ? "nav__content": "nav__content show"}>
                   <div className="nav__links">
-                      <Link to="/">Home</Link>
-                      <Link to="/about">About</Link>
-                      <Link to="/listings">Listings</Link>
+                      <Link onClick={handleToggle} to="/">Home</Link>
+                      <Link onClick={handleToggle} to="/about">About</Link>
+                      <Link onClick={handleToggle} to="/listings">Listings</Link>
                       </div>
                 
                       <div className='nav__btns'>
