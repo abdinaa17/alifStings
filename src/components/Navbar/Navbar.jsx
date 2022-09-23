@@ -24,7 +24,7 @@ const Navbar = () => {
                 
                       <div className='nav__btns'>
                         <Button variant="custom" style={{marginRight: '1rem'}}><a href="" >Register</a></Button>
-                          <Button variant="light"><a href="" >Login</a></Button>
+                          <Button variant="custom__secondary"><a href="" >Login</a></Button>
                       </div>
                   </div>
 

@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes,
   Route, } from 'react-router-dom'
 // Local Imports
 import './App.css'
-import Navbar from './components/Navbar/Navbar'
-import {HomePage, AboutPage, ListingsPage, ErrorPage, SingleListingPage} from './pages'
+import {Navbar, Footer }from './components'
+import {HomePage, AboutPage, ListingsPage, ErrorPage, SingleListingPage, ComingSoon} from './pages'
 
 
 
@@ -20,8 +20,10 @@ function App() {
           <Route path='about' element={<AboutPage/>} />
           <Route path='listings' element={<ListingsPage/>} />
           <Route path='listings/:id' element={<SingleListingPage/>} />
+          <Route path='coming-soon' element={<ComingSoon/>} />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
+        <Footer />
       </Router>
     </main>
   )

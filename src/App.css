@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 :root {
-    --blue: #2e3f6e;
+    --blue: #37aaf7;
     --light-blue:  #4db7fe;
     --black: #111;
     --gray: #f3f3f3;
@@ -43,6 +43,7 @@ p, h1, h2, h3, h4 {
 }
 body {
    font-family: 'Rubik', sans-serif;
+   /* Inter, Avenir, Helvetica, Arial, sans-serif; */
    color: var(--black);
 }
 /* Custom color for my bootstrap btn */
@@ -50,6 +51,15 @@ body {
   background-color: var(--light-blue);
   color: #fff;
 }
+.btn-custom__secondary {
+  background-color: var(--black);
+  color: #fff;
+}
 .btn-custom:hover {
-  background-color: var(--blue);
+  background-color: var(--black);
+  color: #fff;
+}
+.btn-custom__secondary:hover {
+  background-color: var(--light-blue);
+  color: #fff;
 }

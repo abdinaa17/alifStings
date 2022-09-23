@@ -2,12 +2,13 @@
 
 
 // Local Imports
-import {FeaturedListings, Hero} from '../components'
+import {FeaturedListings, Hero, Testimonials} from '../components'
 const Home = () => {
   return (
     <section>
       <Hero />
       <FeaturedListings />
+      <Testimonials />
     </section>
   )
 }
