@@ -4,6 +4,7 @@ import { BiMenuAltRight, BiX } from "react-icons/bi";
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
+// Local Imports
 import '../Navbar/Navbar.css'
 
 const Navbar = () => {

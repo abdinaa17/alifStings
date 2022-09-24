@@ -1,0 +1,12 @@
+.testimonial {
+    background: var(--pink);
+    border-top-right-radius: 250px 100px;
+    border-bottom-left-radius: 250px 100px;
+}
+.card-img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
