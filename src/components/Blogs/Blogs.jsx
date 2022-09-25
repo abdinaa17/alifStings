@@ -9,7 +9,7 @@ const Blogs = () => {
       <Row className='g-4'>
         <Col md={6} lg={3}>
            <Card className='cursor-pointer'>
-              <Link to={'/'} ><Card.Img variant="top" src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png" alt="" /></Link>
+              <Link to='/coming-soon' ><Card.Img variant="top" src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png" alt="" /></Link>
 
               <Card.Body>
 
@@ -20,7 +20,7 @@ const Blogs = () => {
               <Row>
 
 
-              <Col><Link to={'/'} >Read More...</Link></Col>
+              <Col><Link to='/coming-soon' >Read More...</Link></Col>
 
               </Row>
 
@@ -29,7 +29,7 @@ const Blogs = () => {
         </Col>
         <Col md={6} lg={3}>
            <Card className='cursor-pointer'>
-              <Link to={'/'} ><Card.Img variant="top" src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png" alt="" /></Link>
+              <Link to='/coming-soon' ><Card.Img variant="top" src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png" alt="" /></Link>
 
               <Card.Body>
 
@@ -40,7 +40,7 @@ const Blogs = () => {
               <Row>
 
 
-              <Col><Link to={'/'} >Read More...</Link></Col>
+              <Col><Link to='/coming-soon' >Read More...</Link></Col>
 
               </Row>
 
