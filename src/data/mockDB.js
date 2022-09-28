@@ -2,6 +2,7 @@ export const mockDB = [
     {
     "id":"1",
     "title":"Halwani's Pizza & Stromboli",
+    "tagline": "My business tag line",
     "description":"Unfussy outpost for halal pizzas with unique toppings, plus wings, strombolis & subs.",
     "image":"https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=600",
     "gallary": ["https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600"],
@@ -16,7 +17,8 @@ export const mockDB = [
     },
     {
         "id":"2",
-        "title":"Halal-Mediterranean Food Import and Bakery #3",
+        "title":"Halal-Mediterranean Food Import",
+        "tagline": "My business tag line",
         "description":"Strip-mall stop for savory halal fare & baked treats plus Middle Eastern & Mediterranean groceries.",
         "image":"https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600",
         "gallary": ["https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600"],
@@ -31,6 +33,7 @@ export const mockDB = [
         {
             "id":"3",
             "title":"Halal New York Gyro",
+            "tagline": "My business tag line",
             "description":"Halal restaurant",
             "image":"https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=600",
             "address":"3196 Cleveland Ave,",
@@ -46,6 +49,7 @@ export const mockDB = [
             {
                 "id":"4",
                 "title":"Mogadishu Express Restaurant, LLC",
+                "tagline": "My business tag line",
                 "description":"Best coffee, anytime of the day",
                 "image":"https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600",
                 "address":"1981 Zettler Center Dr,",
@@ -59,6 +63,7 @@ export const mockDB = [
                 }, {
                     "id":"5",
                     "title":"Jubba Day Care Center",
+                    "tagline": "My business tag line",
                     "description":"A Daycare close to home. Our employees are very caring and welcoming. Management team is at the Front Desk always happy to come to your assistance! We offer Homework Help and Computer Learning Programs. Bring your child to Jubba Daycare",
                     "image":"https://images.pexels.com/photos/1170899/pexels-photo-1170899.jpeg?auto=compress&cs=tinysrgb&w=600",
                     "gallary": ["https://images.pexels.com/photos/1170899/pexels-photo-1170899.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267315/pexels-photo-1267315.jpeg?auto=compress&cs=tinysrgb&w=600"],
