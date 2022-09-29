@@ -1,87 +1,76 @@
 // Global Imports
-import { Col, Row } from 'react-bootstrap'
-
+import {Row, Col} from "react-bootstrap"
+import {Link} from "react-router-dom"
 import {FaTwitter, FaLinkedin, FaFacebook, FaYoutube} from "react-icons/fa"
-import { Link } from 'react-router-dom'
 
 // Local Imports
 import '../Footer/Footer.css'
-
 const Footer = () => {
   return (
-    <footer className='footer mt-3'>
-      <Row className='container p-3'>
-            <Col md={6} lg={3} className='flex-column mt-3'>
-            
-            <a href=""><em>alif</em>Stings</a>
-             <p>&copy; Copyright 2022. All rights reserved.</p> 
+    <footer className='footer shadow bg-primary text-white'>
+        <div className='container py-5 mx-auto'>
+        <Row>
+            <Col sm={6} md={6} lg={3}>
+                <Link to='/' className="mb-4"><em>alif</em>Stings</Link>
+                <p className="mt-4">123 Long Ave, Columbus, OH 43212
+                </p>
+                <a className="my-4" href="tel:+13115552368">(614) 555-2368</a>
             </Col>
-            <Col md={6} lg={3} className='flex-column mt-3'>
-              <Link to="/about"><h3>About Us</h3></Link>
-              <p>123 Long Ave, Columbus, OH 43212</p>
-              <p><a href="tel:+13115552368">(614) 555-2368</a></p>
+            <Col sm={6} md={6} lg={3}>
+            <p className="mb-4">Company</p>
+                <div className='d-flex flex-column'>
+                    <Link to="/about">About Us</Link>
+                    <Link to="/coming-soon">Services</Link>
+                    <Link to="/coming-soon">Careers</Link>
+                </div>
+            </Col>
+            <Col sm={6} md={6} lg={3}>
+            <p className="mb-4">Resources</p>
+                <div className='d-flex flex-column'>
+                    <Link to=''>Contact Us</Link>
+                    <Link to=''>Blog</Link>
+                    <Link to=''>About Us</Link>
+                </div>
+            </Col>
+            <Col sm={4} md={6} lg={3}>
+                <p className="mb-4">Company</p>
+                <div className='d-flex flex-column'>
+                    <Link to='/coming-soon'>
+                     Privacy Policy
+                    </Link>
+                    <Link to='/coming-soon'>
+                      Terms and Conditions
+                    </Link>
+                    <Link to='/coming-soon'>
+                     FAQs
+                    </Link>
+                </div>
             </Col>
 
-            <Col md={6} lg={3} className="mt-4">
-            <h6>Find Us On our Socials</h6>
-              <Row className='flex-md-column mt-3 align-items-center w-50'>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                     <FaTwitter size={24} />
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link  to="/coming-soon">
+        </Row>
+        <Row className='d-flex justify-content-center align-items-center flex-column my-5 w-100'>
+            <Col md={6} lg={6}>
+                <div className='d-flex'>
+                    <Link to="" className="p-2" href="">
+                      <FaTwitter size={24} />
+                    </Link>
+                    <Link to="" className="ms-3 p-2" href="">
                      <FaLinkedin size={24} />
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link  to="/coming-soon">
-                     <FaFacebook size={24} />
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                     <FaYoutube size={24} />
-                  </Link>
-                </Col>
-              </Row>
+                    </Link>
+                    <Link to="" className="mx-3 p-2" href="">
+                      <FaFacebook size={24} />
+                    </Link>
+                    <Link to="" className="p-2" href="">
+                        <FaYoutube size={24}/>
+                    </Link>
+                </div>
             </Col>
-
-            <Col md={6} lg={3}>
-              <Row className='flex-md-column mt-3 align-items-center'>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                     Services
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                    Careers
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                Blog
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                Privacy Policy
-                  </Link>
-                </Col>
-                <Col className="my-1">
-                <Link to="/coming-soon">
-                Terms and Conditions
-                  </Link>
-                </Col>
-                
-                
-              </Row>
+            <Col  md={6} lg={6}>
+            <small className="text-center mt-5">&copy; Copyright {new Date().getFullYear()} All rights reserved.</small>
             </Col>
         </Row>
+        </div>
         
-
     </footer>
   )
 }

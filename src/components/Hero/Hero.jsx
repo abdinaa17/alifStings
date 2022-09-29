@@ -22,7 +22,7 @@ const Hero = () => {
                   />
                 </Col>
                 <Col xs="auto">
-                  <Button variant='custom' className='mx-2' type="submit"> <BiSearch size={15} />
+                  <Button variant='primary' className='mx-2' type="submit"> <BiSearch size={15} />
                   </Button>
                 </Col>
             </Row>
