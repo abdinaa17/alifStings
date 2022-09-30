@@ -15,16 +15,16 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
           <LinkContainer to="/">
-             <Nav.Link>Home</Nav.Link>
+             <Nav.Link active={false}>Home</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/listings">
-             <Nav.Link>Listings</Nav.Link>
+             <Nav.Link active={false}>Listings</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/about">
-             <Nav.Link>About</Nav.Link>
+             <Nav.Link active={false}>About</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/new-listing">
-             <Nav.Link>Add Listing</Nav.Link>
+             <Nav.Link active={false}>Add Listing</Nav.Link>
           </LinkContainer>
           </Nav>
           <Nav className="ms-auto">

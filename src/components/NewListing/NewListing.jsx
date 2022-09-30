@@ -1,19 +1,28 @@
 // Global Imports
 import { Form, Button } from "react-bootstrap"
-
+import { useNavigate } from "react-router-dom"
 
 
 // Local Imports
 import '../NewListing/NewListing.css'
 
 const NewListing = () => {
+  const navigate = useNavigate()
+
+
+  // Form Submission
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate('/listings', {replace:true})
+  }
   return (
      <div>
         <div className="banner px-3 py-5">
            <h1 className='mb-5 text-center text-capitalize text-white'>Fill the Form to add new listing</h1>
         </div>
         <div className="form px-3 py-5">
-          <Form className="">
+           <h4 className="text-center">Primary Listing Details</h4>
+          <Form onSubmit={handleSubmit} className="w-75 mx-auto">
       <Form.Group className="mb-3">
         <Form.Label>Listing Title</Form.Label>
         <Form.Control type="text" placeholder="Enter listing..." />
