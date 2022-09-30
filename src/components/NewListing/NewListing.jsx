@@ -1,11 +1,19 @@
 // Global Imports
 import { Form, Button } from "react-bootstrap"
 
+
+
+// Local Imports
+import '../NewListing/NewListing.css'
+
 const NewListing = () => {
   return (
-    <div>
-        h1
-        <Form className="w-50">
+     <div>
+        <div className="banner px-3 py-5">
+           <h1 className='mb-5 text-center text-capitalize text-white'>Fill the Form to add new listing</h1>
+        </div>
+        <div className="form px-3 py-5">
+          <Form className="">
       <Form.Group className="mb-3">
         <Form.Label>Listing Title</Form.Label>
         <Form.Control type="text" placeholder="Enter listing..." />
@@ -33,10 +41,12 @@ const NewListing = () => {
       <Form.Group className="mb-3">
         <Form.Check type="checkbox" label="Featured" />
       </Form.Group>
-      <Button variant="custom" type="submit">
+      <Button  type="submit">
         Add Your Listing
       </Button>
       </Form>
+        </div>
+
     </div>
   )
 }
