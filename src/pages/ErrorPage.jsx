@@ -13,7 +13,7 @@ const Error = () => {
         <h1>Oops!</h1>
         <h2>404 - Page not found</h2>
         <Link to="/">
-            <Button variant="custom">Back To Home....</Button>
+            <Button variant="dark">Back To Home....</Button>
         </Link>
           <img src={notFound} alt="Not Found" />
         </Col>

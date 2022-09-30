@@ -1,4 +1,4 @@
-import Navbar from "./Navbar/Navbar"
+import Header from "./Header/Header"
 import Hero from "./Hero/Hero"
 import Listings from "./Listings/Listings"
 import SingleListing from "./SingeListing/SingleListing"
@@ -12,4 +12,5 @@ import NewListing from "./NewListing/NewListing"
 
 
 
-export {Navbar, Hero, Listings, SingleListing, NewListing, FeaturedListings, Rating, Testimonials, Footer, Blogs, Faqs}
+
+export {Header,Hero, Listings, SingleListing, NewListing, FeaturedListings, Rating, Testimonials, Footer, Blogs, Faqs}

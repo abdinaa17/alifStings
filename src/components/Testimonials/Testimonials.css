@@ -1,12 +1,26 @@
 .testimonial {
-    background: var(--pink);
+    background: #DFBA6910;;
     border-top-right-radius: 250px 100px;
     border-bottom-left-radius: 250px 100px;
 }
+
 .card-img {
-    width: 46px;
+    width: 46px !important;
     height: 46px;
     object-fit: cover;
     margin-right: 1rem;
     margin-bottom: 1rem;
+}
+
+
+@media screen and (max-width:768px) {
+    .testimonial__card {
+        width: 90vw !important;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .testimonial__row {
+        width: 75%;
+    }
 }

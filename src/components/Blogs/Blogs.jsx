@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Blogs = () => {
   return (
     <div className='container py-5'>
-      <h2 className="text-uppercase text-center my-5">Latest news Articles</h2>
+      <h2 className="text-uppercase text-center my-5 mx-auto">Latest news Articles</h2>
       <Row className='g-4'>
         <Col md={6} lg={3}>
            <Card className='cursor-pointer'>

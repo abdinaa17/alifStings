@@ -12,14 +12,14 @@ const Testimonials = () => {
 
   return (
     <div className='container py-5 testimonial'>
-      <h2 className="text-uppercase text-center my-5">Customer Testimonials</h2>
-      <p className="text-center my-2 mx-auto">Checkout what people are saying about our commuity businesses</p>
-      <Row className="w-75 mx-auto my-3 gy-5" >
+      <h2 className="text-uppercase text-center my-5 mx-auto">Customer Testimonials</h2>
+      <p className="my-2 mx-auto text-center">Checkout what people are saying about our commuity businesses</p>
+      <Row className="testimonial__row mx-auto my-3 gy-5" >
         {testimonials.map((testimonial) => {
           const {id, name, image, rating, desc, details} = testimonial
           return (
             <Col md={6} lg={4} key={id}>
-              <Card className="p-2">
+              <Card  className="p-2 testimonial__card">
                 <Row>
                   <Col className="d-flex align-items-center">
                     <img src={image}  alt={name} className="card-img"/>

@@ -9,7 +9,7 @@ import {SingleListing} from '../index'
 const Listings = () => {
   return (
     <div className='container py-3'>
-        <h3 className='my-5 text-center text-capitalize'>Our top rated listings.</h3>
+        <h1 className='my-5 text-center text-capitalize'>Our top rated listings.</h1>
         <Row className='g-4'>
             {mockDB.map((listing) => {
                 return <Col key={listing.id} md={6} lg={4}>

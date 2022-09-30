@@ -4,7 +4,7 @@ import { Accordion } from "react-bootstrap"
 const Faqs = () => {
   return (
     <div className='container py-5'>
-       <h2 className="text-uppercase text-center my-5">frequently asked questions</h2>
+       <h2 className="text-uppercase text-center my-5 mx-auto">frequently asked questions</h2>
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
         <Accordion.Header>How Do I List My Businsess</Accordion.Header>

@@ -1,12 +1,11 @@
 // Global Imports
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes,
   Route, } from 'react-router-dom'
 // Local Imports
 import './App.css'
-import {Navbar, Footer }from './components'
+import {Footer, Header }from './components'
 import {HomePage, AboutPage, ListingsPage, ErrorPage, SingleListingPage, ComingSoon, NewListingPage} from './pages'
-import Header from './components/Header/Header'
+
 
 
 

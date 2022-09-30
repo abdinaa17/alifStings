@@ -1,9 +1,12 @@
-import { Button,Container, Nav, Navbar } from 'react-bootstrap';
+import { Button,Nav, Navbar } from 'react-bootstrap';
 import {LinkContainer} from "react-router-bootstrap"
 
+import { FaUserPlus, FaUser } from 'react-icons/fa';
+// Local Imports
+import '../Header/Header.css'
 const Header = () => {
   return (
-    <header className='bg-primary h-75'>
+    <header className='bg-primary'>
          <Navbar className="container" variant='dark' expand="md">
         <LinkContainer to="/"> 
             <Navbar.Brand><em>alif</em>Stings</Navbar.Brand>
@@ -26,13 +29,13 @@ const Header = () => {
           </Nav>
           <Nav className="ms-auto">
           <LinkContainer to="/register">
-            <Button variant="dark" className="my-2 my-md-0 w-50 mx-md-2">
-            Register
+            <Button variant="danger" className="nav__btn my-2 my-md-0  mx-md-2">
+            <FaUserPlus/> Register
             </Button>
           </LinkContainer>
           <LinkContainer to="/login">
-            <Button className="my-2 my-md-0 w-50 mx-md-2" variant="secondary">
-                Login
+            <Button className="nav__btn my-2 my-md-0 mx-md-2" variant="secondary">
+               <FaUser /> Login
             </Button>
           </LinkContainer>
           </Nav>

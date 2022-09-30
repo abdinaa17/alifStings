@@ -10,7 +10,7 @@ import { mockDB } from '../../data/mockDB'
 const FeaturedListings = () => {
   return (
     <div className='container py-3'>
-        <h2 className='my-5 text-center text-uppercase'>Our Featured listings.</h2>
+        <h2 className='my-5 text-center text-uppercase mx-auto'>Our Featured listings.</h2>
         <Row className='g-4'>
             {mockDB
               .filter((listing) => listing.featured === true)
