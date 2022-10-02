@@ -1,5 +1,5 @@
 // Global Imports
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, FloatingLabel } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
 
@@ -32,8 +32,13 @@ const NewListing = () => {
         <Form.Control type="text" placeholder="Enter tag line..." />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Description</Form.Label>
-        <Form.Control as="textarea" placeholder="Describe Your Business..." />
+        <FloatingLabel controlId="floatingTextarea2" label="Description of the listing">
+        <Form.Control
+          as="textarea"
+          placeholder="Leave a comment here"
+          style={{ height: '200px' }}
+        />
+      </FloatingLabel>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Address</Form.Label>
