@@ -112,11 +112,11 @@ const NewListing = () => {
                     name="featured" 
                     value={listing.featured}
                     onChange={handleChange}
-                    // checked={!listing.featured}
+                    // checked={listing.featured === true}
                     label="Check box if you want your listing to be featured" />
                   </Form.Group>
                  <Button type="submit">Add Your Listing</Button>
-                 {formError && <p className="text-danger mt-3">Please Fill in all fields</p>}
+                 {formError && <p className="lead  text-danger mt-3">Please Fill in all fields</p>}
             </Form>
           </Col>
           <Col md={4}>
