@@ -5,7 +5,8 @@ import ErrorPage from './ErrorPage'
 import SingleListingPage from './SingleListingPage'
 import ComingSoon from './ComingSoon'
 import NewListingPage from './NewListingPage'
-
+import Login from './Login'
+import Register from './Register'
 
 
 export {
@@ -15,5 +16,7 @@ export {
     ErrorPage,
     SingleListingPage,
     NewListingPage,
-    ComingSoon
+    ComingSoon,
+    Login,
+    Register
 }

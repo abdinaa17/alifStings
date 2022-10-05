@@ -23,14 +23,11 @@ const Header = () => {
           <LinkContainer to="/about">
              <Nav.Link active={false}>About</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/new-listing">
-             <Nav.Link active={false}>Add Listing</Nav.Link>
-          </LinkContainer>
           </Nav>
           <Nav className="ms-auto">
-          <LinkContainer to="/register">
-            <Button variant="danger" className="nav__btn my-2 my-md-0  mx-md-2">
-            <FaUserPlus/> Register
+          <LinkContainer to="/new-listing">
+            <Button variant="info" className="nav__btn my-2 my-md-0  mx-md-2">
+              Add A Listing
             </Button>
           </LinkContainer>
           <LinkContainer to="/login">

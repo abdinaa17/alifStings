@@ -19,7 +19,7 @@ const Footer = () => {
                 <a className="my-4" href="tel:+13115552368">(614) 555-2368</a>
             </Col>
             <Col className="col-lg-3 col-4">
-            <p className="my-4">Company</p>
+            <p className="my-4 lead">Company</p>
                 <div className='d-flex flex-column'>
                     <Link to="/about">About Us</Link>
                     <Link to="/coming-soon">Services</Link>
@@ -27,15 +27,15 @@ const Footer = () => {
                 </div>
             </Col>
             <Col className="col-lg-3 col-8">
-            <p className="my-4">Resources</p>
+            <p className="my-4 lead">Resources</p>
                 <div className='d-flex flex-column'>
-                    <Link to=''>Contact Us</Link>
-                    <Link to=''>Blog</Link>
-                    <Link to=''>About Us</Link>
+                    <Link to='/about'>About Us</Link>
+                    <Link to='/coming-soon'>Contact Us</Link>
+                    <Link to='/coming-soon'>Blog</Link>
                 </div>
             </Col>
             <Col className="col-lg-3 col-4">
-                <p className="my-4">Company</p>
+                <p className="my-4 lead">Company</p>
                 <div className='d-flex flex-column'>
                     <Link to='/coming-soon'>
                      Privacy Policy
@@ -53,16 +53,16 @@ const Footer = () => {
         <Row className='d-flex justify-content-center align-items-center flex-column my-5 w-100'>
             <Col md={6} lg={6}>
                 <div className='d-flex'>
-                    <Link to="" className="p-2" >
+                    <Link to="/" className="p-2" >
                       <FaTwitter size={24} />
                     </Link>
-                    <Link to="" className="ms-3 p-2" >
+                    <Link to="/" className="ms-3 p-2" >
                      <FaLinkedin size={24} />
                     </Link>
-                    <Link to="" className="mx-3 p-2" >
+                    <Link to="/" className="mx-3 p-2" >
                       <FaFacebook size={24} />
                     </Link>
-                    <Link to="" className="p-2" >
+                    <Link to="/" className="p-2" >
                         <FaYoutube size={24}/>
                     </Link>
                 </div>

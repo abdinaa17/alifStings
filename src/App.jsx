@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes,
 // Local Imports
 import './App.css'
 import {Footer, Header }from './components'
-import {HomePage, AboutPage, ListingsPage, ErrorPage, SingleListingPage, ComingSoon, NewListingPage} from './pages'
+import {HomePage, AboutPage, ListingsPage, ErrorPage, SingleListingPage, ComingSoon, NewListingPage, Login, Register} from './pages'
 
 
 
@@ -22,6 +22,8 @@ function App() {
           <Route path='listings/:id' element={<SingleListingPage/>} />
           <Route path='coming-soon' element={<ComingSoon/>} />
           <Route path='new-listing' element={<NewListingPage/>} />
+          <Route path='login' element={<Login/>} />
+          <Route path='register' element={<Register/>} />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
         <Footer />

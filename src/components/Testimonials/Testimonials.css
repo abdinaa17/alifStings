@@ -8,6 +8,7 @@
     width: 46px !important;
     height: 46px;
     object-fit: cover;
+    object-position: center center;
     margin-right: 1rem;
     margin-bottom: 1rem;
 }
@@ -15,8 +16,13 @@
 
 @media screen and (max-width:768px) {
     .testimonial__card {
-        width: 90vw !important;
-    }
+        width: 75vw ;
+        margin: auto;
+    }   
+    .card-img {
+    width: 86px !important;
+    height: 86px;
+}
 }
 
 @media screen and (min-width:1200px) {
