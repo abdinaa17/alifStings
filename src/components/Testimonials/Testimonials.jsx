@@ -13,7 +13,7 @@ const Testimonials = () => {
   return (
     <div className='container py-5 testimonial'>
       <h2 className="text-uppercase text-center my-5 mx-auto">Customer Testimonials</h2>
-      <p className="my-2 mx-auto text-center">Checkout what people are saying about our commuity businesses</p>
+      <p className="my-2 mx-auto text-center">Checkout what people are saying about our community businesses</p>
       <Row className="testimonial__row mx-auto my-3 gy-5" >
         {testimonials.map((testimonial) => {
           const {id, name, image, rating, desc, details} = testimonial
