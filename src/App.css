@@ -30,7 +30,7 @@ input:focus {
   outline: none !important;
 }
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
 }
 a:hover {
@@ -68,17 +68,14 @@ body {
     /* Inter, Avenir, Helvetica, Arial, sans-serif;  */
    color: #fff;
 }
-/*
-.btn-custom {
-  background-color: var(--light-blue);
+
+/* Boostrap custom code */
+.navbar-nav .nav-link.active,
+.navbar-nav .show>.nav-link {
+  color: #e95420 !important;
+}
+
+.btn-black {
+  background-color: #111;
   color: #fff;
 }
-.btn-custom__secondary {
-  background-color: var(--black);
-  color: #fff;
-}
-.btn-custom:hover {
-  background-color: var(--black);
-  color: #fff;
-}
-*/

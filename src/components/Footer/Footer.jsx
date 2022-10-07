@@ -11,12 +11,12 @@ const Footer = () => {
         <div className='container py-5 mx-auto'>
         <Row>
             <Col className="col-lg-3 col-8">
-               <p className="my-4">
-               <Link to='/' ><em>alif</em>Stings</Link>
+               <p className="my-2">
+               <Link to='/' >alifStings<span className='text-primary fw-bold fs-1'>.</span></Link>
                </p>
                 <p className="mt-4">123 Long Ave, Columbus, OH 43212
                 </p>
-                <a className="my-4" href="tel:+13115552368">(614) 555-2368</a>
+                <a className="my-4" href="tel:+13115552368">(123) 555-2368</a>
             </Col>
             <Col className="col-lg-3 col-4">
             <p className="my-4 lead">Company</p>
@@ -43,7 +43,7 @@ const Footer = () => {
                     <Link to='/coming-soon'>
                       Terms and Conditions
                     </Link>
-                    <Link to='/coming-soon'>
+                    <Link to='/#faqs'>
                      FAQs
                     </Link>
                 </div>

@@ -6,14 +6,14 @@ import { FaUserPlus, FaUser } from 'react-icons/fa';
 import '../Header/Header.css'
 const Header = () => {
   return (
-    <header className='bg-primary'>
-         <Navbar className="container" variant='dark' expand="md">
+    <header className=''>
+         <Navbar className="container" variant='light' expand="md">
         <LinkContainer to="/"> 
-            <Navbar.Brand><em>alif</em>Stings</Navbar.Brand>
+            <Navbar.Brand className='nav__logo'>alifStings<span className='text-primary fw-bold fs-1'>.</span></Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto nav__center">
           <LinkContainer to="/">
              <Nav.Link active={false}>Home</Nav.Link>
           </LinkContainer>
@@ -23,15 +23,21 @@ const Header = () => {
           <LinkContainer to="/about">
              <Nav.Link active={false}>About</Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/coming-soon">
+             <Nav.Link active={false}>Services</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/coming-soon">
+             <Nav.Link active={false}>Blog</Nav.Link>
+          </LinkContainer>
           </Nav>
           <Nav className="ms-auto">
           <LinkContainer to="/new-listing">
-            <Button variant="info" className="nav__btn my-2 my-md-0  mx-md-2">
+            <Button variant="primary" className="nav__btn my-2 my-md-0  mx-md-2">
               Add A Listing
             </Button>
           </LinkContainer>
           <LinkContainer to="/login">
-            <Button className="nav__btn my-2 my-md-0 mx-md-2" variant="secondary">
+            <Button className="nav__btn my-2 my-md-0 mx-md-2" variant="black">
                <FaUser /> Login
             </Button>
           </LinkContainer>
