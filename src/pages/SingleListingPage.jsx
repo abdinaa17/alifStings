@@ -1,6 +1,6 @@
 // Global Imports
 import { useState } from "react"
-import { Col, Row } from "react-bootstrap"
+import { Col, Row, Button } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import {MdPlace} from 'react-icons/md'
 
@@ -51,7 +51,9 @@ const SingleListing = () => {
       </Col>
     
       </Row>
-      <Link to="/listings">Go back</Link>
+      <Link to="/listings">
+          <Button className="m-2" variant="dark">Go back</Button>
+      </Link>
     </section>
   )
 }

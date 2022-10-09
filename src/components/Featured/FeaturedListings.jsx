@@ -28,7 +28,7 @@ const FeaturedListings = () => {
 
                         <Card.Title className="my-2">{title}</Card.Title>
 
-                        <Card.Subtitle className="my-2 text-danger"> {tagline}</Card.Subtitle>
+                        <Card.Subtitle className="my-2 text-primary"> {tagline}</Card.Subtitle>
                         <Card.Text className="my-2">
                         <MdPlace/>{address} {city}
                        </Card.Text>

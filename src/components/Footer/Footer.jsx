@@ -11,8 +11,8 @@ const Footer = () => {
         <div className='container py-5 mx-auto'>
         <Row>
             <Col className="col-lg-3 col-8">
-               <p className="my-2">
-               <Link to='/' >alifStings<span className='text-primary fw-bold fs-1'>.</span></Link>
+               <p className="my-4">
+               <Link to='/' >alifStings</Link>
                </p>
                 <p className="mt-4">123 Long Ave, Columbus, OH 43212
                 </p>

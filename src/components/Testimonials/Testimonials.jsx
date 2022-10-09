@@ -24,8 +24,11 @@ const Testimonials = () => {
                   <Col className="d-flex align-items-center">
                     <img src={image}  alt={name} className="card-img"/>
                     <p className="mx-auto my-0 ">{name}</p>
-                    <Rating rating={rating}/>
                   </Col>
+                </Row>
+                <Row>
+                  <Col className="mb-2">
+                  <Rating rating={rating}/></Col>
                 </Row>
                 <h4>{desc}</h4>
                 <p>{details}</p>

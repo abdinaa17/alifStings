@@ -12,7 +12,7 @@ const SingleListing = ({image, id, title, address, rating, numReviews, city, tag
                 
                     <Card.Body>
                        <Card.Title className="my-2">{title}</Card.Title>
-                       <Card.Subtitle className="my-2 text-danger">{tagline}</Card.Subtitle>
+                       <Card.Subtitle className="my-2 text-primary">{tagline}</Card.Subtitle>
                        <Card.Text className="my-2">
                        {address} {city}
                        </Card.Text>
