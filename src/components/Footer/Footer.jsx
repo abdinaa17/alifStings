@@ -43,9 +43,9 @@ const Footer = () => {
                     <Link to='/coming-soon'>
                       Terms and Conditions
                     </Link>
-                    <Link to='/#faqs'>
+                    <a href='#faqs'>
                      FAQs
-                    </Link>
+                    </a>
                 </div>
             </Col>
 

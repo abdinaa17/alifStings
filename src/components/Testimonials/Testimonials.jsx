@@ -18,19 +18,16 @@ const Testimonials = () => {
         {testimonials.map((testimonial) => {
           const {id, name, image, rating, desc, details} = testimonial
           return (
-            <Col md={6} lg={4} key={id}>
+            <Col sm={6} md={6} lg={4} key={id}>
               <Card  className="p-2 testimonial__card">
                 <Row>
-                  <Col className="d-flex align-items-center">
-                    <img src={image}  alt={name} className="card-img"/>
+                  <Col className="align-items-center">
+                    <img src={image}  alt={name} className="card-img rounded"/>
                     <p className="mx-auto my-0 ">{name}</p>
+                     <Rating rating={rating}/>
                   </Col>
                 </Row>
-                <Row>
-                  <Col className="mb-2">
-                  <Rating rating={rating}/></Col>
-                </Row>
-                <h4>{desc}</h4>
+                <h4 className="my-2">{desc}</h4>
                 <p>{details}</p>
                 <hr />
               </Card>

@@ -1,17 +1,4 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap'); */
-
-/* *,
-*::before,
-*::after {
-  box-sizing: border-box;
-} */
-/* :root {
-    --blue: #37aaf7;
-    --light-blue:  #4db7fe;
-    --black: #111;
-    --gray: #f3f3f3;
-    --pink: #DFBA6910;
-} */
 html {
     scroll-behavior: smooth;
   }
@@ -48,7 +35,7 @@ p, h1, h2, h3, h4 {
 hr {
     height: 30px;
     border-style: solid;
-    border-color: var(--black);
+    border-color: #e95420;
     border-width: 2px 0 0 0;
     border-radius: 20px;
 }
@@ -58,7 +45,7 @@ hr::before {
     height: 30px;
     margin-top: -31px;
     border-style: solid;
-    border-color: var(--black);
+    border-color: #e95420;
     border-width: 0 0 1px 0;
     border-radius: 20px;
 } 
@@ -75,7 +62,12 @@ body {
   color: #e95420 !important;
 }
 
-.btn-black {
-  background-color: #111;
-  color: #fff;
+.btn-custom {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  color: #fff !important;
+}
+
+.btn-custom:hover {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: #fff !important;
 }

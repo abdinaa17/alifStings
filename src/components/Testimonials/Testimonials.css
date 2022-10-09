@@ -4,9 +4,14 @@
     border-bottom-left-radius: 250px 100px;
 }
 
+/* Come back to this > */
+/* 
+.testimonial__card {
+    border-right-color: 4px solid blue !important;
+} */
 .card-img {
-    width: 46px !important;
-    height: 46px;
+    width: 100px !important;
+    height: 80px;
     object-fit: cover;
     object-position: center center;
     margin-right: 1rem;

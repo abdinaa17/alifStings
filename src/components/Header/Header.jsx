@@ -37,7 +37,7 @@ const Header = () => {
             </Button>
           </LinkContainer>
           <LinkContainer to="/login">
-            <Button className="nav__btn my-2 my-md-0 mx-md-2" variant="black">
+            <Button variant='custom' className="nav__btn my-2 my-md-0 mx-md-2">
                <FaUser /> Login
             </Button>
           </LinkContainer>
