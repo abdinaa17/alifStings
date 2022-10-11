@@ -20,14 +20,14 @@
 
 
 @media screen and (max-width:768px) {
-    .testimonial__card {
+    /* .testimonial__card {
         width: 75vw ;
         margin: auto;
-    }   
-    .card-img {
+    }    */
+    /* .card-img {
     width: 86px !important;
     height: 86px;
-}
+} */
 }
 
 @media screen and (min-width:1200px) {
