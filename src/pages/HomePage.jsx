@@ -1,8 +1,13 @@
 // Global Imports
 
-
 // Local Imports
-import {Blogs, Faqs, FeaturedListings, Hero, Testimonials} from '../components'
+import {
+  Blogs,
+  Faqs,
+  FeaturedListings,
+  Hero,
+  Testimonials,
+} from "../components";
 const Home = () => {
   return (
     <section>
@@ -12,7 +17,7 @@ const Home = () => {
       <Faqs />
       <Blogs />
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
