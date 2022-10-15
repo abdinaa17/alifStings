@@ -5,8 +5,8 @@ import ErrorPage from "./ErrorPage";
 import SingleListingPage from "./SingleListingPage";
 import ComingSoon from "./ComingSoon";
 import NewListingPage from "./NewListingPage";
-import Login from "./Login";
-import Register from "./Register";
+import LoginPage from "./LoginPage";
+import RegisterPage from "./RegisterPage";
 
 export {
   HomePage,
@@ -16,6 +16,6 @@ export {
   SingleListingPage,
   NewListingPage,
   ComingSoon,
-  Login,
-  Register,
+  LoginPage,
+  RegisterPage,
 };

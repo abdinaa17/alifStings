@@ -11,8 +11,8 @@ import {
   SingleListingPage,
   ComingSoon,
   NewListingPage,
-  Login,
-  Register,
+  LoginPage,
+  RegisterPage,
 } from "./pages";
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
           <Route path="listings/:id" element={<SingleListingPage />} />
           <Route path="coming-soon" element={<ComingSoon />} />
           <Route path="new-listing" element={<NewListingPage />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

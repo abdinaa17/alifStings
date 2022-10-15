@@ -2,14 +2,17 @@ import React from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// Local Imports
+import regsiterHero from "../assets/images/register.svg";
+
 const Register = () => {
   const handleSubmit = (e) => {
     //
   };
   return (
-    <section className="container">
+    <section className="container py-5">
       <Row>
-        <Col lg={4} md={6}>
+        <Col lg={6} md={6}>
           <Form onSubmit={handleSubmit} className="w-75 my-2 mx-auto">
             <Form.Group className="mb-3">
               <Form.Label>Email</Form.Label>
@@ -30,6 +33,9 @@ const Register = () => {
               Register
             </Button>
           </Form>
+        </Col>
+        <Col lg={6} md={6}>
+          <img src={regsiterHero} alt="" />
         </Col>
       </Row>
     </section>
