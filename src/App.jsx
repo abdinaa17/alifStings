@@ -13,6 +13,7 @@ import {
   NewListingPage,
   LoginPage,
   RegisterPage,
+  ContactPage,
 } from "./pages";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="new-listing" element={<NewListingPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="contact" element={<ContactPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

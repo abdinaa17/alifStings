@@ -31,7 +31,7 @@ const Footer = () => {
             <p className="my-4 lead">Resources</p>
             <div className="d-flex flex-column">
               <Link to="/about">About Us</Link>
-              <Link to="/coming-soon">Contact Us</Link>
+              <Link to="/contact">Contact Us</Link>
               <Link to="/coming-soon">Blog</Link>
             </div>
           </Col>

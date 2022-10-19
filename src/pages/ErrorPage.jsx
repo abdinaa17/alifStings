@@ -6,7 +6,7 @@ import notFound from "../assets/images/not-found.svg";
 
 const Error = () => {
   return (
-    <div className="container p-5">
+    <section className="container p-5">
       <Row>
         <Col>
           <h1>Oops!</h1>
@@ -17,7 +17,7 @@ const Error = () => {
           <img src={notFound} alt="Not Found" />
         </Col>
       </Row>
-    </div>
+    </section>
   );
 };
 

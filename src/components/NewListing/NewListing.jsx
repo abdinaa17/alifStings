@@ -1,5 +1,5 @@
 // Global Imports
-import { Form, Button, FloatingLabel, Row, Col } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -129,9 +129,7 @@ const NewListing = () => {
               </Form.Group>
               <Button type="submit">Add Your Listing</Button>
               {formError && (
-                <p className="lead  text-danger mt-3">
-                  Please Fill in all fields
-                </p>
+                <Alert className="mt-3">Please Fill in all fields</Alert>
               )}
             </Form>
           </Col>

@@ -28,8 +28,8 @@ const Header = () => {
             <LinkContainer to="/coming-soon">
               <Nav.Link active={false}>Services</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/coming-soon">
-              <Nav.Link active={false}>Blog</Nav.Link>
+            <LinkContainer to="/contact">
+              <Nav.Link active={false}>Contact Us</Nav.Link>
             </LinkContainer>
           </Nav>
           <Nav className="ms-auto">

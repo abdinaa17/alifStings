@@ -7,7 +7,7 @@ import ComingSoon from "./ComingSoon";
 import NewListingPage from "./NewListingPage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
-
+import ContactPage from "./ContactPage";
 export {
   HomePage,
   AboutPage,
@@ -18,4 +18,5 @@ export {
   ComingSoon,
   LoginPage,
   RegisterPage,
+  ContactPage,
 };
