@@ -33,11 +33,11 @@ const FeaturedListings = () => {
                   <Card.Body>
                     <Card.Title className="my-2">{title}</Card.Title>
 
-                    <Card.Subtitle className="my-2 text-primary">
+                    <Card.Subtitle className="my-2 opacity-75">
                       {" "}
                       {tagline}
                     </Card.Subtitle>
-                    <Card.Text className="my-2">
+                    <Card.Text className="my-3">
                       <MdPlace />
                       {address} {city}
                     </Card.Text>

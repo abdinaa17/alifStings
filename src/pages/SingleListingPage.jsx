@@ -9,6 +9,7 @@ import {
   FaFacebook,
   FaPhoneAlt,
   FaRegClock,
+  FaInfo,
 } from "react-icons/fa";
 import { BiTime } from "react-icons/bi";
 
@@ -21,8 +22,16 @@ const SingleListing = () => {
   const { id } = useParams();
   const listing = mockDB.find((listing) => listing.id === id);
 
-  const { title, rating, numReviews, address, city, gallary, description } =
-    listing;
+  const {
+    title,
+    tagline,
+    rating,
+    numReviews,
+    address,
+    city,
+    gallary,
+    description,
+  } = listing;
 
   const [currentImg, setCurrentImg] = useState(gallary[0]);
 
@@ -47,7 +56,7 @@ const SingleListing = () => {
               })}
             </Row>
             <h1>{title}</h1>
-            <p className="opacity-75">{description}</p>
+            <p className="opacity-75">{tagline}</p>
             <Row>
               <Col>
                 <Rating rating={rating} />
@@ -56,30 +65,29 @@ const SingleListing = () => {
                 <p>{numReviews} reviews</p>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <p>
-                  Address: <MdPlace /> {address} {city}
-                </p>
-              </Col>
-            </Row>
+            <p className="mb-4">{description}</p>
+            <p></p>
           </Col>
           <Col className=" px-2" md={4}>
             <Card className="cursor-pointer">
-              <Link to={`/listings/${id}`}>
-                <Card.Img
-                  style={{ height: 300, objectFit: "cover" }}
-                  variant="top"
-                  src={cBusMap}
-                  alt={title}
-                />
-              </Link>
+              <Card.Img
+                style={{ height: 300, objectFit: "cover" }}
+                variant="top"
+                src={cBusMap}
+                alt={title}
+              />
 
               <Card.Body>
                 <Card.Subtitle className="my-3">
                   Address: <MdPlace /> {address} {city}
                 </Card.Subtitle>
-
+                <div>
+                  <p className="text-uppercase mt-4">
+                    <FaInfo className="me-4" />
+                    Contact info
+                  </p>
+                  <hr />
+                </div>
                 <Card.Subtitle className="my-3">
                   <FaPhoneAlt className="me-4" />{" "}
                   <a className="my-4" href="tel:+13115552368">

@@ -39,22 +39,21 @@ p, h1, h2, h3, h4 {
   max-width: 60ch;
 }
 hr {
-    height: 30px;
-    border-style: solid;
-    border-color: #e95420;
-    border-width: 2px 0 0 0;
-    border-radius: 20px;
+    border: none;
+    border-top: medium double black;
+    color: black;
+    text-align: center;
 }
-hr::before {
-  display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: #e95420;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
-} 
+
+hr::after {
+  content: '';
+  display: inline-block ;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background-color: white;
+}
 
 body {
    font-family: 'Rubik', sans-serif !important;
