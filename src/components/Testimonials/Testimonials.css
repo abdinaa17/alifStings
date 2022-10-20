@@ -1,5 +1,5 @@
 .testimonial {
-    background: #DFBA6910;;
+    background:var(--light-bg);
     border-top-right-radius: 250px 100px;
     border-bottom-left-radius: 250px 100px;
 }

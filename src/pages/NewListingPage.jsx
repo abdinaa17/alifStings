@@ -4,7 +4,7 @@
 import { NewListing } from "../components";
 const NewListingPage = () => {
   return (
-    <section>
+    <section className="page">
       <NewListing />
     </section>
   );

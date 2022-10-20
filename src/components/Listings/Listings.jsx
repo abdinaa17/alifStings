@@ -7,7 +7,7 @@ import { SingleListing } from "../index";
 
 const Listings = () => {
   return (
-    <div className="container py-3">
+    <div className="container">
       <h1 className="my-5 text-center text-capitalize">
         Our top rated listings.
       </h1>

@@ -4,9 +4,9 @@
 import { Listings } from "../components";
 const ListingsPage = () => {
   return (
-    <div className="container">
+    <section className="page py-5">
       <Listings />
-    </div>
+    </section>
   );
 };
 
