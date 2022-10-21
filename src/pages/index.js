@@ -8,10 +8,12 @@ import NewListingPage from "./NewListingPage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import ContactPage from "./ContactPage";
+import ServicesPage from "./ServicesPage";
 export {
   HomePage,
   AboutPage,
   ListingsPage,
+  ServicesPage,
   ErrorPage,
   SingleListingPage,
   NewListingPage,

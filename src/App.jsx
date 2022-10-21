@@ -14,6 +14,7 @@ import {
   LoginPage,
   RegisterPage,
   ContactPage,
+  ServicesPage,
 } from "./pages";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="services" element={<ServicesPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

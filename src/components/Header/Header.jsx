@@ -25,7 +25,7 @@ const Header = () => {
             <LinkContainer to="/about">
               <Nav.Link active={false}>About</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/coming-soon">
+            <LinkContainer to="/services">
               <Nav.Link active={false}>Services</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/contact">
