@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap");
 :root {
-  --light-bg: #DFBA6910;
+  --light-bg: #dfba6910;
 }
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 img,
 picture {
   max-width: 100%;
@@ -14,40 +14,45 @@ input,
 button,
 textarea,
 select {
-font: inherit;
+  font: inherit;
 }
 input:focus {
   outline: none !important;
 }
 a {
-    text-decoration: none !important;
-    color: inherit;
+  text-decoration: none !important;
+  color: inherit;
 }
-i, svg {
+i,
+svg {
   cursor: pointer !important;
 }
 a:hover {
-color: var(--black);
+  color: var(--black);
 }
 ul li {
-    list-style: none;
+  list-style: none;
 }
 button {
   cursor: pointer;
 }
-p, h1, h2, h3, h4 {
+p,
+h1,
+h2,
+h3,
+h4 {
   max-width: 60ch;
 }
 hr {
-    border: none;
-    border-top: medium double black;
-    color: black;
-    text-align: center;
+  border: none;
+  border-top: medium double black;
+  color: black;
+  text-align: center;
 }
 
 hr::after {
-  content: '';
-  display: inline-block ;
+  content: "";
+  display: inline-block;
   position: relative;
   top: -0.7em;
   font-size: 1.5em;
@@ -56,18 +61,18 @@ hr::after {
 }
 
 body {
-   font-family: 'Rubik', sans-serif !important;
-   color: #fff;
+  font-family: "Rubik", sans-serif !important;
+  color: #fff;
 }
 
 /* Boostrap custom code */
 .navbar-nav .nav-link.active,
-.navbar-nav .show>.nav-link {
+.navbar-nav .show > .nav-link {
   color: #e95420 !important;
 }
 
 .btn-custom {
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-color: #111 !important;
   color: #fff !important;
 }
 
@@ -80,4 +85,25 @@ body {
 
 .page {
   background: var(--light-bg);
+}
+
+
+/* Bg banner */
+.banner {
+  position: relative;
+  background: url('../../assets/images/newlisting-banner.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  isolation: isolate;
+
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0.5;
+  z-index: -1;
 }

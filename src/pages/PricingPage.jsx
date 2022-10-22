@@ -3,7 +3,7 @@ import { Pricing } from "../components";
 
 const PricingPage = () => {
   return (
-    <section className="page py-5">
+    <section className="page">
       <Pricing />
     </section>
   );
