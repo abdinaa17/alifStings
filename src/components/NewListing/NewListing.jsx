@@ -3,9 +3,6 @@ import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-// Local Imports
-import "../NewListing/NewListing.css";
-
 const NewListing = () => {
   const user = true;
   const [formError, setFormError] = useState(false);
