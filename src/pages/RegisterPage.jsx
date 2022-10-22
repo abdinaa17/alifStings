@@ -42,7 +42,7 @@ const Register = () => {
                       placeholder="Confirm password here..."
                     />
                   </Form.Group>
-                  <Button className="w-100" type="submit">
+                  <Button className="w-100 mt-3" type="submit">
                     Register
                   </Button>
                 </Form>

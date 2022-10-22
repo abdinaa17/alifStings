@@ -15,6 +15,7 @@ import {
   RegisterPage,
   ContactPage,
   ServicesPage,
+  PricingPage,
 } from "./pages";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="services" element={<ServicesPage />} />
+          <Route path="pricing" element={<PricingPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

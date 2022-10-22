@@ -9,6 +9,7 @@ import Footer from "./Footer/Footer";
 import Blogs from "./Blogs/Blogs";
 import Faqs from "./FAQs/Faqs";
 import NewListing from "./NewListing/NewListing";
+import Pricing from "./Pricing/Pricing";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   Footer,
   Blogs,
   Faqs,
+  Pricing,
 };

@@ -33,7 +33,7 @@ const Header = () => {
             </LinkContainer>
           </Nav>
           <Nav className="ms-auto">
-            <LinkContainer to="/new-listing">
+            <LinkContainer to="/pricing">
               <Button
                 variant="primary"
                 className="nav__btn my-2 my-md-0  mx-md-2"

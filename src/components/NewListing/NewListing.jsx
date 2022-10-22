@@ -7,6 +7,7 @@ import { useState } from "react";
 import "../NewListing/NewListing.css";
 
 const NewListing = () => {
+  const user = true;
   const [formError, setFormError] = useState(false);
   const [listing, setListing] = useState({
     title: "",
@@ -14,6 +15,8 @@ const NewListing = () => {
     desc: "",
     address: "",
     city: "",
+    phone: "",
+    website: "",
     owner: "",
     featured: false,
   });
@@ -110,9 +113,39 @@ const NewListing = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control
+              type="text"
+              name="owner"
+              value={listing.phone}
+              onChange={handleChange}
+              placeholder="123 456-7890"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Website</Form.Label>
+            <Form.Control
+              type="text"
+              name="owner"
+              value={listing.website}
+              onChange={handleChange}
+              placeholder="www.example.com..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Owner</Form.Label>
             <Form.Control
               type="text"
+              name="owner"
+              value={listing.owner}
+              onChange={handleChange}
+              placeholder="Enter Owner's name..."
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Category</Form.Label>
+            <Form.Control
+              type="select"
               name="owner"
               value={listing.owner}
               onChange={handleChange}
@@ -129,7 +162,7 @@ const NewListing = () => {
               label="Check box if you want your listing to be featured"
             />
           </Form.Group>
-          <Button type="submit">Add Your Listing</Button>
+          <Button type="submit">Save and preview</Button>
         </Form>
         {formError && (
           <Alert style={{ maxWidth: "800px" }} className="mt-3 mx-auto">

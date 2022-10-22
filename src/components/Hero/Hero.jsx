@@ -9,6 +9,10 @@ const Hero = () => {
   const [query, setQuery] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!query) {
+      console.log("Nothing was searched");
+      return;
+    }
     console.log(query);
   };
   return (

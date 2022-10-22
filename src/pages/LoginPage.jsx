@@ -1,13 +1,13 @@
 import React from "react";
 import { Col, Row, Form, Button, Card } from "react-bootstrap";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 // Local Imports
 import loginImg from "../assets/images/login.svg";
+
 const Login = () => {
   const handleSubmit = (e) => {
-    //
+    e.preventDefault();
   };
   return (
     <section className="page py-5">
@@ -35,17 +35,17 @@ const Login = () => {
                       placeholder="Enter password here..."
                     />
                   </Form.Group>
-                  <Button className="w-100" type="submit">
+                  <Button className="w-100 mt-3" type="submit">
                     Login
                   </Button>
                   <div className="pt-3">
-                    <p className="fw-bolder">Or Login With</p>
-                    <Link to="/" className="p-2 text-info">
-                      <FaGoogle size={24} />
-                    </Link>
-                    <Link to="/" className="p-2 text-info">
-                      <FaFacebook size={24} />
-                    </Link>
+                    <p className="fw-bolder text-center">Or</p>
+                    <Button variant="success" className="w-100 mb-3">
+                      Log in with Gmail
+                    </Button>
+                    <Button variant="info" className="w-100">
+                      Log in with Facebook
+                    </Button>
                   </div>
                 </Form>
               </Card>
@@ -53,7 +53,7 @@ const Login = () => {
                 <small className="text-capitalize">
                   Don't have an account?{" "}
                   <Link to="/register">Register Here</Link>
-                </small>
+                </small>{" "}
               </p>
               <p>
                 <small className="text-capitalize">
