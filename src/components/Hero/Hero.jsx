@@ -18,28 +18,15 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hero__content">
-        <h1>Explore The Best Places In Your City</h1>
+        <h1 className="text-capitalize">
+          Explore the best halal-friendly places In Your City
+        </h1>
         <h3>Find some of the best tips from around the city.</h3>
-        <div className="hero__form">
-          <Form className="h-100" onSubmit={handleSubmit}>
-            <Row className="align-items-center h-100">
-              <Col>
-                <Form.Control
-                  placeholder="Find Restaurants, Places, Mosques and more..."
-                  className="text-center shadow-none"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-              </Col>
-              <Col xs="auto">
-                <Button variant="primary" className="mx-2" type="submit">
-                  {" "}
-                  <BiSearch size={15} />
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
+        <p className="lead">
+          We bring you a variety of halal-friendly business around the Columbus
+          area for your convinience. From restaurants, to mosques, to daycares
+          and many more...
+        </p>
       </div>
     </div>
   );

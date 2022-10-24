@@ -40,7 +40,12 @@ const SingleListing = () => {
       <div className="container">
         <Row>
           <Col md={8}>
-            <img src={currentImg} alt={title} className="rounded mb-3 w-100" />
+            <img
+              src={currentImg}
+              alt={title}
+              className="rounded mb-3 h-50 w-100"
+              // style={{ width: "600px", objectFit: "cover" }}
+            />
             <Row className="my-3">
               {gallary.map((image, idx) => {
                 return (
@@ -49,6 +54,11 @@ const SingleListing = () => {
                       role="button"
                       src={image}
                       alt={title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                       onClick={() => setCurrentImg(gallary[idx])}
                     />
                   </Col>

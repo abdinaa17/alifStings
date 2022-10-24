@@ -1,5 +1,5 @@
 // Global Imports
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdPlace } from "react-icons/md";
 
@@ -56,6 +56,16 @@ const FeaturedListings = () => {
             );
           })}
       </Row>
+      <div className="d-flex align-items-center justify-content-center">
+        <Link to="/listings" className="w-25">
+          <Button
+            variant="custom"
+            className="my-4 border ms-3 py-2 border-2 w-75"
+          >
+            All Lisings
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
