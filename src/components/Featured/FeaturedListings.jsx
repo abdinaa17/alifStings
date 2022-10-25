@@ -56,14 +56,13 @@ const FeaturedListings = () => {
             );
           })}
       </Row>
-      <div className="d-flex align-items-center justify-content-center">
-        <Link to="/listings" className="w-25">
-          <Button
-            variant="custom"
-            className="my-4 border ms-3 py-2 border-2 w-75"
-          >
-            All Lisings
-          </Button>
+      <div className="my-4 mb-5 bg-dark mx-auto" style={{ maxWidth: "300px" }}>
+        <Link
+          to="/listings"
+          className="btn btn-custom btn-lg w-100"
+          role="button"
+        >
+          All Listings
         </Link>
       </div>
     </div>
