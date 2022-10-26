@@ -134,7 +134,7 @@ const SingleListing = () => {
           </Col>
         </Row>
         <Link to="/listings">
-          <Button className="m-2" variant="dark">
+          <Button className="mt-4 px-4" variant="custom">
             Go back
           </Button>
         </Link>

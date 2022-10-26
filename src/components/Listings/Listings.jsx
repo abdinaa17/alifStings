@@ -1,4 +1,5 @@
 // Global Imports
+import { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { mockDB as listings } from "../../data/mockDB";
@@ -7,28 +8,25 @@ import { mockDB as listings } from "../../data/mockDB";
 import { SingleListing } from "../index";
 
 const Listings = () => {
-  const tempListings = [...listings];
+  // const [listings, setListings] = useState(mockDB);
 
   const [select, setSelect] = useState("");
 
-  const handleChange = (e) => {
+  const handleSelectByCategory = (e) => {
     const value = e.target.value;
     setSelect(value);
-    // console.log(value);
-    if (value === "restaurant") {
-      listings.filter((l) => l.category === "restaurant");
-      console.log("restaurant");
-    }
-    if (value === "mosque") {
-      // listings.filter((l) => l.category === "restaurant");
-      console.log("Mosques");
-    }
-    if (value === "daycare") {
-      // listings.filter((l) => l.category === "restaurant");
-      console.log("Daycare");
-    }
-    return listings;
   };
+  let filtered = listings.filter((listing) => {
+    if (select === "restaurant") {
+      return listing.category === "restaurant";
+    } else if (select === "mosque") {
+      return listing.category === "mosque";
+    } else if (select === "daycare") {
+      return listing.category === "daycare";
+    } else {
+      return listing;
+    }
+  });
   return (
     <div className="container">
       <Form className="container">
@@ -45,8 +43,12 @@ const Listings = () => {
           </Col>
           <Col>
             <Form.Group className="mx-auto">
-              <Form.Select className="" onChange={handleChange} value={select}>
-                <option value="All">All Categories</option>
+              <Form.Select
+                className=""
+                onChange={handleSelectByCategory}
+                value={select}
+              >
+                <option value="all">All Categories</option>
                 <option value="restaurant">Restaurants</option>
                 <option value="mosque">Mosques</option>
                 <option value="daycare">Daycares</option>
@@ -59,7 +61,7 @@ const Listings = () => {
         Our top rated listings.
       </h1>
       <Row className="g-4">
-        {listings.map((listing) => {
+        {filtered.map((listing) => {
           return (
             <Col key={listing.id} md={6} lg={4}>
               <SingleListing {...listing} />

@@ -1,4 +1,5 @@
 // Global Imports
+import { Link } from "react-router-dom";
 
 // Local Imports
 import "../Hero/Hero.css";
@@ -14,6 +15,13 @@ const Hero = () => {
           Columbus area for your convinience. From restaurants, to mosques, to
           daycares and many more...
         </p>
+        <Link
+          to="/listings"
+          className="btn btn-primary px-4 mt-4"
+          role="button"
+        >
+          See Listings
+        </Link>
       </div>
     </div>
   );

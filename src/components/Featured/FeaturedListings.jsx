@@ -7,6 +7,15 @@ import { MdPlace } from "react-icons/md";
 import { mockDB } from "../../data/mockDB";
 
 const FeaturedListings = () => {
+  /**
+   * Come back to this
+   *   const test = mockDB
+    .filter((listing) => listing.featured === true)
+    .slice(0, 3)
+    .sort((a, b) => b - a);
+
+
+   */
   return (
     <div className="container py-3">
       <h2 className="my-5 text-center text-uppercase mx-auto">
@@ -56,12 +65,11 @@ const FeaturedListings = () => {
             );
           })}
       </Row>
-      <div className="my-4 mb-5 bg-dark mx-auto" style={{ maxWidth: "300px" }}>
-        <Link
-          to="/listings"
-          className="btn btn-custom btn-lg w-100"
-          role="button"
-        >
+      <div
+        className="my-4 mb-5 mx-auto text-center"
+        style={{ maxWidth: "300px" }}
+      >
+        <Link to="/listings" className="btn btn-custom px-4" role="button">
           All Listings
         </Link>
       </div>
