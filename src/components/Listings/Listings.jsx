@@ -1,47 +1,66 @@
 // Global Imports
 import { useEffect } from "react";
 import { useState } from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import { mockDB as listings } from "../../data/mockDB";
 
 // Local Imports
 import { SingleListing } from "../index";
 
 const Listings = () => {
-  // const [listings, setListings] = useState(mockDB);
-
+  // Set state for filter by select
   const [select, setSelect] = useState("");
+  // Set state for filter by search
+  const [query, setQuery] = useState("");
 
+  // Filter select begins
   const handleSelectByCategory = (e) => {
-    const value = e.target.value;
-    setSelect(value);
+    setSelect(e.target.value);
   };
-  let filtered = listings.filter((listing) => {
+  let filteredListings = listings.filter((listing) => {
     if (select === "restaurant") {
       return listing.category === "restaurant";
     } else if (select === "mosque") {
       return listing.category === "mosque";
     } else if (select === "daycare") {
       return listing.category === "daycare";
-    } else {
-      return listing;
     }
+
+    return listing;
   });
+  // Filter select ends
+
+  // Filter search starts
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
+
+  filteredListings = listings.filter((listing) => {
+    return listing.title.toLowerCase().includes(query.toLowerCase());
+  });
+  // Filter search ends
+
+  useEffect(() => {}, [select, query]);
   return (
     <div className="container">
-      <Form className="container">
-        <Row className="g-3">
-          <Col>
+      <Row className="g-3">
+        <Col>
+          <Form onSubmit={handleSearch} className="">
             <Form.Group className=" mx-auto">
               <Form.Control
-                type="search"
+                type="text"
                 className=""
                 placeholder="Search for listings"
                 name="category"
+                // value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
             </Form.Group>
-          </Col>
-          <Col>
+            {/* <Button type="submit">Search</Button> */}
+          </Form>
+        </Col>
+        <Col>
+          <Form>
             <Form.Group className="mx-auto">
               <Form.Select
                 className=""
@@ -54,14 +73,14 @@ const Listings = () => {
                 <option value="daycare">Daycares</option>
               </Form.Select>
             </Form.Group>
-          </Col>
-        </Row>
-      </Form>
+          </Form>
+        </Col>
+      </Row>
       <h1 className="my-5 text-center text-capitalize">
         Our top rated listings.
       </h1>
       <Row className="g-4">
-        {filtered.map((listing) => {
+        {filteredListings.map((listing) => {
           return (
             <Col key={listing.id} md={6} lg={4}>
               <SingleListing {...listing} />
