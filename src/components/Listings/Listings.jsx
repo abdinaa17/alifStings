@@ -12,12 +12,13 @@ const Listings = () => {
   const [select, setSelect] = useState("");
   // Set state for filter by search
   const [query, setQuery] = useState("");
-
+  let filteredListings;
   // Filter select begins
   const handleSelectByCategory = (e) => {
     setSelect(e.target.value);
   };
-  let filteredListings = listings.filter((listing) => {
+
+  filteredListings = listings.filter((listing) => {
     if (select === "restaurant") {
       return listing.category === "restaurant";
     } else if (select === "mosque") {
@@ -25,7 +26,6 @@ const Listings = () => {
     } else if (select === "daycare") {
       return listing.category === "daycare";
     }
-
     return listing;
   });
   // Filter select ends
@@ -33,11 +33,16 @@ const Listings = () => {
   // Filter search starts
   const handleSearch = (e) => {
     e.preventDefault();
+    filteredListings = listings.filter((listing) => {
+      return listing.title.toLowerCase().includes(query.toLowerCase());
+    });
+    return filteredListings;
   };
 
-  filteredListings = listings.filter((listing) => {
-    return listing.title.toLowerCase().includes(query.toLowerCase());
-  });
+  // This overwrites the filter by category function. Save it here for a rough idea on implementation and then come back and fix it!!!
+  // filteredListings = listings.filter((listing) => {
+  //   return listing.title.toLowerCase().includes(query.toLowerCase());
+  // });
   // Filter search ends
 
   useEffect(() => {}, [select, query]);
@@ -52,11 +57,10 @@ const Listings = () => {
                 className=""
                 placeholder="Search for listings"
                 name="category"
-                // value={query}
+                value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
             </Form.Group>
-            {/* <Button type="submit">Search</Button> */}
           </Form>
         </Col>
         <Col>

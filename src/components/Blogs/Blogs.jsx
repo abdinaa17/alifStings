@@ -20,9 +20,11 @@ const Blogs = () => {
             </Link>
 
             <Card.Body>
-              <Card.Title className="my-2">Blog Name</Card.Title>
+              <Card.Title className="my-2 text-uppercase">
+                7 places you don't wanna miss!
+              </Card.Title>
 
-              <Card.Subtitle className="my-2">
+              <Card.Subtitle className="my-2 opacity-75">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
                 amet, reiciendis fuga aut tempora sed?
               </Card.Subtitle>
@@ -46,9 +48,11 @@ const Blogs = () => {
             </Link>
 
             <Card.Body>
-              <Card.Title className="my-2">Blog Name</Card.Title>
+              <Card.Title className="my-2 text-uppercase">
+                Top 5 Daycares
+              </Card.Title>
 
-              <Card.Subtitle className="my-2">
+              <Card.Subtitle className="my-2 opacity-75">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
                 amet, reiciendis fuga aut tempora sed?
               </Card.Subtitle>
@@ -72,9 +76,11 @@ const Blogs = () => {
             </Link>
 
             <Card.Body>
-              <Card.Title className="my-2">Blog Name</Card.Title>
+              <Card.Title className="my-2 text-uppercase">
+                Best Restaurants in CBUS
+              </Card.Title>
 
-              <Card.Subtitle className="my-2">
+              <Card.Subtitle className="my-2 opacity-75">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
                 amet, reiciendis fuga aut tempora sed?
               </Card.Subtitle>
@@ -98,9 +104,11 @@ const Blogs = () => {
             </Link>
 
             <Card.Body>
-              <Card.Title className="my-2">Blog Name</Card.Title>
+              <Card.Title className="my-2 text-uppercase">
+                Best events
+              </Card.Title>
 
-              <Card.Subtitle className="my-2">
+              <Card.Subtitle className="my-2 opacity-75">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
                 amet, reiciendis fuga aut tempora sed?
               </Card.Subtitle>
