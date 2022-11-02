@@ -3,8 +3,11 @@ import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+// Local imports
+import { LoadingSpinner } from "../index";
 const NewListing = () => {
   const user = true;
+  const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState(false);
   const [listing, setListing] = useState({
     title: "",
@@ -16,6 +19,7 @@ const NewListing = () => {
     website: "",
     owner: "",
     featured: false,
+    // images: {},
   });
 
   const navigate = useNavigate();
@@ -43,6 +47,11 @@ const NewListing = () => {
     setFormError(false);
     // navigate('/listings', {replace:true})
   };
+
+  // Our loading spinner
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div>
       <div className="banner px-3 py-5">
@@ -140,14 +149,13 @@ const NewListing = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="select"
-              name="owner"
-              value={listing.owner}
-              onChange={handleChange}
-              placeholder="Enter Owner's name..."
-            />
+            <Form.Select>
+              <option>Choose a category</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="mosque">Mosque</option>
+              <option value="daycare">Daycare</option>
+              <option value="other">Other</option>
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Check
@@ -159,7 +167,22 @@ const NewListing = () => {
               label="Check box if you want your listing to be featured"
             />
           </Form.Group>
-          <Button type="submit">Save and preview</Button>
+          <br />
+          <Form.Group className="mb-3">
+            <Form.Label>Select 1 to 4 images maximum</Form.Label>
+            <Form.Control
+              type="file"
+              name="owner"
+              value={listing.owner}
+              onChange={handleChange}
+              placeholder="Enter Owner's name..."
+            />
+          </Form.Group>
+          {user ? (
+            <Button type="submit">Save and preview</Button>
+          ) : (
+            <Button type="submit">Login to submit</Button>
+          )}
         </Form>
         {formError && (
           <Alert style={{ maxWidth: "800px" }} className="mt-3 mx-auto">

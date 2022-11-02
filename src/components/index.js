@@ -10,6 +10,7 @@ import Blogs from "./Blogs/Blogs";
 import Faqs from "./FAQs/Faqs";
 import NewListing from "./NewListing/NewListing";
 import Pricing from "./Pricing/Pricing";
+import LoadingSpinner from "./LoadingSpinner";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   Blogs,
   Faqs,
   Pricing,
+  LoadingSpinner,
 };
