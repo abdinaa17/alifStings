@@ -17,7 +17,7 @@ const Pricing = () => {
     <div>
       <div className="banner px-3 py-5">
         <h1 className="mb-5 text-center text-capitalize text-white">
-          select your plan
+          select your plan to continue
         </h1>
       </div>
       <div className=" px-3 py-5">

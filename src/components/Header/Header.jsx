@@ -1,7 +1,5 @@
 import { Button, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-
-import { FaUserPlus, FaUser } from "react-icons/fa";
 // Local Imports
 import "../Header/Header.css";
 const Header = () => {
