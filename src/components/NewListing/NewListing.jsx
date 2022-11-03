@@ -19,13 +19,30 @@ const NewListing = () => {
     website: "",
     owner: "",
     featured: false,
-    // images: {},
+    images: {},
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setListing({ ...listing, [e.target.name]: e.target.value });
+    if (e.target.files) {
+      setListing((prev) => ({
+        ...prev,
+        images: e.target.files,
+      }));
+    }
+    if (e.target.checked) {
+      setListing((prev) => ({
+        ...prev,
+        featured: e.target.checked,
+      }));
+    }
+    if (!e.target.files && !e.target.checked) {
+      setListing((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value,
+      }));
+    }
   };
   // Form Submission
   const handleSubmit = (e) => {
@@ -36,7 +53,10 @@ const NewListing = () => {
       !listing.desc ||
       !listing.address ||
       !listing.city ||
-      !listing.owner
+      !listing.owner ||
+      !listing.phone ||
+      !listing.website ||
+      !listing.images
     ) {
       setFormError(true);
       return;
@@ -45,6 +65,18 @@ const NewListing = () => {
     const newListing = { ...listing, listingId };
     console.log(newListing);
     setFormError(false);
+    setListing({
+      title: "",
+      tagline: "",
+      desc: "",
+      address: "",
+      city: "",
+      phone: "",
+      website: "",
+      owner: "",
+      featured: false,
+      images: {},
+    });
     // navigate('/listings', {replace:true})
   };
 
@@ -122,7 +154,7 @@ const NewListing = () => {
             <Form.Label>Phone</Form.Label>
             <Form.Control
               type="text"
-              name="owner"
+              name="phone"
               value={listing.phone}
               onChange={handleChange}
               placeholder="123 456-7890"
@@ -132,7 +164,7 @@ const NewListing = () => {
             <Form.Label>Website</Form.Label>
             <Form.Control
               type="text"
-              name="owner"
+              name="website"
               value={listing.website}
               onChange={handleChange}
               placeholder="www.example.com..."
@@ -148,7 +180,7 @@ const NewListing = () => {
               placeholder="Enter Owner's name..."
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Select>
               <option>Choose a category</option>
               <option value="restaurant">Restaurant</option>
@@ -156,14 +188,13 @@ const NewListing = () => {
               <option value="daycare">Daycare</option>
               <option value="other">Other</option>
             </Form.Select>
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group className="mb-3">
             <Form.Check
               type="checkbox"
               name="featured"
-              value={listing.featured}
               onChange={handleChange}
-              // checked={listing.featured === true}
+              checked={listing.featured === true}
               label="Check box if you want your listing to be featured"
             />
           </Form.Group>
@@ -172,8 +203,8 @@ const NewListing = () => {
             <Form.Label>Select 1 to 4 images maximum</Form.Label>
             <Form.Control
               type="file"
-              name="owner"
-              value={listing.owner}
+              name="images"
+              // value={listing.owner}
               onChange={handleChange}
               placeholder="Enter Owner's name..."
             />
