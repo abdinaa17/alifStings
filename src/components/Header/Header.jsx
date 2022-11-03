@@ -36,7 +36,7 @@ const Header = () => {
                 variant="primary"
                 className="nav__btn my-2 my-md-0  mx-md-2"
               >
-                Add A Listing
+                Add Listing
               </Button>
             </LinkContainer>
             <LinkContainer to="/login">
