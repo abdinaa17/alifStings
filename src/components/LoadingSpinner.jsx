@@ -1,6 +1,4 @@
-// Global Imports
-
-import { Spinner } from "react-bootstrap";
+import spinner from "../assets/images/spinner.svg";
 
 const LoadingSpinner = () => {
   return (
@@ -8,8 +6,7 @@ const LoadingSpinner = () => {
       className="container d-flex justify-content-center align-items-center py-5"
       style={{ height: "50vh" }}
     >
-      <Spinner as="span" animation="grow" variant="primary" size="" />
-      <span className="ms-5 fs-1">Loading...</span>
+      <img src={spinner} alt="Loading spinner" />
     </div>
   );
 };

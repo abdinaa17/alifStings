@@ -10,6 +10,7 @@ import RegisterPage from "./RegisterPage";
 import ContactPage from "./ContactPage";
 import ServicesPage from "./ServicesPage";
 import PricingPage from "./PricingPage";
+import DashboardPage from "./DashboardPage";
 export {
   HomePage,
   AboutPage,
@@ -23,4 +24,5 @@ export {
   RegisterPage,
   ContactPage,
   PricingPage,
+  DashboardPage,
 };

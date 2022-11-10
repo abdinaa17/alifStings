@@ -16,6 +16,7 @@ import {
   ContactPage,
   ServicesPage,
   PricingPage,
+  DashboardPage,
 } from "./pages";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="listings" element={<ListingsPage />} />
           <Route path="listings/:id" element={<SingleListingPage />} />

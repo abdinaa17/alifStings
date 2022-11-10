@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 // Local imports
+import { useAuth } from "../../context/context";
 import { LoadingSpinner } from "../index";
 const NewListing = () => {
-  const user = true;
+  const { listings, currentUser } = useAuth();
+  const user = false;
+  listings && console.log(listings);
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState(false);
   const [listing, setListing] = useState({

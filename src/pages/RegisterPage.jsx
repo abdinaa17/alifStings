@@ -1,14 +1,47 @@
-import React from "react";
-import { Col, Row, Form, Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 // Local Imports
+import { useAuth } from "../context/context";
 import regsiterImg from "../assets/images/register.svg";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Register = () => {
-  const handleSubmit = (e) => {
-    //
+  const { registerUser } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (!email || !password || !confirmPassword) {
+      setError("All fields are required");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    try {
+      setLoading(true);
+      setError("");
+      await registerUser(email, password);
+      navigate("/login");
+    } catch (err) {
+      // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
+
+      const errorMessage = err.code.split("/")[1];
+      setError(errorMessage);
+    }
+    setLoading(false);
   };
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <section className="page py-5">
       <div className="container">
@@ -18,14 +51,17 @@ const Register = () => {
               register to create an account
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
+              {error && <Alert variant="primary">{error}</Alert>}
               <Card className="my-4">
-                <Form onSubmit={handleSubmit} className="w-75 my-4 mx-auto">
+                <Form onSubmit={handleRegister} className="w-75 my-4 mx-auto">
                   <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
-                      autoComplete="off"
                       placeholder="E.g user@email.com..."
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="off"
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
@@ -33,6 +69,8 @@ const Register = () => {
                     <Form.Control
                       type="password"
                       placeholder="Enter password here..."
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
@@ -40,6 +78,8 @@ const Register = () => {
                     <Form.Control
                       type="password"
                       placeholder="Confirm password here..."
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                   </Form.Group>
                   <Button className="w-100 mt-3" type="submit">
