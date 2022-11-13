@@ -1,12 +1,28 @@
 // Global Imports
+import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-// Local Imports
 // Local Imports
 import { useAuth } from "../context/context";
 
 const DashboardPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logoutUser } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  // Log out user function
+  const handleLogout = async () => {
+    setError("");
+    try {
+      await logoutUser();
+      navigate("/");
+    } catch (err) {
+      // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
+
+      const errorMessage = err.code.split("/")[1];
+      setError(errorMessage);
+    }
+  };
   return (
     <section className="page p-5">
       <div className="container">

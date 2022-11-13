@@ -8,22 +8,7 @@ import { useAuth } from "../../context/context";
 import "../Header/Header.css";
 
 const Header = () => {
-  const { currentUser, logoutUser } = useAuth();
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  // Log out user function
-  const handleLogout = async () => {
-    setError("");
-    try {
-      await logoutUser();
-      navigate("/");
-    } catch (err) {
-      // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
-
-      const errorMessage = err.code.split("/")[1];
-      setError(errorMessage);
-    }
-  };
+  const { currentUser } = useAuth();
   return (
     <header className="">
       <Navbar className="container" variant="light" expand="md">

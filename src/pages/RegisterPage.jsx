@@ -8,7 +8,6 @@ import regsiterImg from "../assets/images/register.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const Register = () => {
-  const { registerUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -29,7 +28,17 @@ const Register = () => {
     try {
       setLoading(true);
       setError("");
-      await registerUser(email, password);
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredentials.user;
+      const newUser = {
+        email,
+        timestamp: serverTimestamp(),
+      };
+      await setDoc(doc(db, "users", user.uid), newUser);
       navigate("/login");
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
