@@ -1,8 +1,7 @@
 // Global imports
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../config/firebase";
 import { db } from "../config/firebase";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 const ListingsContext = createContext();
 

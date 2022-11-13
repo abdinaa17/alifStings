@@ -1,11 +1,13 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 // Local Imports
-import { useAuth } from "../context/context";
 import regsiterImg from "../assets/images/register.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { auth, db } from "../config/firebase";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -43,7 +45,8 @@ const Register = () => {
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
 
-      const errorMessage = err.code.split("/")[1];
+      // const errorMessage = err.code.split("/")[1];
+      const errorMessage = err;
       setError(errorMessage);
     }
     setLoading(false);

@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 // Local imports
-import { useAuth } from "../../context/context";
 import { LoadingSpinner } from "../index";
+import { useListings } from "../../context/ListingsContext";
 const NewListing = () => {
-  const { listings, currentUser } = useAuth();
+  const { listings } = useListings();
   const user = false;
   listings && console.log(listings);
   const [loading, setLoading] = useState(false);

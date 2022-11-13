@@ -2,19 +2,19 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import { useAuthState } from "react-firebase-hooks/auth";
 // Local Imports
-import { useAuth } from "../context/context";
-
+import { auth } from "../config/firebase";
+import LoadingSpinner from "../components/LoadingSpinner";
 const DashboardPage = () => {
-  const { currentUser, logoutUser } = useAuth();
+  const [user, loading] = useAuthState(auth);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   // Log out user function
   const handleLogout = async () => {
     setError("");
     try {
-      await logoutUser();
+      await auth.signOut();
       navigate("/");
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
@@ -23,15 +23,16 @@ const DashboardPage = () => {
       setError(errorMessage);
     }
   };
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <section className="page p-5">
       <div className="container">
-        {currentUser && (
+        {user && (
           <h2>
             Welcome,{" "}
-            <span className="text-capitalize">
-              {currentUser.email.split("@")[0]}
-            </span>
+            <span className="text-capitalize">{user.email.split("@")[0]}</span>
           </h2>
         )}
         <Row>

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Col, Row, Form, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Local Imports
-import { useAuth } from "../context/context";
 import LoadingSpinner from "../components/LoadingSpinner";
 import loginImg from "../assets/images/login.svg";
+import { auth } from "../config/firebase";
 
 const Login = () => {
-  const { loginUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-      await loginUser(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.

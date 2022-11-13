@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Button, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { FaCaretDown, FaUserCircle } from "react-icons/fa";
+import { auth } from "../../config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 // Local Imports
-import { useAuth } from "../../context/context";
 import "../Header/Header.css";
 
 const Header = () => {
-  const { currentUser } = useAuth();
+  const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <header className="">
       <Navbar className="container" variant="light" expand="md">
@@ -45,7 +47,7 @@ const Header = () => {
                 Add Listing
               </Button>
             </LinkContainer>
-            {currentUser ? (
+            {user ? (
               <LinkContainer to="/dashboard">
                 <Button
                   variant="custom"
@@ -53,7 +55,7 @@ const Header = () => {
                 >
                   <FaUserCircle />
                   <span className="text-capitalize ms-2">
-                    {currentUser.email.split("@")[0]}
+                    {user.email.split("@")[0]}
                   </span>
                 </Button>
               </LinkContainer>
