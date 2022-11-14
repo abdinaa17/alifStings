@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Row, Form, Button, Card } from "react-bootstrap";
+import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -27,7 +27,7 @@ const Login = () => {
       setLoading(true);
       setError("");
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
 
@@ -48,7 +48,11 @@ const Login = () => {
               log in to your account
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
-              {error && <Alert variant="primary">{error}</Alert>}
+              {error && (
+                <Alert className="text-capitalize" variant="primary">
+                  {error}
+                </Alert>
+              )}
               <Card className="my-4">
                 <Form onSubmit={handleLogin} className="w-75 my-4 mx-auto">
                   <Form.Group className="mb-3">

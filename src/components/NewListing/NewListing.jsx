@@ -2,13 +2,14 @@
 import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import { useAuthState } from "react-firebase-hooks/auth";
 // Local imports
 import { LoadingSpinner } from "../index";
 import { useListings } from "../../context/ListingsContext";
+import { auth } from "../../config/firebase";
 const NewListing = () => {
   const { listings } = useListings();
-  const user = false;
+  const [user] = useAuthState(auth);
   listings && console.log(listings);
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState(false);
@@ -134,6 +135,15 @@ const NewListing = () => {
             </FloatingLabel>
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Select>
+              <option>Choose a category</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="mosque">Mosque</option>
+              <option value="daycare">Daycare</option>
+              <option value="other">Other</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
@@ -183,7 +193,7 @@ const NewListing = () => {
               placeholder="Enter Owner's name..."
             />
           </Form.Group>
-          {/* <Form.Group className="mb-3">
+          <Form.Group className="mb-3">
             <Form.Select>
               <option>Choose a category</option>
               <option value="restaurant">Restaurant</option>
@@ -191,7 +201,7 @@ const NewListing = () => {
               <option value="daycare">Daycare</option>
               <option value="other">Other</option>
             </Form.Select>
-          </Form.Group> */}
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Check
               type="checkbox"

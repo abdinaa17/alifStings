@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Local Imports
 import "./App.css";
-import { Footer, Header } from "./components";
+import { Footer, Header, PrivateRoute } from "./components";
 import {
   HomePage,
   AboutPage,
@@ -26,7 +26,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Route>
           <Route path="about" element={<AboutPage />} />
           <Route path="listings" element={<ListingsPage />} />
           <Route path="listings/:id" element={<SingleListingPage />} />

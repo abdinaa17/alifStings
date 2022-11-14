@@ -11,6 +11,7 @@ import Faqs from "./FAQs/Faqs";
 import NewListing from "./NewListing/NewListing";
 import Pricing from "./Pricing/Pricing";
 import LoadingSpinner from "./LoadingSpinner";
+import PrivateRoute from "./Route/PrivateRoute";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   Faqs,
   Pricing,
   LoadingSpinner,
+  PrivateRoute,
 };

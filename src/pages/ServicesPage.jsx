@@ -1,7 +1,72 @@
+// Global Imports
+import { Col, Row } from "react-bootstrap";
+
+// Local Imports
+
 const ServicesPage = () => {
   return (
-    <section className="page py-5">
-      <div className="container">Services</div>
+    <section className="page p-5">
+      <div className="container">
+        <div className="intro">
+          <h1>Services</h1>
+          <p className="lead">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
+            rerum veritatis possimus cupiditate magnam facere!
+          </p>
+        </div>
+        <Row className="mt-5">
+          <Col md={6}>
+            <div className="mission">
+              <h2>Our Mission</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+            </div>
+          </Col>
+          <Col md={6}>
+            <div className="vision">
+              <h2>Our Vision</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                similique ab dignissimos est deleniti a ipsum error laudantium,
+                eum ipsa!
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </section>
   );
 };
