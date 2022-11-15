@@ -2,53 +2,48 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { mockDB as listings } from "../../data/mockDB";
 
 // Local Imports
+import { useListings } from "../../context/ListingsContext";
 import { SingleListing } from "../index";
 
 const Listings = () => {
-  // Set state for filter by select
-  const [select, setSelect] = useState("");
-  // Set state for filter by search
-  const [query, setQuery] = useState("");
-  let filteredListings;
-  // Filter select begins
-  const handleSelectByCategory = (e) => {
-    setSelect(e.target.value);
-  };
+  const { listings } = useListings();
+  // // Set state for filter by select
+  // const [select, setSelect] = useState("");
+  // // Set state for filter by search
+  // const [query, setQuery] = useState("");
+  // let filteredListings;
+  // // Filter select begins
+  // const handleSelectByCategory = (e) => {
+  //   setSelect(e.target.value);
+  // };
 
-  filteredListings = listings.filter((listing) => {
-    if (select === "restaurant") {
-      return listing.category === "restaurant";
-    } else if (select === "mosque") {
-      return listing.category === "mosque";
-    } else if (select === "daycare") {
-      return listing.category === "daycare";
-    }
-    return listing;
-  });
+  // filteredListings = listings.filter((listing) => {
+  //   if (select === "restaurant") {
+  //     return listing.category === "restaurant";
+  //   } else if (select === "mosque") {
+  //     return listing.category === "mosque";
+  //   } else if (select === "daycare") {
+  //     return listing.category === "daycare";
+  //   }
+  //   return listing;
+  // });
   // Filter select ends
 
   // Filter search starts
-  const handleSearch = (e) => {
-    e.preventDefault();
-    filteredListings = listings.filter((listing) => {
-      return listing.title.toLowerCase().includes(query.toLowerCase());
-    });
-    return filteredListings;
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   filteredListings = listings.filter((listing) => {
+  //     return listing.title.toLowerCase().includes(query.toLowerCase());
+  //   });
+  //   return filteredListings;
+  // };
 
-  // This overwrites the filter by category function. Save it here for a rough idea on implementation and then come back and fix it!!!
-  // filteredListings = listings.filter((listing) => {
-  //   return listing.title.toLowerCase().includes(query.toLowerCase());
-  // });
-  // Filter search ends
-
-  useEffect(() => {}, [select, query]);
+  // useEffect(() => {}, [select, query]);
   return (
     <div className="container">
-      <Row className="g-3">
+      {/* <Row className="g-3">
         <Col>
           <Form onSubmit={handleSearch} className="">
             <Form.Group className=" mx-auto">
@@ -79,12 +74,12 @@ const Listings = () => {
             </Form.Group>
           </Form>
         </Col>
-      </Row>
+      </Row> */}
       <h1 className="my-5 text-center text-capitalize">
         Our top rated listings.
       </h1>
       <Row className="g-4">
-        {filteredListings.map((listing) => {
+        {listings.map((listing) => {
           return (
             <Col key={listing.id} md={6} lg={4}>
               <SingleListing {...listing} />

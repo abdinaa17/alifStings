@@ -10,7 +10,6 @@ import "../Header/Header.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
   return (
     <header className="">
       <Navbar className="container" variant="light" expand="md">

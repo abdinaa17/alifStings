@@ -1,5 +1,6 @@
 // Global Imports
 import { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
 import { Col, Row, Button, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { MdPlace } from "react-icons/md";
@@ -14,68 +15,78 @@ import {
 import { BiTime } from "react-icons/bi";
 
 //Local Imports
-import { mockDB } from "../data/mockDB";
-import { Rating } from "../components";
+import { useListings } from "../context/ListingsContext";
+import { LoadingSpinner, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
 import webIcon from "../assets/images/www.png";
+import { useEffect } from "react";
+import { db } from "../config/firebase";
+
 const SingleListing = () => {
+  // const { listings } = useListings();
+
+  const [listing, setListing] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const listing = mockDB.find((listing) => listing.id === id);
-
-  const {
-    title,
-    tagline,
-    rating,
-    numReviews,
-    address,
-    city,
-    gallary,
-    description,
-  } = listing;
-
-  const [currentImg, setCurrentImg] = useState(gallary[0]);
-
+  useEffect(() => {
+    async function fetchListing() {
+      const docRef = doc(db, "listings", id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setListing(docSnap.data());
+        setLoading(false);
+      }
+    }
+    fetchListing();
+  }, [id]);
+  // const [currentImg, setCurrentImg] = useState(listing.imgUrls[0]);
+  // const listing = listings.find((listing) => listing.id === id);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  // const { title, tagline, address, desc, imgUrls, phone, owner, website } =
+  //   listing;
   return (
     <section className="page py-5">
       <div className="container">
         <Row>
           <Col md={8}>
             <img
-              src={currentImg}
-              alt={title}
+              src={listing.imgUrls}
+              alt={listing.title}
               className="rounded mb-3 h-50 w-100"
               // style={{ width: "600px", objectFit: "cover" }}
             />
-            <Row className="my-3">
-              {gallary.map((image, idx) => {
+            {/* <Row className="my-3">
+              {listing.imgUrls.map((image, idx) => {
                 return (
                   <Col key={idx}>
                     <img
                       role="button"
                       src={image}
-                      alt={title}
+                      alt={listing.title}
                       style={{
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
                       }}
-                      onClick={() => setCurrentImg(gallary[idx])}
+                      onClick={() => setCurrentImg(listing.imgUrls[idx])}
                     />
                   </Col>
                 );
               })}
-            </Row>
-            <h1>{title}</h1>
-            <p className="opacity-75">{tagline}</p>
-            <Row>
+            </Row> */}
+            <h1>{listing.title}</h1>
+            <p className="opacity-75">{listing.tagline}</p>
+            {/* <Row>
               <Col>
                 <Rating rating={rating} />
               </Col>
               <Col>
                 <p>{numReviews} reviews</p>
               </Col>
-            </Row>
-            <p className="mb-4">{description}</p>
+            </Row> */}
+            <p className="mb-4">{listing.desc}</p>
             <p></p>
           </Col>
           <Col className=" px-2" md={4}>
@@ -84,12 +95,13 @@ const SingleListing = () => {
                 style={{ height: 300, objectFit: "cover" }}
                 variant="top"
                 src={cBusMap}
-                alt={title}
+                alt={listing.title}
               />
 
               <Card.Body>
-                <Card.Subtitle className="my-3">
-                  Address: <MdPlace /> {address} {city}
+                <Card.Subtitle className="my-3 d-flex align-items-center">
+                  <MdPlace className="text-success me-4" />
+                  <span className=""> {listing.address}</span>
                 </Card.Subtitle>
                 <div>
                   <p className="text-uppercase mt-4">
@@ -100,8 +112,8 @@ const SingleListing = () => {
                 </div>
                 <Card.Subtitle className="my-3">
                   <FaPhoneAlt className="me-4" />{" "}
-                  <a className="my-4" href="tel:+13115552368">
-                    (123) 555-2368
+                  <a className="my-4" href={listing.phone}>
+                    {listing.phone}
                   </a>
                 </Card.Subtitle>
                 <Card.Subtitle className="my-2">
@@ -110,8 +122,8 @@ const SingleListing = () => {
                     src={webIcon}
                     className="me-4"
                   />{" "}
-                  <a href="https://www.google.com" target="_blank">
-                    www.mybusiness.com
+                  <a href={`https://${listing.website}`} target="_blank">
+                    {listing.website}
                   </a>
                 </Card.Subtitle>
                 <Card.Subtitle className="my-3">

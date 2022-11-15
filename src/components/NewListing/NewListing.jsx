@@ -27,7 +27,6 @@ const NewListing = () => {
     desc: "",
     address: "",
     category: "",
-    city: "",
     phone: "",
     website: "",
     owner: "",
@@ -66,7 +65,6 @@ const NewListing = () => {
       !listing.tagline ||
       !listing.desc ||
       !listing.address ||
-      !listing.city ||
       !listing.owner ||
       !listing.phone ||
       !listing.images
@@ -124,7 +122,7 @@ const NewListing = () => {
       desc: "",
       address: "",
       category: "",
-      city: "",
+
       phone: "",
       website: "",
       owner: "",
@@ -204,16 +202,6 @@ const NewListing = () => {
               value={listing.address}
               onChange={handleChange}
               placeholder="Enter Address..."
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              type="text"
-              name="city"
-              value={listing.city}
-              onChange={handleChange}
-              placeholder="Enter City..."
             />
           </Form.Group>
           <Form.Group className="mb-3">
