@@ -3,21 +3,30 @@ import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { serverTimestamp, collection, addDoc } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 // Local imports
 import { LoadingSpinner } from "../index";
-import { useListings } from "../../context/ListingsContext";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
+import { Link } from "react-router-dom";
+
+const storage = getStorage();
 const NewListing = () => {
-  const { listings } = useListings();
   const [user] = useAuthState(auth);
-  listings && console.log(listings);
-  const [loading, setLoading] = useState(false);
-  const [formError, setFormError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [listing, setListing] = useState({
     title: "",
     tagline: "",
     desc: "",
     address: "",
+    category: "",
     city: "",
     phone: "",
     website: "",
@@ -35,6 +44,7 @@ const NewListing = () => {
         images: e.target.files,
       }));
     }
+    // Get the value from the checkbox
     if (e.target.checked) {
       setListing((prev) => ({
         ...prev,
@@ -49,7 +59,7 @@ const NewListing = () => {
     }
   };
   // Form Submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !listing.title ||
@@ -59,21 +69,61 @@ const NewListing = () => {
       !listing.city ||
       !listing.owner ||
       !listing.phone ||
-      !listing.website ||
       !listing.images
     ) {
-      setFormError(true);
+      setError("Fill the required fields to continue");
       return;
     }
-    const listingId = Math.floor(Math.random() * 1000);
-    const newListing = { ...listing, listingId };
-    console.log(newListing);
-    setFormError(false);
+    if (!user) {
+      setError("log in to create a listing");
+      return;
+    }
+    // We'll upload the images to firebase storage and then extract the urls and push it to our db.
+    const storeImg = async (img) => {
+      return new Promise((resolve, reject) => {
+        const fileName = `images/${img.name}-${uuidv4()}`;
+        const storageRef = ref(storage, fileName);
+        const uploadTask = uploadBytesResumable(storageRef, img);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            return snapshot;
+          },
+          (err) => {
+            setError("Error uploading image");
+            reject(err);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              resolve(downloadURL);
+            });
+          }
+        );
+      });
+    };
+    const imgUrls = await Promise.all(
+      listing.images && [...listing.images].map((img) => storeImg(img))
+    ).catch((err) => {
+      setIsLoading(false);
+      setError(err);
+      console.log(err);
+      return;
+    });
+    const newListing = {
+      ...listing,
+      imgUrls,
+      timestamp: serverTimestamp(),
+    };
+    delete newListing.images;
+    const docRef = await addDoc(collection(db, "listings"), newListing);
+    navigate("/listings", { replace: true });
+    setIsLoading(false);
     setListing({
       title: "",
       tagline: "",
       desc: "",
       address: "",
+      category: "",
       city: "",
       phone: "",
       website: "",
@@ -81,11 +131,10 @@ const NewListing = () => {
       featured: false,
       images: {},
     });
-    // navigate('/listings', {replace:true})
   };
 
   // Our loading spinner
-  if (loading) {
+  if (isLoading) {
     return <LoadingSpinner />;
   }
   return (
@@ -135,7 +184,11 @@ const NewListing = () => {
             </FloatingLabel>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Select>
+            <Form.Select
+              name="category"
+              onChange={handleChange}
+              value={listing.category}
+            >
               <option>Choose a category</option>
               <option value="restaurant">Restaurant</option>
               <option value="mosque">Mosque</option>
@@ -194,15 +247,6 @@ const NewListing = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Select>
-              <option>Choose a category</option>
-              <option value="restaurant">Restaurant</option>
-              <option value="mosque">Mosque</option>
-              <option value="daycare">Daycare</option>
-              <option value="other">Other</option>
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3">
             <Form.Check
               type="checkbox"
               name="featured"
@@ -217,20 +261,26 @@ const NewListing = () => {
             <Form.Control
               type="file"
               name="images"
-              // value={listing.owner}
+              multiple
               onChange={handleChange}
+              accept=".jpg, .jpeg, .png"
               placeholder="Enter Owner's name..."
             />
           </Form.Group>
           {user ? (
             <Button type="submit">Save and preview</Button>
           ) : (
-            <Button type="submit">Login to submit</Button>
+            <Link to="/login" className="btn btn-primary px-4" role="button">
+              Login to Submit
+            </Link>
           )}
         </Form>
-        {formError && (
-          <Alert style={{ maxWidth: "800px" }} className="mt-3 mx-auto">
-            Please Fill in all fields
+        {error && (
+          <Alert
+            style={{ maxWidth: "800px" }}
+            className="text-capitalize mt-3 mx-auto"
+          >
+            {error}
           </Alert>
         )}
       </div>
