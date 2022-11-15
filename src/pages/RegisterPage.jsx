@@ -41,7 +41,7 @@ const Register = () => {
         timestamp: serverTimestamp(),
       };
       await setDoc(doc(db, "users", user.uid), newUser);
-      navigate("/login");
+      navigate("/dashboard");
     } catch (err) {
       // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
 

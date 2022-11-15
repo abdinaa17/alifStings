@@ -16,7 +16,6 @@ header {
     height: 100px;
   }
 }
-
 @media screen and (max-width: 768px) {
   header {
     background: var(--light-bg) !important;
@@ -31,5 +30,11 @@ header {
   .nav__logo {
     margin-bottom: 0;
     margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .nav__btn {
+    width: 50% !important;
   }
 }

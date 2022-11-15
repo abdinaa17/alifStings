@@ -19,7 +19,7 @@ const Testimonials = () => {
         {testimonials.map((testimonial) => {
           const { id, name, image, rating, desc, details } = testimonial;
           return (
-            <Col xs={6} sm={6} md={6} lg={4} key={id}>
+            <Col xs={12} sm={6} md={6} lg={4} key={id}>
               <Card className="p-2 testimonial__card">
                 <Row>
                   <Col className="align-items-center">

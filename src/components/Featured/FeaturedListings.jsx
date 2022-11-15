@@ -8,15 +8,6 @@ import { useListings } from "../../context/ListingsContext";
 import placeHolderImg from "../../assets/images/placeholder.png";
 const FeaturedListings = () => {
   const { listings } = useListings();
-  /**
-   * Come back to this
-   *   const test = mockDB
-    .filter((listing) => listing.featured === true)
-    .slice(0, 3)
-    .sort((a, b) => b - a);
-
-
-   */
   return (
     <div className="container py-3">
       <h2 className="my-5 text-center text-uppercase mx-auto">
