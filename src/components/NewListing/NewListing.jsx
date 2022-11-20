@@ -111,6 +111,7 @@ const NewListing = () => {
       ...listing,
       imgUrls,
       timestamp: serverTimestamp(),
+      userRef: user.uid,
     };
     delete newListing.images;
     const docRef = await addDoc(collection(db, "listings"), newListing);

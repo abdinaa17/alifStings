@@ -4,9 +4,13 @@ const LoadingSpinner = () => {
   return (
     <div
       className="container d-flex justify-content-center align-items-center py-5"
-      style={{ height: "50vh" }}
+      style={{ height: "50vh", background: "inherit" }}
     >
-      <img src={spinner} alt="Loading spinner" />
+      <img
+        src={spinner}
+        alt="Loading spinner"
+        style={{ background: "inherit" }}
+      />
     </div>
   );
 };
