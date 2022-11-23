@@ -28,7 +28,11 @@ const ContactPage = () => {
             <p className="my-4">hello@alifstings.netlify.app</p>
           </Col>
         </Row>
-        <Form className="border p-5 mt-2 border-1 border-secondary">
+        <Form
+          action="https://formspree.io/f/xgeqbvrk"
+          method="POST"
+          className="border p-5 mt-2 border-1 border-secondary"
+        >
           <Form.Group className="mb-3">
             <Form.Label>Your Name:</Form.Label>
             <Form.Control type="text" placeholder="Enter Your name" />
