@@ -29,22 +29,34 @@ const ContactPage = () => {
           </Col>
         </Row>
         <Form
+          className="border p-5 mt-2 border-1 border-secondary"
           action="https://formspree.io/f/xgeqbvrk"
           method="POST"
-          className="border p-5 mt-2 border-1 border-secondary"
         >
           <Form.Group className="mb-3">
             <Form.Label>Your Name:</Form.Label>
-            <Form.Control type="text" placeholder="Enter Your name" />
+            <Form.Control
+              type="text"
+              name="name"
+              placeholder="Enter Your name"
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Your Email:</Form.Label>
-            <Form.Control type="email" placeholder="Enter Your Email" />
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3">
             <FloatingLabel label="Your message">
               <Form.Control
                 as="textarea"
+                name="message"
+                required
                 placeholder="Your message"
                 style={{ height: "200px" }}
               />
