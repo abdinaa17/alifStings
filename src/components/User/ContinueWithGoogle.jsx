@@ -25,7 +25,7 @@ const ContinueWithGoogle = () => {
           timestamp: serverTimestamp(),
         });
       }
-      navigate("/dashoard");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
     }
