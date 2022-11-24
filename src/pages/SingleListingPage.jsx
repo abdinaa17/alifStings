@@ -11,6 +11,7 @@ import {
   FaPhoneAlt,
   FaRegClock,
   FaInfo,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import { BiTime } from "react-icons/bi";
 
@@ -23,8 +24,6 @@ import { useEffect } from "react";
 import { db } from "../config/firebase";
 
 const SingleListing = () => {
-  // const { listings } = useListings();
-
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -39,22 +38,24 @@ const SingleListing = () => {
     }
     fetchListing();
   }, [id]);
-  // const [currentImg, setCurrentImg] = useState(listing.imgUrls[0]);
-  // const listing = listings.find((listing) => listing.id === id);
   if (loading) {
     return <LoadingSpinner />;
   }
-  // const { title, tagline, address, desc, imgUrls, phone, owner, website } =
-  //   listing;
   return (
     <section className="page py-5">
       <div className="container">
+        <Link to="/listings">
+          <Button className="mb-5 px-4" variant="custom">
+            Go back
+          </Button>
+        </Link>
         <Row>
           <Col md={8}>
             <img
               src={listing.imgUrls}
               alt={listing.title}
               className="rounded mb-3 h-50 w-100"
+              style={{ objectFit: "cover" }}
               // style={{ width: "600px", objectFit: "cover" }}
             />
             {/* <Row className="my-3">
@@ -122,9 +123,14 @@ const SingleListing = () => {
                     src={webIcon}
                     className="me-4"
                   />{" "}
-                  <a href={`https://${listing.website}`} target="_blank">
-                    {listing.website}
-                  </a>
+                  <a
+                    href={`https://${listing.website}`}
+                    target="_blank"
+                    className="me-4"
+                  >
+                    Website
+                  </a>{" "}
+                  <FaExternalLinkAlt />
                 </Card.Subtitle>
                 <Card.Subtitle className="my-3">
                   <FaRegClock className="me-4" />{" "}
@@ -145,11 +151,6 @@ const SingleListing = () => {
             </Card>
           </Col>
         </Row>
-        <Link to="/listings">
-          <Button className="mt-4 px-4" variant="custom">
-            Go back
-          </Button>
-        </Link>
       </div>
     </section>
   );
