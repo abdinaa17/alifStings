@@ -11,6 +11,7 @@ import {
 } from "firebase/storage";
 import { serverTimestamp, collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+
 // Local imports
 import { LoadingSpinner } from "../index";
 import { auth, db } from "../../config/firebase";
@@ -59,6 +60,10 @@ const NewListing = () => {
   };
   // Form Submission
   const handleSubmit = async (e) => {
+    if (!user) {
+      setError("log in to create a listing");
+      return;
+    }
     e.preventDefault();
     if (
       !listing.title ||
@@ -70,10 +75,6 @@ const NewListing = () => {
       !listing.images
     ) {
       setError("Fill the required fields to continue");
-      return;
-    }
-    if (!user) {
-      setError("log in to create a listing");
       return;
     }
     // We'll upload the images to firebase storage and then extract the urls and push it to our db.
@@ -104,7 +105,6 @@ const NewListing = () => {
     ).catch((err) => {
       setIsLoading(false);
       setError(err);
-      console.log(err);
       return;
     });
     const newListing = {
@@ -123,7 +123,6 @@ const NewListing = () => {
       desc: "",
       address: "",
       category: "",
-
       phone: "",
       website: "",
       owner: "",
@@ -267,7 +266,7 @@ const NewListing = () => {
         {error && (
           <Alert
             style={{ maxWidth: "800px" }}
-            className="text-capitalize mt-3 mx-auto"
+            className="capitalize-first mt-3 mx-auto"
           >
             {error}
           </Alert>

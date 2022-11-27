@@ -3,6 +3,7 @@ import Hero from "./Hero/Hero";
 import Listings from "./Listings/Listings";
 import SingleListing from "./ListingCard/ListingCard";
 import FeaturedListings from "./Featured/FeaturedListings";
+import NewListing from "./NewListing/NewListing";
 import Rating from "./Rating/Rating";
 import Testimonials from "./Testimonials/Testimonials";
 import Footer from "./Footer/Footer";
@@ -12,6 +13,7 @@ import Pricing from "./Pricing/Pricing";
 import LoadingSpinner from "./LoadingSpinner";
 import PrivateRoute from "./Route/PrivateRoute";
 import ListingCard from "./ListingCard/ListingCard";
+import ContinueWithGoogle from "./User/ContinueWithGoogle";
 
 export {
   Header,
@@ -19,6 +21,7 @@ export {
   Listings,
   SingleListing,
   ListingCard,
+  NewListing,
   FeaturedListings,
   Rating,
   Testimonials,
@@ -28,4 +31,5 @@ export {
   Pricing,
   LoadingSpinner,
   PrivateRoute,
+  ContinueWithGoogle,
 };

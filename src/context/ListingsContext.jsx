@@ -7,6 +7,7 @@ const ListingsContext = createContext();
 
 export const ListingsProvider = ({ children }) => {
   const [listings, setListings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Initialize db and get data
   const fetchListings = async () => {
@@ -18,6 +19,7 @@ export const ListingsProvider = ({ children }) => {
         setListings(
           snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
+        setIsLoading(false);
       });
       return unsbuscribe;
     } catch (error) {
@@ -30,6 +32,7 @@ export const ListingsProvider = ({ children }) => {
   //
   const values = {
     listings,
+    isLoading,
   };
   return (
     <ListingsContext.Provider value={values}>

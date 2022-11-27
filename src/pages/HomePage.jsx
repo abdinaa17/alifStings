@@ -6,6 +6,7 @@ import {
   Faqs,
   FeaturedListings,
   Hero,
+  LoadingSpinner,
   Testimonials,
 } from "../components";
 const Home = () => {

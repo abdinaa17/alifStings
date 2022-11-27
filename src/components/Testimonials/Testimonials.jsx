@@ -23,7 +23,12 @@ const Testimonials = () => {
               <Card className="p-2 testimonial__card">
                 <Row>
                   <Col className="align-items-center">
-                    <img src={image} alt={name} className="card-img rounded" />
+                    <img
+                      src={image}
+                      alt={name}
+                      className="card-img rounded"
+                      loading="lazy"
+                    />
                     <p className="mx-auto my-0 ">{name}</p>
                     <Rating rating={rating} />
                   </Col>

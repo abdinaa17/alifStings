@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,7 +8,9 @@ import { Link, useNavigate } from "react-router-dom";
 // Local Imports
 import regsiterImg from "../assets/images/register.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
+import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
 import { auth, db } from "../config/firebase";
+import { cleanUpError } from "../utils/cleanUpError";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -43,14 +46,12 @@ const Register = () => {
       await setDoc(doc(db, "users", user.uid), newUser);
       navigate("/dashboard");
     } catch (err) {
-      // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
-
-      // const errorMessage = err.code.split("/")[1];
-      const errorMessage = err;
+      const errorMessage = cleanUpError(err.code);
       setError(errorMessage);
     }
     setLoading(false);
   };
+  useEffect;
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -63,7 +64,11 @@ const Register = () => {
               register to create an account
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
-              {error && <Alert variant="primary">{error}</Alert>}
+              {error && (
+                <Alert className="capitalize-first" variant="primary">
+                  {error}
+                </Alert>
+              )}
               <Card className="my-4">
                 <Form onSubmit={handleRegister} className="w-75 my-4 mx-auto">
                   <Form.Group className="mb-3">
@@ -98,6 +103,10 @@ const Register = () => {
                     Register
                   </Button>
                 </Form>
+                <div className="pt-3">
+                  <p className="fw-bolder text-center">Or</p>
+                  <ContinueWithGoogle />
+                </div>
               </Card>
               <p>
                 Already Have an account? <Link to="/login">Log In</Link>

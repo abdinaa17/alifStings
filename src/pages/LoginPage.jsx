@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 
 // Local Imports
 import LoadingSpinner from "../components/LoadingSpinner";
 import loginImg from "../assets/images/login.svg";
 import { auth } from "../config/firebase";
+import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
+import { cleanUpError } from "../utils/cleanUpError";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,9 +32,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/dashboard");
     } catch (err) {
-      // Firebase error code returns every error with "auth/error message" We only want the error message so we'll split it and get the error message.
-
-      const errorMessage = err.code.split("/")[1];
+      const errorMessage = cleanUpError(err.code);
       setError(errorMessage);
     }
     setLoading(false);
@@ -49,7 +50,7 @@ const Login = () => {
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
               {error && (
-                <Alert className="text-capitalize" variant="primary">
+                <Alert className="capitalize-first" variant="primary">
                   {error}
                 </Alert>
               )}
@@ -77,16 +78,11 @@ const Login = () => {
                   <Button className="w-100 mt-3" type="submit">
                     Login
                   </Button>
-                  <div className="pt-3">
-                    <p className="fw-bolder text-center">Or</p>
-                    <Button variant="success" className="w-100 mb-3">
-                      Log in with Gmail
-                    </Button>
-                    <Button variant="info" className="w-100">
-                      Log in with Facebook
-                    </Button>
-                  </div>
                 </Form>
+                <div className="pt-3">
+                  <p className="fw-bolder text-center">Or</p>
+                  <ContinueWithGoogle />
+                </div>
               </Card>
               <p>
                 <small className="text-capitalize">

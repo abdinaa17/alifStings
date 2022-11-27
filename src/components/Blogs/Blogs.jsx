@@ -14,8 +14,9 @@ const Blogs = () => {
             <Link to="/coming-soon">
               <Card.Img
                 variant="top"
-                src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png"
+                src="https://media.istockphoto.com/id/626669886/photo/blogging-blog-word-coder-coding-using-laptop.jpg?b=1&s=170667a&w=0&k=20&c=aVf9UGgpwixzwM27bU_aF2v2veTNxBWJCdAUxfiYMkM="
                 alt=""
+                loading="lazy"
               />
             </Link>
 
@@ -42,8 +43,9 @@ const Blogs = () => {
             <Link to="/coming-soon">
               <Card.Img
                 variant="top"
-                src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png"
+                src="https://media.istockphoto.com/id/626669886/photo/blogging-blog-word-coder-coding-using-laptop.jpg?b=1&s=170667a&w=0&k=20&c=aVf9UGgpwixzwM27bU_aF2v2veTNxBWJCdAUxfiYMkM="
                 alt=""
+                loading="lazy"
               />
             </Link>
 
@@ -70,8 +72,9 @@ const Blogs = () => {
             <Link to="/coming-soon">
               <Card.Img
                 variant="top"
-                src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png"
+                src="https://media.istockphoto.com/id/626669886/photo/blogging-blog-word-coder-coding-using-laptop.jpg?b=1&s=170667a&w=0&k=20&c=aVf9UGgpwixzwM27bU_aF2v2veTNxBWJCdAUxfiYMkM="
                 alt=""
+                loading="lazy"
               />
             </Link>
 
@@ -98,8 +101,9 @@ const Blogs = () => {
             <Link to="/coming-soon">
               <Card.Img
                 variant="top"
-                src="https://blackpro.listingprowp.com/wp-content/uploads/2022/03/coaches-300x181.png"
+                src="https://media.istockphoto.com/id/626669886/photo/blogging-blog-word-coder-coding-using-laptop.jpg?b=1&s=170667a&w=0&k=20&c=aVf9UGgpwixzwM27bU_aF2v2veTNxBWJCdAUxfiYMkM="
                 alt=""
+                loading="lazy"
               />
             </Link>
 

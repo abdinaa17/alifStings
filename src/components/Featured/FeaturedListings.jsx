@@ -17,6 +17,7 @@ const FeaturedListings = () => {
         {listings &&
           listings
             .filter((listing) => listing.featured === true)
+            .slice(0, 3)
             .map((listing) => {
               const { id, title, imgUrls, address, tagline } = listing;
               return (
@@ -28,6 +29,7 @@ const FeaturedListings = () => {
                         variant="top"
                         src={imgUrls ? imgUrls : placeHolderImg}
                         alt={title}
+                        loading="lazy"
                       />
                     </Link>
 

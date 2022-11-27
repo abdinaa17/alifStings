@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 img,
+body {
+  font-family: "Rubik", sans-serif !important;
+  color: #fff;
+}
 picture {
   max-width: 100%;
   display: block;
@@ -60,11 +64,6 @@ hr::after {
   background-color: white;
 }
 
-body {
-  font-family: "Rubik", sans-serif !important;
-  color: #fff;
-}
-
 /* Boostrap custom code */
 .navbar-nav .nav-link.active,
 .navbar-nav .show > .nav-link {
@@ -87,23 +86,36 @@ body {
   background: var(--light-bg);
 }
 
-
 /* Bg banner */
 .banner {
   position: relative;
-  background: url('./assets/images/newlisting-banner.jpeg');
+  background: url("./assets/images/newlisting-banner.jpeg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   isolation: isolate;
-
 }
 
 .banner::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: #000;
   opacity: 0.5;
   z-index: -1;
 }
+
+/* Aligning icons with text */
+.icon-text {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Capitalize only the first letter of a sentence */
+
+.capitalize-first:first-letter {
+  text-transform: capitalize;
+}
+
+/* Animations, transitions, and more... */

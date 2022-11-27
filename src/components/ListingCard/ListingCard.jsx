@@ -13,6 +13,7 @@ const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
             variant="top"
             src={imgUrls}
             alt={title}
+            loading="lazy"
           />
         </Link>
 

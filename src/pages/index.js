@@ -10,7 +10,8 @@ import RegisterPage from "./RegisterPage";
 import ContactPage from "./ContactPage";
 import ServicesPage from "./ServicesPage";
 import PricingPage from "./PricingPage";
-import DashboardPage from "./DashboardPage";
+import DashboardPage from "./Dashboard/DashboardPage";
+import Profile from "./Dashboard/Profile";
 export {
   HomePage,
   AboutPage,
@@ -25,4 +26,5 @@ export {
   ContactPage,
   PricingPage,
   DashboardPage,
+  Profile,
 };
