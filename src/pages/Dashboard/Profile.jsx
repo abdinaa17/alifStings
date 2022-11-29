@@ -44,7 +44,7 @@ const DashboardPage = () => {
       <div className="positon-relative">
         <Sidebar logOutUser={logOutUser} />
       </div>
-      <div className="p-5">
+      <div className="content page p-5">
         {error && <Alert className="capitalize-first">{error}</Alert>}
         <h2>
           Welcome, to your profile page{" "}
