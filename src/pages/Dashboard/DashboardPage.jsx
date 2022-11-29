@@ -17,6 +17,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { ListingCard } from "../../components";
 import Sidebar from "./Sidebar";
 import { cleanUpError } from "../../utils/cleanUpError";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
@@ -71,7 +72,7 @@ const DashboardPage = () => {
       <div className="positon-relative">
         <Sidebar logOutUser={logOutUser} />
       </div>
-      <div className="content p-2">
+      <div className="content page p-5">
         {error && <Alert className="capitalize-first">{error}</Alert>}
         <h2>
           Welcome,{" "}
@@ -80,15 +81,22 @@ const DashboardPage = () => {
           </span>
         </h2>
         <Row className="g-4 w-100">
-          {listings && listings.length > 0
-            ? listings.map((listing) => {
-                return (
-                  <Col key={listing.id} md={6} lg={4}>
-                    <ListingCard {...listing} />
-                  </Col>
-                );
-              })
-            : "You have no listings yet!"}
+          {listings && listings.length > 0 ? (
+            listings.map((listing) => {
+              return (
+                <Col key={listing.id} md={6} lg={4}>
+                  <ListingCard {...listing} />
+                </Col>
+              );
+            })
+          ) : (
+            <Col md={6} lg={4}>
+              <p>You have no listings yet!</p>
+              <Link to="/new-listing">
+                <Button className="mb-5 px-4">Create Listing</Button>
+              </Link>
+            </Col>
+          )}
         </Row>
       </div>
     </section>
