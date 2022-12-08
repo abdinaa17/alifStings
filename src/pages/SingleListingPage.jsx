@@ -123,11 +123,7 @@ const SingleListing = () => {
                     src={webIcon}
                     className="me-4"
                   />{" "}
-                  <a
-                    href={`https://${listing.website}`}
-                    target="_blank"
-                    className="me-4"
-                  >
+                  <a href={listing.website} target="_blank" className="me-4">
                     Website
                   </a>{" "}
                   <FaExternalLinkAlt />
