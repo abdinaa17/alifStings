@@ -38,14 +38,26 @@ const Header = () => {
             </LinkContainer>
           </Nav>
           <Nav className="ms-auto">
-            <LinkContainer to="/pricing">
-              <Button
-                variant="primary"
-                className="nav__btn my-2 my-md-0  mx-md-2"
-              >
-                Add Listing
-              </Button>
-            </LinkContainer>
+            {user ? (
+              <LinkContainer to="/new-listing">
+                <Button
+                  variant="primary"
+                  className="nav__btn my-2 my-md-0  mx-md-2"
+                >
+                  Add Listing
+                </Button>
+              </LinkContainer>
+            ) : (
+              <LinkContainer to="/pricing">
+                <Button
+                  variant="primary"
+                  className="nav__btn my-2 my-md-0  mx-md-2"
+                >
+                  Add Listing
+                </Button>
+              </LinkContainer>
+            )}
+
             {user ? (
               <LinkContainer to="/dashboard">
                 <Button
