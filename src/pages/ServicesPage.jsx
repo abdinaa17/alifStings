@@ -9,13 +9,13 @@ const ServicesPage = () => {
       <div className="container">
         <div className="intro">
           <h1>Services tailored to your business</h1>
-          <p className="lead">
+          <p className="lead my-2">
             We are more than just a direcory! List your business with us and get
             more out of your business, without losing focus on what is most
             important.
           </p>
         </div>
-        <Row className="mt-5">
+        <Row className="my-2">
           <Col md={6}>
             <Card className="my-2 p-4">
               <Card.Title className="my-2 text-uppercase fw-bolder">
