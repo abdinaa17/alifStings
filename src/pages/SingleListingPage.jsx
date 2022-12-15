@@ -1,7 +1,7 @@
 // Global Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { Col, Row, Button, Card } from "react-bootstrap";
+import { Col, Row, Button, Card, Carousel } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { MdPlace } from "react-icons/md";
 import {
@@ -16,31 +16,41 @@ import {
 import { BiTime } from "react-icons/bi";
 
 //Local Imports
-import { useListings } from "../context/ListingsContext";
 import { LoadingSpinner, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
 import webIcon from "../assets/images/www.png";
-import { useEffect } from "react";
 import { db } from "../config/firebase";
 
 const SingleListing = () => {
   const [listing, setListing] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
   const { id } = useParams();
-  useEffect(() => {
-    async function fetchListing() {
-      const docRef = doc(db, "listings", id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setListing(docSnap.data());
-        setLoading(false);
-      }
+
+  const fetchListing = async () => {
+    const docRef = doc(db, "listings", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setListing(docSnap.data());
+      setIsLoading(false);
     }
+  };
+  const handleSelect = (selectedIndex, e) => {
+    setCarouselIndex(selectedIndex);
+  };
+  useEffect(() => {
     fetchListing();
   }, [id]);
-  if (loading) {
+
+  if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  const listingImages = listing.imgUrls.map((image) => image);
+  console.log(listingImages);
+
   return (
     <section className="page py-5">
       <div className="container">
@@ -51,32 +61,45 @@ const SingleListing = () => {
         </Link>
         <Row>
           <Col md={8}>
-            <img
-              src={listing.imgUrls}
-              alt={listing.title}
-              className="rounded mb-3 h-50 w-100"
-              style={{ objectFit: "cover" }}
-              // style={{ width: "600px", objectFit: "cover" }}
-            />
-            {/* <Row className="my-3">
-              {listing.imgUrls.map((image, idx) => {
-                return (
-                  <Col key={idx}>
-                    <img
-                      role="button"
-                      src={image}
-                      alt={listing.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                      onClick={() => setCurrentImg(listing.imgUrls[idx])}
-                    />
-                  </Col>
-                );
-              })}
-            </Row> */}
+            <Carousel
+              activeIndex={carouselIndex}
+              onSelect={handleSelect}
+              variant="primary"
+              className="mb-3"
+            >
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 rounded"
+                  src={listingImages[0]}
+                  alt={listing.title}
+                  style={{ height: "500px", objectFit: "cover" }}
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={listingImages[1]}
+                  alt={listing.title}
+                  style={{ height: "500px" }}
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={listingImages[2]}
+                  alt={listing.title}
+                  style={{ height: "500px" }}
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={listingImages[3]}
+                  alt={listing.title}
+                  style={{ height: "500px" }}
+                />
+              </Carousel.Item>
+            </Carousel>
             <h1>{listing.title}</h1>
             <p className="opacity-75">{listing.tagline}</p>
             {/* <Row>
@@ -86,7 +109,7 @@ const SingleListing = () => {
               <Col>
                 <p>{numReviews} reviews</p>
               </Col>
-            </Row> */}
+            </Row>  */}
             <p className="mb-4">{listing.desc}</p>
             <p></p>
           </Col>
@@ -113,7 +136,11 @@ const SingleListing = () => {
                 </div>
                 <Card.Subtitle className="my-3">
                   <FaPhoneAlt className="me-4" />{" "}
-                  <a className="my-4" href={listing.phone}>
+                  <a
+                    className="my-4"
+                    href={`tel:${listing.phone}`}
+                    style={{ color: "inherit" }}
+                  >
                     {listing.phone}
                   </a>
                 </Card.Subtitle>
@@ -123,7 +150,11 @@ const SingleListing = () => {
                     src={webIcon}
                     className="me-4"
                   />{" "}
-                  <a href={listing.website} target="_blank" className="me-4">
+                  <a
+                    href={listing.website}
+                    target="_blank"
+                    className="me-4 text-info underline"
+                  >
                     Website
                   </a>{" "}
                   <FaExternalLinkAlt />
