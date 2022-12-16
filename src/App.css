@@ -119,3 +119,24 @@ hr::after {
 }
 
 /* Animations, transitions, and more... */
+
+/* Link underline  */
+.underline {
+  text-decoration: underline !important;
+}
+
+/*Customize bootsrap carousel prev and next icon bg and the indicators */
+
+.carousel-control-next-icon {
+  background-image: url("../src/assets/images/right-arrow.png") !important;
+}
+.carousel-control-prev-icon {
+  background-image: url("../src/assets/images/left-arrow.png") !important;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1 !important;
+}
+.carousel-indicators {
+  display: none !important;
+}

@@ -30,8 +30,8 @@ const SingleListing = () => {
   const { id } = useParams();
 
   const fetchListing = async () => {
-    const docRef = doc(db, "listings", id);
-    const docSnap = await getDoc(docRef);
+    const listingRef = doc(db, "listings", id);
+    const docSnap = await getDoc(listingRef);
     if (docSnap.exists()) {
       setListing(docSnap.data());
       setIsLoading(false);
@@ -48,9 +48,6 @@ const SingleListing = () => {
     return <LoadingSpinner />;
   }
 
-  const listingImages = listing.imgUrls.map((image) => image);
-  console.log(listingImages);
-
   return (
     <section className="page py-5">
       <div className="container">
@@ -64,41 +61,21 @@ const SingleListing = () => {
             <Carousel
               activeIndex={carouselIndex}
               onSelect={handleSelect}
-              variant="primary"
               className="mb-3"
             >
-              <Carousel.Item>
-                <img
-                  className="d-block w-100 rounded"
-                  src={listingImages[0]}
-                  alt={listing.title}
-                  style={{ height: "500px", objectFit: "cover" }}
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={listingImages[1]}
-                  alt={listing.title}
-                  style={{ height: "500px" }}
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={listingImages[2]}
-                  alt={listing.title}
-                  style={{ height: "500px" }}
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={listingImages[3]}
-                  alt={listing.title}
-                  style={{ height: "500px" }}
-                />
-              </Carousel.Item>
+              {listing &&
+                listing.imgUrls.map((image, idx) => {
+                  return (
+                    <Carousel.Item key={idx}>
+                      <img
+                        className="d-block w-100 rounded"
+                        src={image}
+                        alt={listing.title}
+                        style={{ height: "500px", objectFit: "cover" }}
+                      />
+                    </Carousel.Item>
+                  );
+                })}
             </Carousel>
             <h1>{listing.title}</h1>
             <p className="opacity-75">{listing.tagline}</p>
