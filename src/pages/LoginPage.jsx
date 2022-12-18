@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 
@@ -18,6 +18,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   // Login function
   const handleLogin = async (e) => {
@@ -30,6 +31,12 @@ const Login = () => {
       setLoading(true);
       setError("");
       await signInWithEmailAndPassword(auth, email, password);
+
+      // If the user came from a certain page to log in, we wanna redirect them to that page so they can continue from where they left off.
+      if (state) {
+        navigate(state.from);
+        return;
+      }
       navigate("/dashboard");
     } catch (err) {
       const errorMessage = cleanUpError(err.code);
@@ -98,7 +105,7 @@ const Login = () => {
             </div>
           </Col>
           <Col lg={4} md={6} className="d-none d-md-block my-4">
-            <img src={loginImg} alt="Login user" />
+            <img src={loginImg} alt="Login user" className="w-100" />
           </Col>
         </Row>
       </div>

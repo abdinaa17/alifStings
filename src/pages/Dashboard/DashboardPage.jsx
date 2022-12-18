@@ -42,7 +42,6 @@ const DashboardPage = () => {
         setListings(
           snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
-        console.log(listings);
         setIsLoading(false);
       });
       return unsbuscribe;
@@ -72,9 +71,9 @@ const DashboardPage = () => {
       <div className="positon-relative">
         <Sidebar logOutUser={logOutUser} />
       </div>
-      <div className="content page p-5">
+      <div className="content page">
         {error && <Alert className="capitalize-first">{error}</Alert>}
-        <h2>
+        <h2 className="px-3">
           Welcome,{" "}
           <span className="text-capitalize">
             {user && user.email.split("@")[0]}
@@ -93,7 +92,7 @@ const DashboardPage = () => {
             <Col md={6} lg={4}>
               <p>You have no listings yet!</p>
               <Link to="/new-listing">
-                <Button className="mb-5 px-4">Create Listing</Button>
+                <Button className="mb-5 px-4">Add a Listing</Button>
               </Link>
             </Col>
           )}

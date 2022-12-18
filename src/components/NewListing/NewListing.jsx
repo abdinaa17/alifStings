@@ -60,11 +60,13 @@ const NewListing = () => {
   };
   // Form Submission
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
     if (!user) {
-      setError("log in to create a listing");
+      setIsLoading(false);
+      navigate("/login", { state: { from: "/new-listing" } });
       return;
     }
-    e.preventDefault();
     if (
       !listing.title ||
       !listing.tagline ||
@@ -72,8 +74,10 @@ const NewListing = () => {
       !listing.address ||
       !listing.owner ||
       !listing.phone ||
+      !listing.category ||
       !listing.images
     ) {
+      setIsLoading(false);
       setError("Fill the required fields to continue");
       return;
     }
@@ -258,9 +262,10 @@ const NewListing = () => {
           {user ? (
             <Button type="submit">Save and preview</Button>
           ) : (
-            <Link to="/login" className="btn btn-primary px-4" role="button">
-              Login to Submit
-            </Link>
+            // <Link to="/login" className="btn btn-primary px-4" role="button">
+            //   Login to Submit
+            // </Link>
+            <Button type="submit">Log In to Submit</Button>
           )}
         </Form>
         {error && (
