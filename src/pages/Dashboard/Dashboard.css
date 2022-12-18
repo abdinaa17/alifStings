@@ -31,4 +31,10 @@
 .content {
   height: 90vh;
   width: 100vw;
+  padding: 5rem !important;
+}
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 1rem 0 !important;
+  }
 }

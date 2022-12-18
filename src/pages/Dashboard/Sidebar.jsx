@@ -10,7 +10,7 @@ import "./Dashboard.css";
 const Sidebar = ({ logOutUser }) => {
   const [isSidebar, setIsSidebar] = useState(false);
   return (
-    <aside className={isSidebar ? "sidebar" : "sidebar active"}>
+    <aside className={isSidebar ? "sidebar active" : "sidebar"}>
       <div className="flex">
         <BiMenu
           color="white"

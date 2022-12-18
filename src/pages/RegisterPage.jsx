@@ -114,7 +114,7 @@ const Register = () => {
             </div>
           </Col>
           <Col lg={4} md={6} className="d-none d-md-block my-4">
-            <img src={regsiterImg} alt="Register user" />
+            <img src={regsiterImg} alt="Register user" className="w-100" />
           </Col>
         </Row>
       </div>
