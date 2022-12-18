@@ -1,7 +1,14 @@
 // Global Imports
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 // Local Imports
 import "./App.css";
+import { auth } from "./config/firebase";
 import { Footer, Header, PrivateRoute } from "./components";
 import {
   HomePage,
@@ -21,6 +28,7 @@ import {
 } from "./pages";
 
 function App() {
+  const [user] = useAuthState(auth);
   return (
     <main>
       <Router>
@@ -38,8 +46,14 @@ function App() {
           <Route path="listings/:id" element={<SingleListingPage />} />
           <Route path="coming-soon" element={<ComingSoon />} />
           <Route path="new-listing" element={<NewListingPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          <Route
+            path="login"
+            element={user ? <Navigate to="/" /> : <LoginPage />}
+          />
+          <Route
+            path="register"
+            element={user ? <Navigate to="/" /> : <RegisterPage />}
+          />
           <Route path="contact" element={<ContactPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="pricing" element={<PricingPage />} />

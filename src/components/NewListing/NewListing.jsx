@@ -18,6 +18,7 @@ import { auth, db } from "../../config/firebase";
 import { Link } from "react-router-dom";
 
 const storage = getStorage();
+
 const NewListing = () => {
   const [user] = useAuthState(auth);
   const [isLoading, setIsLoading] = useState(false);
