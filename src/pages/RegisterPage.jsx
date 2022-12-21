@@ -103,7 +103,7 @@ const Register = () => {
                     Register
                   </Button>
                 </Form>
-                <div className="pt-3">
+                <div className="my-4">
                   <p className="fw-bolder text-center">Or</p>
                   <ContinueWithGoogle />
                 </div>
