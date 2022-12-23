@@ -25,6 +25,7 @@ import {
   PricingPage,
   DashboardPage,
   Profile,
+  EditListingPage,
 } from "./pages";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="pricing" element={<PricingPage />} />
+          <Route path="edit-listing" element={<EditListingPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
