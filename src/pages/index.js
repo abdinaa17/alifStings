@@ -12,6 +12,7 @@ import ServicesPage from "./ServicesPage";
 import PricingPage from "./PricingPage";
 import DashboardPage from "./Dashboard/DashboardPage";
 import Profile from "./Dashboard/Profile";
+import EditListingPage from "./EditListingPage";
 export {
   HomePage,
   AboutPage,
@@ -27,4 +28,5 @@ export {
   PricingPage,
   DashboardPage,
   Profile,
+  EditListingPage,
 };

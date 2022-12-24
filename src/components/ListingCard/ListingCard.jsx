@@ -1,9 +1,18 @@
 // Global Imports
-import { Card, Row, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { FaTrash } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
+const ListingCard = ({
+  imgUrls,
+  id,
+  title,
+  address,
+  tagline,
+  editListing,
+  deleteListing,
+}) => {
   return (
     <div className="container">
       <Card className="cursor-pointer">
@@ -33,6 +42,8 @@ const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
               <p>{rating} ratings</p>
             </Col>
           </Row> */}
+          {deleteListing && <FaTrash />}
+          {editListing && "Edit"}
         </Card.Body>
       </Card>
     </div>
