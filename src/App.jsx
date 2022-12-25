@@ -42,6 +42,10 @@ function App() {
               <Route path="profile" element={<Profile />} />
             </Route>
           </Route>
+          {/* <Route path="/edit-listing" element={<PrivateRoute />}>
+            <Route paht="/edit-listing/:id" element={<EditListingPage />} />
+          </Route> */}
+          <Route path="edit-listing/:id" element={<EditListingPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="listings" element={<ListingsPage />} />
           <Route path="listings/:id" element={<SingleListingPage />} />
@@ -58,7 +62,6 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="pricing" element={<PricingPage />} />
-          <Route path="edit-listing" element={<EditListingPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

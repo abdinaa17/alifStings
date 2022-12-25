@@ -15,7 +15,6 @@ import { v4 as uuidv4 } from "uuid";
 // Local imports
 import { LoadingSpinner } from "../index";
 import { auth, db } from "../../config/firebase";
-import { Link } from "react-router-dom";
 
 const storage = getStorage();
 
