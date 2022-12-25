@@ -1,31 +1,32 @@
 // Global Imports
 import { useEffect, useState } from "react";
-import { Row, Col, Button, Alert } from "react-bootstrap";
+import { Row, Col, Button, Alert, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   orderBy,
   query,
   where,
 } from "firebase/firestore";
+import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // Local Imports
 import { auth, db } from "../../config/firebase";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { ListingCard } from "../../components";
 import Sidebar from "./Sidebar";
 import { cleanUpError } from "../../utils/cleanUpError";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { secondsToDate } from "../../utils/secondsToDate";
 
 const DashboardPage = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [isSidebar, setIsSidebar] = useState(true);
   const navigate = useNavigate();
 
   // Get current user's listings
@@ -63,7 +64,17 @@ const DashboardPage = () => {
       setError(errorMessage);
     }
   };
-  if (isLoading) {
+
+  // Delete Listing
+  const deleteListing = async (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      await deleteDoc(doc(db, "listings", id));
+      const newListings = listings.filter((listing) => listing.id !== id);
+      setListings(newListings);
+    }
+  };
+
+  if (isLoading && loading) {
     return <LoadingSpinner />;
   }
   return (
@@ -73,29 +84,67 @@ const DashboardPage = () => {
       </div>
       <div className="content page">
         {error && <Alert className="capitalize-first">{error}</Alert>}
-        <h2 className="px-3">
-          Welcome,{" "}
-          <span className="text-capitalize">
-            {user && user.email.split("@")[0]}
-          </span>
-        </h2>
+        <h2 className="">My Listings</h2>
         <Row className="g-4 w-100">
-          {listings && listings.length > 0 ? (
-            listings.map((listing) => {
-              return (
-                <Col key={listing.id} md={6} lg={4}>
-                  <ListingCard {...listing} />
-                </Col>
-              );
-            })
-          ) : (
-            <Col md={6} lg={4}>
-              <p>You have no listings yet!</p>
-              <Link to="/new-listing">
-                <Button className="mb-5 px-4">Add a Listing</Button>
-              </Link>
-            </Col>
-          )}
+          <Col>
+            {listings.length > 0 ? (
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Created</th>
+                    <th>Owner</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {listings.length > 0 &&
+                    listings.map((listing) => {
+                      return (
+                        <tr>
+                          <td>
+                            <Link to={`/listings/${listing.id}`}>
+                              {listing.title}
+                            </Link>
+                          </td>
+                          <td>{listing.category}</td>
+                          <td>
+                            {listing.timestamp &&
+                              secondsToDate(listing.timestamp.seconds)}
+                          </td>
+                          <td>
+                            {listing.owner
+                              ? listing.owner
+                              : "Info not avaialble"}
+                          </td>
+                          <td>
+                            <Link
+                              to={`/edit-listing/${listing.id}`}
+                              className="text-info"
+                            >
+                              Edit
+                            </Link>{" "}
+                            <span className="ms-4" style={{ color: "red" }}>
+                              <FaTrash
+                                onClick={() => deleteListing(listing.id)}
+                              />
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </Table>
+            ) : (
+              <div>
+                <p>You have no listings yet!</p>{" "}
+                <Link to="/new-listing">
+                  <Button className="mb-5 px-4">Add Listing</Button>{" "}
+                </Link>
+              </div>
+            )}
+          </Col>
         </Row>
       </div>
     </section>
