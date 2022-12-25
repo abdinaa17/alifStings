@@ -18,6 +18,7 @@ import { BiTime } from "react-icons/bi";
 //Local Imports
 import { LoadingSpinner, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
+import listingImagePlaceholder from "../assets/images/placeholder.png";
 import webIcon from "../assets/images/www.png";
 import { db } from "../config/firebase";
 
@@ -69,7 +70,7 @@ const SingleListing = () => {
                     <Carousel.Item key={idx}>
                       <img
                         className="d-block w-100 rounded"
-                        src={image}
+                        src={image ? image : listingImagePlaceholder} // Come back to this.
                         alt={listing.title}
                         style={{ height: "500px", objectFit: "cover" }}
                       />

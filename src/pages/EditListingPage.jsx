@@ -61,8 +61,6 @@ const newListing = () => {
     fetchCurrentListing();
   }, [id]);
 
-  console.log(currentListing);
-
   const handleChange = (e) => {
     if (e.target.files) {
       setListing((prev) => ({
@@ -88,11 +86,25 @@ const newListing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Make sure only signed in user can edit a listing
+
     if (!user) {
       setIsLoading(false);
-      setError("You cant edit this page");
+      setError("You are not allowed to edit this listing");
       return;
     }
+
+    // Make sure a user can only edit their listing
+
+    if (currentListing && currentListing.userRef !== user.uid) {
+      setIsLoading(false);
+      setError("You are not allowed to edit this listing");
+      return;
+    }
+
+    // Make sure we are not sending an empty form.
+
     if (
       !listing.title ||
       !listing.tagline ||
@@ -107,6 +119,7 @@ const newListing = () => {
       setError("Fill the required fields to continue");
       return;
     }
+
     // We'll upload the images to firebase storage and then extract the urls and push it to our db.
     const storeImg = async (img) => {
       return new Promise((resolve, reject) => {
@@ -130,6 +143,7 @@ const newListing = () => {
         );
       });
     };
+
     const imgUrls = await Promise.all(
       listing.images && [...listing.images].map((img) => storeImg(img))
     ).catch((err) => {
@@ -137,6 +151,7 @@ const newListing = () => {
       setError(err);
       return;
     });
+
     const newListing = {
       ...listing,
       imgUrls,
@@ -144,8 +159,8 @@ const newListing = () => {
       userRef: user.uid,
     };
     delete newListing.images;
-    const docRef = doc(db, "listings", id);
 
+    const docRef = doc(db, "listings", id);
     await updateDoc(docRef, newListing);
 
     navigate("/listings");
@@ -168,6 +183,7 @@ const newListing = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
   return (
     <div>
       <div className="banner px-3 py-5">

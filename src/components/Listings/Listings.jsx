@@ -54,15 +54,19 @@ const Listings = () => {
         </Col>
       </Row>
       <Row className="g-4">
-        {filteredListings && filteredListings.length > 0
-          ? filteredListings.map((listing) => {
-              return (
-                <Col key={listing.id} md={6} lg={4}>
-                  <ListingCard {...listing} />
-                </Col>
-              );
-            })
-          : "No Listings Found"}
+        {filteredListings && filteredListings.length > 0 ? (
+          filteredListings.map((listing) => {
+            return (
+              <Col key={listing.id} md={6} lg={4}>
+                <ListingCard {...listing} />
+              </Col>
+            );
+          })
+        ) : (
+          <div className="vh-75 bg-primary">
+            <h1>No Lisitng found</h1>
+          </div>
+        )}
       </Row>
     </div>
   );
