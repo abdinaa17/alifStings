@@ -102,7 +102,7 @@ const DashboardPage = () => {
                   {listings.length > 0 &&
                     listings.map((listing) => {
                       return (
-                        <tr>
+                        <tr key={listing.id}>
                           <td>
                             <Link to={`/listings/${listing.id}`}>
                               {listing.title}

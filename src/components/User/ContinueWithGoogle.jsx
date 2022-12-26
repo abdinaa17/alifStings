@@ -17,10 +17,10 @@ const ContinueWithGoogle = () => {
       const user = result.user;
 
       // Register user if they don't extist
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
+      const userRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(userRef);
       if (!docSnap.exists()) {
-        await setDoc(docRef, {
+        await setDoc(userRef, {
           email: user.email,
           timestamp: serverTimestamp(),
         });

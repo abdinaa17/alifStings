@@ -160,8 +160,8 @@ const newListing = () => {
     };
     delete newListing.images;
 
-    const docRef = doc(db, "listings", id);
-    await updateDoc(docRef, newListing);
+    const listingRef = doc(db, "listings", id);
+    await updateDoc(listingRef, newListing);
 
     navigate("/listings");
     setIsLoading(false);

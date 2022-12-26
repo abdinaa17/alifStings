@@ -118,7 +118,7 @@ const NewListing = () => {
       userRef: user.uid,
     };
     delete newListing.images;
-    const docRef = await addDoc(collection(db, "listings"), newListing);
+    const listingRef = await addDoc(collection(db, "listings"), newListing);
     navigate("/listings", { replace: true });
     setIsLoading(false);
     setListing({
