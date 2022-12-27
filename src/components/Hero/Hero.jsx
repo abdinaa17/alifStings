@@ -1,9 +1,18 @@
 // Global Imports
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 // Local Imports
+
 import "../Hero/Hero.css";
 const Hero = () => {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate("/listings", { state: search });
+  };
   return (
     <div className="hero">
       <div className="hero__content">
@@ -15,13 +24,23 @@ const Hero = () => {
           Columbus area for your convinience. From restaurants, to mosques, to
           daycares and many more...
         </p>
-        <Link
+        {/* <Link
           to="/listings"
           className="btn btn-primary px-4 mt-4"
           role="button"
         >
           See Listings
-        </Link>
+        </Link> */}
+        <Form onSubmit={handleSearch} className="pe-4 mt-4">
+          <Form.Group>
+            <Form.Control
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Enter search term here"
+            />
+          </Form.Group>
+        </Form>
       </div>
     </div>
   );

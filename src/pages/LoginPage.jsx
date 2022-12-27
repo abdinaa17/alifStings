@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { FcGoogle } from "react-icons/fc";
 
 // Local Imports
 import LoadingSpinner from "../components/LoadingSpinner";
