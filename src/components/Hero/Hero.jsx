@@ -24,20 +24,13 @@ const Hero = () => {
           Columbus area for your convinience. From restaurants, to mosques, to
           daycares and many more...
         </p>
-        {/* <Link
-          to="/listings"
-          className="btn btn-primary px-4 mt-4"
-          role="button"
-        >
-          See Listings
-        </Link> */}
         <Form onSubmit={handleSearch} className="pe-4 mt-4">
           <Form.Group>
             <Form.Control
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Enter search term here"
+              placeholder="Enter search term here..."
             />
           </Form.Group>
         </Form>
