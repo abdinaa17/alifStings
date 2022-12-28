@@ -1,11 +1,11 @@
 // Global Imports
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { MdPlace } from "react-icons/md";
 
 // Local Imports
 import { useListings } from "../../context/ListingsContext";
-import placeHolderImg from "../../assets/images/placeholder.png";
+import ListingCard from "../ListingCard/ListingCard";
+
 const FeaturedListings = () => {
   const { listings } = useListings();
   return (
@@ -19,42 +19,9 @@ const FeaturedListings = () => {
             .filter((listing) => listing.featured === true)
             .slice(0, 3)
             .map((listing) => {
-              const { id, title, imgUrls, address, tagline } = listing;
               return (
-                <Col key={id} md={6} lg={4}>
-                  <Card className="cursor-pointer">
-                    <Link to={`/listings/${id}`}>
-                      <Card.Img
-                        style={{ height: 300, objectFit: "cover" }}
-                        variant="top"
-                        src={imgUrls ? imgUrls : placeHolderImg}
-                        alt={title}
-                        loading="lazy"
-                      />
-                    </Link>
-
-                    <Card.Body>
-                      <Card.Title className="my-2">{title}</Card.Title>
-
-                      <Card.Subtitle className="my-2 opacity-75">
-                        {" "}
-                        {tagline}
-                      </Card.Subtitle>
-                      <Card.Text className="my-3 d-flex align-items-center">
-                        <MdPlace className="text-success" />
-                        <span className="px-3"> {address}</span>
-                      </Card.Text>
-                      {/* <Row>
-                        <Col>
-                          <p>{listing.numReviews} reviews</p>
-                        </Col>
-
-                        <Col>
-                          <p>{listing.rating} ratings</p>
-                        </Col>
-                      </Row> */}
-                    </Card.Body>
-                  </Card>
+                <Col key={listing.id} md={6} lg={4}>
+                  <ListingCard {...listing} />
                 </Col>
               );
             })}
