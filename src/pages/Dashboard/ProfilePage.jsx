@@ -1,31 +1,21 @@
 // Global Imports
 import { useEffect, useState } from "react";
-import { Row, Col, Button, Alert } from "react-bootstrap";
+import { Row, Col, Button, Alert, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
 
 // Local Imports
 import { auth, db } from "../../config/firebase";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { ListingCard } from "../../components";
 import Sidebar from "./Sidebar";
 import { cleanUpError } from "../../utils/cleanUpError";
-// import { Link } from "react-router-dom";
 
-const DashboardPage = () => {
-  const [user] = useAuthState(auth);
+const ProfilePage = () => {
+  const [user, loading] = useAuthState(auth);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Log out user function
   const logOutUser = async () => {
     setError("");
     try {
@@ -36,7 +26,8 @@ const DashboardPage = () => {
       setError(errorMessage);
     }
   };
-  if (isLoading) {
+
+  if (isLoading && loading) {
     return <LoadingSpinner />;
   }
   return (
@@ -44,17 +35,24 @@ const DashboardPage = () => {
       <div className="positon-relative">
         <Sidebar logOutUser={logOutUser} />
       </div>
-      <div className="content page p-5">
+      <div className="content page">
         {error && <Alert className="capitalize-first">{error}</Alert>}
-        <h2>
-          Welcome, to your profile page{" "}
-          <span className="text-capitalize">
-            {user && user.email.split("@")[0]}
-          </span>
-        </h2>
+        <h2 className="">My Profile</h2>
+        <Row className="g-4 w-100">
+          <Col>
+            <div>
+              <p className="lead">
+                Welcome,{" "}
+                <span className="text-capitalize">
+                  {user.email.split("@")[0]}
+                </span>
+              </p>{" "}
+            </div>
+          </Col>
+        </Row>
       </div>
     </section>
   );
 };
 
-export default DashboardPage;
+export default ProfilePage;

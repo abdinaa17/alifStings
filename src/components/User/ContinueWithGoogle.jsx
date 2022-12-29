@@ -1,6 +1,7 @@
 // Global Imports
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getDoc, setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
 
 const ContinueWithGoogle = () => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const loginWithGoogle = async () => {
     try {
@@ -27,7 +29,7 @@ const ContinueWithGoogle = () => {
       }
       navigate("/dashboard");
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
   return (

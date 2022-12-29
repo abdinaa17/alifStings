@@ -20,19 +20,31 @@ const Sidebar = ({ logOutUser }) => {
         <div></div>
       </div>
       <div className="flex">
-        <MdDashboardCustomize color="white" size={24} />
+        <MdDashboardCustomize
+          color="white"
+          size={24}
+          onClick={() => setIsSidebar(!isSidebar)}
+        />
         <Link className="visible" to="/dashboard">
           Dashboard
         </Link>
       </div>
       <div className="flex">
-        <AiFillProfile color="white" size={24} />
+        <AiFillProfile
+          color="white"
+          size={24}
+          onClick={() => setIsSidebar(!isSidebar)}
+        />
         <Link className="visible" to="/dashboard/profile">
           Profile
         </Link>
       </div>
       <div className="flex">
-        <MdLogout color="white" size={24} />
+        <MdLogout
+          color="white"
+          size={24}
+          onClick={() => setIsSidebar(!isSidebar)}
+        />
         <span
           className="visible text-white"
           onClick={logOutUser}

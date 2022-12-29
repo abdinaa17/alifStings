@@ -24,7 +24,7 @@ import {
   ServicesPage,
   PricingPage,
   DashboardPage,
-  Profile,
+  ProfilePage,
   EditListingPage,
 } from "./pages";
 
@@ -39,7 +39,7 @@ function App() {
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard">
               <Route index element={<DashboardPage />} />
-              <Route path="profile" element={<Profile />} />
+              <Route path="profile" element={<ProfilePage />} />
             </Route>
           </Route>
           {/* <Route path="/edit-listing" element={<PrivateRoute />}>

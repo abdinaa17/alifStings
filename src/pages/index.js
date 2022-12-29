@@ -11,7 +11,7 @@ import ContactPage from "./ContactPage";
 import ServicesPage from "./ServicesPage";
 import PricingPage from "./PricingPage";
 import DashboardPage from "./Dashboard/DashboardPage";
-import Profile from "./Dashboard/Profile";
+import ProfilePage from "./Dashboard/ProfilePage";
 import EditListingPage from "./EditListingPage";
 export {
   HomePage,
@@ -27,6 +27,6 @@ export {
   ContactPage,
   PricingPage,
   DashboardPage,
-  Profile,
+  ProfilePage,
   EditListingPage,
 };

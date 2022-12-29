@@ -27,11 +27,20 @@ const ListingCard = ({
         </Link>
 
         <Card.Body>
-          <Card.Title className="my-2">{title}</Card.Title>
-          <Card.Subtitle className="my-2 opacity-75">{tagline}</Card.Subtitle>
+          <Card.Title className="my-2">
+            {/* {title.length > 23 ? `${title}.slice(0, 23)...` : title) */}
+            {`${title.length > 23 ? title.slice(0, 23) + "..." : title}`}
+          </Card.Title>
+          <Card.Subtitle className="my-2 opacity-75">
+            {`${tagline.length > 23 ? tagline.slice(0, 28) + "..." : tagline}`}
+          </Card.Subtitle>
           <Card.Text className="my-3 d-flex align-items-center">
             <MdPlace className="text-success" />
-            <span className="px-1"> {address}</span>
+            <span className="px-1">
+              {`${
+                address.length > 23 ? address.slice(0, 28) + "..." : address
+              }`}
+            </span>
           </Card.Text>
           {/* <Row>
             <Col>

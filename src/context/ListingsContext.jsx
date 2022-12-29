@@ -8,6 +8,7 @@ const ListingsContext = createContext();
 export const ListingsProvider = ({ children }) => {
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   // Initialize db and get data
   const fetchListings = async () => {
@@ -22,8 +23,8 @@ export const ListingsProvider = ({ children }) => {
         setIsLoading(false);
       });
       return unsbuscribe;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err);
     }
   };
   useEffect(() => {
@@ -33,6 +34,7 @@ export const ListingsProvider = ({ children }) => {
   const values = {
     listings,
     isLoading,
+    error,
   };
   return (
     <ListingsContext.Provider value={values}>
