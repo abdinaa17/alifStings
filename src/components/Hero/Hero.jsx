@@ -33,10 +33,10 @@ const Hero = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Enter search term here..."
-            className="py-3"
+            className="py-3 rounded-0"
           />
-          <Button type="submit" className="">
-            <FaSearch />
+          <Button type="submit" className="px-4 rounded-0">
+            <FaSearch size={24} />
           </Button>
         </Form>
       </div>
