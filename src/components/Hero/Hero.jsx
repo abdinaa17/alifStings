@@ -1,22 +1,25 @@
 // Global Imports
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 // Local Imports
-
 import "../Hero/Hero.css";
+
 const Hero = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+
   const handleSearch = (e) => {
     e.preventDefault();
     navigate("/listings", { state: search });
   };
+
   return (
     <div className="hero">
       <div className="hero__content">
-        <h1 className="text-capitalize mb-4">
+        <h1 className="text-capitalize">
           Explore the best halal-friendly places In Your City
         </h1>
         <p className="lead">
@@ -24,15 +27,17 @@ const Hero = () => {
           Columbus area for your convinience. From restaurants, to mosques, to
           daycares and many more...
         </p>
-        <Form onSubmit={handleSearch} className="pe-4 mt-4">
-          <Form.Group>
-            <Form.Control
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Enter search term here..."
-            />
-          </Form.Group>
+        <Form onSubmit={handleSearch} className="d-flex pe-4 mt-4">
+          <Form.Control
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Enter search term here..."
+            className="py-3"
+          />
+          <Button type="submit" className="">
+            <FaSearch />
+          </Button>
         </Form>
       </div>
     </div>
