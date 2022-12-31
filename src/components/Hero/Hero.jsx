@@ -24,7 +24,7 @@ const Hero = () => {
         </h1>
         <p className="lead">
           We bring you a variety of halal-friendly businesses around the
-          Columbus area for your convinience. From restaurants, to mosques, to
+          Columbus area for your convenience. From restaurants, to mosques, to
           daycares and many more...
         </p>
         <Form onSubmit={handleSearch} className="d-flex pe-4 mt-4">
