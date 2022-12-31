@@ -13,7 +13,6 @@ const Hero = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!search) return;
     navigate("/listings", { state: search });
   };
 
