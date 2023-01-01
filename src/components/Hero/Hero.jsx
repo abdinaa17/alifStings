@@ -13,6 +13,7 @@ const Hero = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    if (!search) return;
     navigate("/listings", { state: search });
   };
 
@@ -32,7 +33,7 @@ const Hero = () => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Enter search term here..."
+            placeholder="Search for listings..."
             className="form__input--border py-3"
           />
           <Button type="submit" className="form__btn--border px-4">

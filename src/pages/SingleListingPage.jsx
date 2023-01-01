@@ -13,12 +13,10 @@ import {
   FaInfo,
   FaExternalLinkAlt,
 } from "react-icons/fa";
-import { BiTime } from "react-icons/bi";
 
 //Local Imports
 import { LoadingSpinner, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
-import listingImagePlaceholder from "../assets/images/placeholder.png";
 import webIcon from "../assets/images/www.png";
 import { db } from "../config/firebase";
 
@@ -72,7 +70,10 @@ const SingleListing = () => {
                         className="d-block w-100 rounded"
                         src={image ? image : listingImagePlaceholder} // Come back to this.
                         alt={listing.title}
-                        style={{ height: "500px", objectFit: "cover" }}
+                        style={{
+                          height: "500px",
+                          objectFit: "cover",
+                        }}
                       />
                     </Carousel.Item>
                   );
