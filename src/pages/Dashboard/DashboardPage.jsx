@@ -94,7 +94,7 @@ const DashboardPage = () => {
                     <th>Title</th>
                     <th>Category</th>
                     <th>Created</th>
-                    <th>Owner</th>
+                    <th>Featured</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -113,11 +113,7 @@ const DashboardPage = () => {
                             {listing.timestamp &&
                               secondsToDate(listing.timestamp.seconds)}
                           </td>
-                          <td>
-                            {listing.owner
-                              ? listing.owner
-                              : "Info not avaialble"}
-                          </td>
+                          <td>{listing.featured ? "Yes" : "No"}</td>
                           <td>
                             <Link
                               to={`/edit-listing/${listing.id}`}

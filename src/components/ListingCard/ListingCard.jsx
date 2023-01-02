@@ -1,6 +1,6 @@
 // Global Imports
 import { Card } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa";
+import { FaStar, FaStarHalf, FaTrash } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -27,8 +27,14 @@ const ListingCard = ({
         </Link>
 
         <Card.Body>
+          <Card.Text className="w-50">
+            <FaStar color="gold" />
+            <FaStar color="gold" />
+            <FaStar color="gold" />
+            <FaStar color="gold" />
+            <FaStarHalf color="gold" />
+          </Card.Text>
           <Card.Title className="my-2">
-            {/* {title.length > 23 ? `${title}.slice(0, 23)...` : title) */}
             {`${title.length > 23 ? title.slice(0, 23) + "..." : title}`}
           </Card.Title>
           <Card.Subtitle className="my-2 opacity-75">
@@ -42,15 +48,6 @@ const ListingCard = ({
               }`}
             </span>
           </Card.Text>
-          {/* <Row>
-            <Col>
-              <p>{numReviews} reviews</p>
-            </Col>
-
-            <Col>
-              <p>{rating} ratings</p>
-            </Col>
-          </Row> */}
           {deleteListing && <FaTrash />}
           {editListing && "Edit"}
         </Card.Body>
