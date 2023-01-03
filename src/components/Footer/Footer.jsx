@@ -7,7 +7,7 @@ import { FaTwitter, FaLinkedin, FaFacebook, FaYoutube } from "react-icons/fa";
 import "../Footer/Footer.css";
 const Footer = () => {
   return (
-    <footer className="footer shadow bg-primary text-white">
+    <footer className="footer shadow text-white" style={{ background: "#000" }}>
       <div className="container py-5 mx-auto">
         <Row>
           <Col className="col-lg-3 col-8">
