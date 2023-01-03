@@ -140,3 +140,20 @@ hr::after {
 .carousel-indicators {
   display: none !important;
 }
+
+/* New Listing page form div css */
+.form__section {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 30px;
+  border: 2px solid #f3f3f6;
+}
+
+.form__section a {
+  color: #000 !important;
+}
+
+.form__section a:hover,
+.form__section a:active {
+  color: #e95420 !important;
+}
