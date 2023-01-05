@@ -71,11 +71,13 @@ const NewListing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     if (!user) {
       setIsLoading(false);
       navigate("/login", { state: { from: "/new-listing" } });
       return;
     }
+
     if (
       !listing.title ||
       !listing.tagline ||
@@ -90,7 +92,9 @@ const NewListing = () => {
       setError("Fill the required fields to continue");
       return;
     }
+
     // We'll upload the images to firebase storage and then extract the urls and push it to our db.
+
     const storeImg = async (img) => {
       return new Promise((resolve, reject) => {
         const fileName = `images/${img.name}-${uuidv4()}`;
@@ -113,6 +117,7 @@ const NewListing = () => {
         );
       });
     };
+
     const imgUrls = await Promise.all(
       listing.images && [...listing.images].map((img) => storeImg(img))
     ).catch((err) => {
@@ -120,16 +125,22 @@ const NewListing = () => {
       setError(err);
       return;
     });
+
     const newListing = {
       ...listing,
       imgUrls,
       timestamp: serverTimestamp(),
       userRef: user.uid,
     };
+
     delete newListing.images;
+
     const listingRef = await addDoc(collection(db, "listings"), newListing);
+
     navigate("/listings", { replace: true });
+
     setIsLoading(false);
+
     setListing({
       title: "",
       tagline: "",
@@ -306,11 +317,13 @@ const NewListing = () => {
                 </Form.Group>
               </div>
               {user ? (
-                <Button type="submit" size="lg">
+                <Button type="submit" className="w-100 btn-lg">
                   Save and preview
                 </Button>
               ) : (
-                <Button type="submit">Log In to Submit</Button>
+                <Button type="submit" className="w-100 btn-lg">
+                  Log In to Submit
+                </Button>
               )}
             </Form>
             {error && (
