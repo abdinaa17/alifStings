@@ -24,6 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 // Local imports
 import { LoadingSpinner } from "../index";
 import { auth, db } from "../../config/firebase";
+import { MdClose } from "react-icons/md";
 
 const storage = getStorage();
 
@@ -93,6 +94,13 @@ const NewListing = () => {
       return;
     }
 
+    // Check if user has uploaded the max allowed images
+
+    if (listing.images.length > 4) {
+      setIsLoading(false);
+      setError("Maximum 4 images are allowed");
+      return;
+    }
     // We'll upload the images to firebase storage and then extract the urls and push it to our db.
 
     const storeImg = async (img) => {
@@ -183,11 +191,11 @@ const NewListing = () => {
               <Nav.Link href="#category" className="border-bottom">
                 Category
               </Nav.Link>
-              <Nav.Link href="#contact" className="border-bottom">
-                Contact Info
-              </Nav.Link>
               <Nav.Link href="#gallery" className="border-bottom">
                 Images
+              </Nav.Link>
+              <Nav.Link href="#contact" className="border-bottom">
+                Contact Info
               </Nav.Link>
             </Nav>
           </aside>
@@ -238,6 +246,7 @@ const NewListing = () => {
               </div>
               <div className="form__section" id="category">
                 <Form.Group className="mb-3">
+                  <Form.Label>Categories</Form.Label>
                   <Form.Select
                     name="category"
                     onChange={handleChange}
@@ -250,6 +259,48 @@ const NewListing = () => {
                     <option value="other">Other</option>
                   </Form.Select>
                 </Form.Group>
+              </div>
+              <div className="form__section" id="gallery">
+                <Form.Group className="mb-3">
+                  <Form.Label>Select 1 to 4 images maximum</Form.Label>
+                  <Form.Control
+                    type="file"
+                    name="images"
+                    multiple
+                    onChange={handleChange}
+                    accept=".jpg, .jpeg, .png"
+                    placeholder="Enter Owner's name..."
+                  />
+                </Form.Group>
+                <div className="d-flex flex-wrap">
+                  {Array.from(listing.images).map((image, idx) => {
+                    return (
+                      <div key={idx} style={{ position: "relative" }}>
+                        <img
+                          src={URL.createObjectURL(image)}
+                          style={{
+                            width: "150px",
+                            height: "150px",
+                            margin: "2rem 1rem 2rem 0",
+                            objectFit: "cover",
+                          }}
+                        />
+                        <span
+                          style={{
+                            position: "absolute",
+                            top: "30px",
+                            right: "20px",
+                            fontSize: "1.5rem",
+                            color: "red",
+                            padding: "0",
+                          }}
+                        >
+                          <MdClose />
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div className="form__section" id="contact">
                 <Form.Group className="mb-3">
@@ -303,19 +354,6 @@ const NewListing = () => {
                 </Form.Group>
               </div>
               <br />
-              <div className="form__section" id="gallery">
-                <Form.Group className="mb-3">
-                  <Form.Label>Select 1 to 4 images maximum</Form.Label>
-                  <Form.Control
-                    type="file"
-                    name="images"
-                    multiple
-                    onChange={handleChange}
-                    accept=".jpg, .jpeg, .png"
-                    placeholder="Enter Owner's name..."
-                  />
-                </Form.Group>
-              </div>
               {user ? (
                 <Button type="submit" className="w-100 btn-lg">
                   Save and preview
