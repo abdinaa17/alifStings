@@ -14,6 +14,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import PrivateRoute from "./Route/PrivateRoute";
 import ListingCard from "./ListingCard/ListingCard";
 import ContinueWithGoogle from "./User/ContinueWithGoogle";
+import Message from "./Message/Message";
 
 export {
   Header,
@@ -32,4 +33,5 @@ export {
   LoadingSpinner,
   PrivateRoute,
   ContinueWithGoogle,
+  Message,
 };
