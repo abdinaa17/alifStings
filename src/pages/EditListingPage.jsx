@@ -25,7 +25,7 @@ import { LoadingSpinner } from "../components";
 
 const storage = getStorage();
 
-const newListing = () => {
+const EditListingPage = () => {
   const [user] = useAuthState(auth);
   const [isLoading, setIsLoading] = useState(false);
   const [currentListing, setCurrentListing] = useState(null);
@@ -152,16 +152,16 @@ const newListing = () => {
       return;
     });
 
-    const newListing = {
+    const EditListingPage = {
       ...listing,
       imgUrls,
       timestamp: serverTimestamp(),
       userRef: user.uid,
     };
-    delete newListing.images;
+    delete EditListingPage.images;
 
     const listingRef = doc(db, "listings", id);
-    await updateDoc(listingRef, newListing);
+    await updateDoc(listingRef, EditListingPage);
 
     navigate("/listings");
     setIsLoading(false);
@@ -319,4 +319,4 @@ const newListing = () => {
   );
 };
 
-export default newListing;
+export default EditListingPage;
