@@ -5,7 +5,7 @@ import { Card, Col, Row } from "react-bootstrap";
 
 const ServicesPage = () => {
   return (
-    <section className="page p-5">
+    <section className="page py-5">
       <div className="container">
         <div className="intro">
           <h1>Services tailored to your business</h1>

@@ -1,5 +1,5 @@
 // Global Imports
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Row, Col, Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";

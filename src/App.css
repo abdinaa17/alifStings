@@ -157,3 +157,13 @@ hr::after {
 .form__section a:active {
   color: #e95420 !important;
 }
+@media screen and (max-width: 768px) {
+  .form__nav {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .arrow {
+    display: none !important;
+  }
+}

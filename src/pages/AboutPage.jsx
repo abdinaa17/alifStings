@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 
 const AboutPage = () => {
   return (
-    <section className="page p-5">
+    <section className="page py-5">
       <div className="container">
         <div className="intro">
           <h1>About Us</h1>
