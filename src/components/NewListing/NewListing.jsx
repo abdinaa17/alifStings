@@ -5,7 +5,6 @@ import {
   FloatingLabel,
   Row,
   Col,
-  Alert,
   ListGroup,
   Nav,
 } from "react-bootstrap";
@@ -22,7 +21,7 @@ import { serverTimestamp, collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 // Local imports
-import { LoadingSpinner } from "../index";
+import { LoadingSpinner, Message } from "../index";
 import { auth, db } from "../../config/firebase";
 import { MdClose } from "react-icons/md";
 
@@ -365,12 +364,13 @@ const NewListing = () => {
               )}
             </Form>
             {error && (
-              <Alert
+              <Message
                 style={{ maxWidth: "800px" }}
                 className="capitalize-first mt-3 mx-auto"
+                variant="danger"
               >
                 {error}
-              </Alert>
+              </Message>
             )}
           </div>
         </Col>

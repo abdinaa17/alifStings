@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
+import { Col, Row, Form, Button, Card } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -9,6 +9,7 @@ import loginImg from "../assets/images/login.svg";
 import { auth } from "../config/firebase";
 import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
 import { cleanUpError } from "../utils/cleanUpError";
+import { Message } from "../components";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -56,9 +57,9 @@ const Login = () => {
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
               {error && (
-                <Alert className="capitalize-first" variant="primary">
+                <Message className="capitalize-first" variant="primary">
                   {error}
-                </Alert>
+                </Message>
               )}
               <Card className="my-4">
                 <Form onSubmit={handleLogin} className="w-75 my-4 mx-auto">

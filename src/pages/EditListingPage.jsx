@@ -1,5 +1,5 @@
 // Global Imports
-import { Form, Button, FloatingLabel, Row, Col, Alert } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Row, Col } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -21,7 +21,7 @@ import { v4 as uuidv4 } from "uuid";
 
 // Local imports
 import { auth, db } from "../config/firebase";
-import { LoadingSpinner } from "../components";
+import { LoadingSpinner, Message } from "../components";
 
 const storage = getStorage();
 
@@ -307,12 +307,13 @@ const EditListingPage = () => {
           <Button type="submit">Update Listing</Button>
         </Form>
         {error && (
-          <Alert
+          <Message
             style={{ maxWidth: "800px" }}
             className="capitalize-first mt-3 mx-auto"
+            variant="danger"
           >
             {error}
-          </Alert>
+          </Message>
         )}
       </div>
     </div>

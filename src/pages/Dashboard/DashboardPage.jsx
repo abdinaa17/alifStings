@@ -1,6 +1,6 @@
 // Global Imports
 import { useEffect, useState } from "react";
-import { Row, Col, Button, Alert, Table } from "react-bootstrap";
+import { Row, Col, Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -21,6 +21,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import Sidebar from "./Sidebar";
 import { cleanUpError } from "../../utils/cleanUpError";
 import { secondsToDate } from "../../utils/secondsToDate";
+import { Message } from "../../components";
 
 const DashboardPage = () => {
   const [user, loading] = useAuthState(auth);
@@ -83,7 +84,7 @@ const DashboardPage = () => {
         <Sidebar logOutUser={logOutUser} />
       </div>
       <div className="content page">
-        {error && <Alert className="capitalize-first">{error}</Alert>}
+        {error && <Message className="capitalize-first">{error}</Message>}
         <h2 className="">My Listings</h2>
         <Row className="g-4 w-100">
           <Col>

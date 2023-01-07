@@ -2,11 +2,12 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Col, Row, Form, Button, Card, Alert } from "react-bootstrap";
+import { Col, Row, Form, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 // Local Imports
 import regsiterImg from "../assets/images/register.svg";
+import { Message } from "../components";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
 import { auth, db } from "../config/firebase";
@@ -65,9 +66,9 @@ const Register = () => {
             </h2>
             <div style={{ maxWidth: "400px" }} className="mx-auto">
               {error && (
-                <Alert className="capitalize-first" variant="primary">
+                <Message className="capitalize-first" variant="primary">
                   {error}
-                </Alert>
+                </Message>
               )}
               <Card className="my-4">
                 <Form onSubmit={handleRegister} className="w-75 my-4 mx-auto">
