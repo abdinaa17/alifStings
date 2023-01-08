@@ -7,6 +7,7 @@ import { BiMenu } from "react-icons/bi";
 
 // Local Imports
 import "./Dashboard.css";
+
 const Sidebar = ({ logOutUser }) => {
   const [isSidebar, setIsSidebar] = useState(false);
   return (

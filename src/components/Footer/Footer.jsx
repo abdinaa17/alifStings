@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { FaTwitter, FaLinkedin, FaFacebook, FaYoutube } from "react-icons/fa";
 
 // Local Imports
-import "../Footer/Footer.css";
+
 const Footer = () => {
   return (
-    <footer className="footer shadow text-white" style={{ background: "#000" }}>
+    <footer
+      className="footer shadow text-white"
+      style={{ background: "#000", color: "#fff" }}
+    >
       <div className="container py-5 mx-auto">
         <Row>
           <Col className="col-lg-3 col-8">

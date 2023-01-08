@@ -142,6 +142,9 @@ hr::after {
 }
 
 /* New Listing page form div css */
+.new-listing {
+  height: 1800px;
+}
 .form__section {
   background-color: #fff;
   margin-bottom: 20px;
@@ -166,4 +169,8 @@ hr::after {
   .arrow {
     display: none !important;
   }
+}
+/* Footer */
+.footer a {
+  color: #fff !important;
 }

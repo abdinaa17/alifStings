@@ -24,6 +24,8 @@ import { v4 as uuidv4 } from "uuid";
 import { LoadingSpinner, Message } from "../index";
 import { auth, db } from "../../config/firebase";
 import { MdClose } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { FaArrowAltCircleUp, FaWindowMinimize } from "react-icons/fa";
 
 const storage = getStorage();
 
@@ -173,13 +175,17 @@ const NewListing = () => {
           Fill the Form to add new listing
         </h1>
       </div>
-      <Row className="container">
-        <Col md={4} className="text-center">
-          <aside className="form px-3 py-5">
+      <Row className="container new-listing">
+        <Col md={4} className="h-100">
+          <aside
+            className="form px-3 py-5"
+            style={{ position: "sticky", top: "0" }}
+          >
             <h4 className="mb-4 text-center">Form navigation</h4>
             <Nav
               className="flex-column form__section"
               style={{ marginTop: "2.5rem" }}
+              sticky="top"
             >
               <Nav.Link href="#name" className="border-bottom">
                 Business Name
@@ -375,6 +381,14 @@ const NewListing = () => {
           </div>
         </Col>
       </Row>
+      <Nav className="arrow position-relative">
+        <Nav.Link
+          href="#name"
+          style={{ position: "absolute", bottom: "10px", right: "0" }}
+        >
+          <FaArrowAltCircleUp size={24} />
+        </Nav.Link>
+      </Nav>
     </div>
   );
 };
