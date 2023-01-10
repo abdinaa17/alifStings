@@ -162,7 +162,7 @@ hr::after {
   }
 }
 @media screen and (min-width: 768px) {
-  .arrow {
+  .mobile__view {
     display: none !important;
   }
 }

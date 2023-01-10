@@ -194,7 +194,7 @@ const NewListing = () => {
         </h1>
       </div>
       <Row className="container" ref={formContainerRef}>
-        <Col md={4} className="h-100">
+        <Col md={4} className="form__nav h-100">
           <aside
             className="form px-3 py-5 text-center"
             style={{ position: "sticky", top: "0" }}
@@ -206,7 +206,7 @@ const NewListing = () => {
               sticky="top"
             >
               <Nav.Link href="#name" className="border-bottom">
-                Business Name
+                Title and Tagline
               </Nav.Link>
               <Nav.Link href="#desc" className="border-bottom">
                 Description
@@ -399,7 +399,7 @@ const NewListing = () => {
           </div>
         </Col>
       </Row>
-      <Nav className="arrow position-relative">
+      <Nav className="mobile__view position-relative">
         <Nav.Link
           href="#name"
           style={{ position: "absolute", bottom: "10px", right: "0" }}
