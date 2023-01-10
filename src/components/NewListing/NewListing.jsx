@@ -1,4 +1,5 @@
 // Global Imports
+import { useState, useRef } from "react";
 import {
   Form,
   Button,
@@ -9,7 +10,6 @@ import {
   Nav,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   getStorage,
@@ -24,8 +24,8 @@ import { v4 as uuidv4 } from "uuid";
 import { LoadingSpinner, Message } from "../index";
 import { auth, db } from "../../config/firebase";
 import { MdClose } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { FaArrowAltCircleUp, FaWindowMinimize } from "react-icons/fa";
+import { useEffect } from "react";
 
 const storage = getStorage();
 
@@ -47,6 +47,23 @@ const NewListing = () => {
   });
 
   const navigate = useNavigate();
+
+  /** FORM CONTAINER HEIGHT BEGIN
+   We want to dynamically set the height of the form container so that when we add more fields to the form, the height adjusts accordingly. 
+
+   We take this approach because we set the form navigation to position:sticky and its parent container 100% height of the form container. This enables the form navigation to always stay in same view as the form and not cross over to the footer.
+   *  */
+
+  const formRef = useRef(null);
+  let formContainerRef = useRef(null);
+  useEffect(() => {
+    const formRefHeight = formRef.current.getBoundingClientRect().height;
+    console.log(formRefHeight);
+    formContainerRef =
+      formContainerRef.current.style.height = `${formRefHeight}px`;
+  }, [formRef]);
+
+  /** FORM CONTAINER HEIGHT END */
 
   const handleChange = (e) => {
     if (e.target.files) {
@@ -102,7 +119,8 @@ const NewListing = () => {
       setError("Maximum 4 images are allowed");
       return;
     }
-    // We'll upload the images to firebase storage and then extract the urls and push it to our db.
+
+    // We'll upload the images to firebase storage and then extract the urls and push it to our firestore db.
 
     const storeImg = async (img) => {
       return new Promise((resolve, reject) => {
@@ -175,10 +193,10 @@ const NewListing = () => {
           Fill the Form to add new listing
         </h1>
       </div>
-      <Row className="container new-listing">
+      <Row className="container" ref={formContainerRef}>
         <Col md={4} className="h-100">
           <aside
-            className="form px-3 py-5"
+            className="form px-3 py-5 text-center"
             style={{ position: "sticky", top: "0" }}
           >
             <h4 className="mb-4 text-center">Form navigation</h4>
@@ -205,7 +223,7 @@ const NewListing = () => {
             </Nav>
           </aside>
         </Col>
-        <Col md={8}>
+        <Col md={8} ref={formRef}>
           <div className="form px-3 py-5">
             <h4 className="mb-4 text-center">Primary Listing Details</h4>
             <Form

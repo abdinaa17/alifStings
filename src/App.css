@@ -141,10 +141,6 @@ hr::after {
   display: none !important;
 }
 
-/* New Listing page form div css */
-.new-listing {
-  height: 1800px;
-}
 .form__section {
   background-color: #fff;
   margin-bottom: 20px;
