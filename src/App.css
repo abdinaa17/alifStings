@@ -141,6 +141,7 @@ hr::after {
   display: none !important;
 }
 
+/* NewListing custom styles */
 .form__section {
   background-color: #fff;
   margin-bottom: 20px;
@@ -156,6 +157,12 @@ hr::after {
 .form__section a:active {
   color: #e95420 !important;
 }
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0.5;
+}
 @media screen and (max-width: 768px) {
   .form__nav {
     display: none;
@@ -166,6 +173,9 @@ hr::after {
     display: none !important;
   }
 }
+
+/* New Listing ends */
+
 /* Footer */
 .footer a {
   color: #fff !important;

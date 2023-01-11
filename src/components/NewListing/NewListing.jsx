@@ -58,7 +58,6 @@ const NewListing = () => {
   let formContainerRef = useRef(null);
   useEffect(() => {
     const formRefHeight = formRef.current.getBoundingClientRect().height;
-    console.log(formRefHeight);
     formContainerRef =
       formContainerRef.current.style.height = `${formRefHeight}px`;
   }, [formRef]);
@@ -285,7 +284,10 @@ const NewListing = () => {
               </div>
               <div className="form__section" id="gallery">
                 <Form.Group className="mb-3">
-                  <Form.Label>Select 1 to 4 images maximum</Form.Label>
+                  <Form.Label>Images</Form.Label>
+                  <small className="d-block mt-2 mb-3 fst-italic">
+                    * Maximum 4 images allowed
+                  </small>
                   <Form.Control
                     type="file"
                     name="images"
@@ -299,22 +301,29 @@ const NewListing = () => {
                   {Array.from(listing.images).map((image, idx) => {
                     return (
                       <div key={idx} style={{ position: "relative" }}>
-                        <img
-                          src={URL.createObjectURL(image)}
+                        <div
+                          className="position-relative"
                           style={{
                             width: "150px",
                             height: "150px",
                             margin: "2rem 1rem 2rem 0",
-                            objectFit: "cover",
                           }}
-                        />
+                        >
+                          <img
+                            src={URL.createObjectURL(image)}
+                            className="w-100 h-100"
+                            style={{ objectFit: "cover" }}
+                          />
+                          <span className="img-overlay"></span>
+                        </div>
+
                         <span
                           style={{
                             position: "absolute",
                             top: "30px",
                             right: "20px",
                             fontSize: "1.5rem",
-                            color: "red",
+                            color: "white",
                             padding: "0",
                           }}
                         >
