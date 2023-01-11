@@ -193,7 +193,7 @@ const NewListing = () => {
           Fill the Form to add new listing
         </h1>
       </div>
-      <Row className="container" ref={formContainerRef}>
+      <Row className="container mb-3" ref={formContainerRef}>
         <Col md={4} className="form__nav h-100">
           <aside
             className="form px-3 py-5 text-center"
@@ -387,15 +387,18 @@ const NewListing = () => {
                 </Button>
               )}
             </Form>
-            {error && (
-              <Message
-                style={{ maxWidth: "800px" }}
-                className="capitalize-first mt-3 mx-auto"
-                variant="danger"
-              >
-                {error}
-              </Message>
-            )}
+            <br />
+            <div className="mb-5">
+              {error && (
+                <Message
+                  style={{ maxWidth: "800px" }}
+                  className="capitalize-first mx-auto"
+                  variant="danger"
+                >
+                  {error}
+                </Message>
+              )}
+            </div>
           </div>
         </Col>
       </Row>
