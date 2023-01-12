@@ -1,14 +1,6 @@
 // Global Imports
 import { useState, useRef } from "react";
-import {
-  Form,
-  Button,
-  FloatingLabel,
-  Row,
-  Col,
-  ListGroup,
-  Nav,
-} from "react-bootstrap";
+import { Form, Button, FloatingLabel, Row, Col, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -383,6 +375,12 @@ const NewListing = () => {
                     checked={listing.featured === true}
                     label="Check box if you want your listing to be featured"
                   />
+                </Form.Group>
+              </div>
+              <div className="form__section" id="hours">
+                <Form.Group className="mb-3">
+                  <Form.Label>Business Hours</Form.Label>
+                  <Form.Select name="hours"></Form.Select>
                 </Form.Group>
               </div>
               <br />
