@@ -35,7 +35,7 @@ const NewListing = () => {
     website: "",
     owner: "",
     featured: false,
-    images: {},
+    images: [],
   });
 
   const navigate = useNavigate();
@@ -50,8 +50,9 @@ const NewListing = () => {
   let formContainerRef = useRef(null);
   useEffect(() => {
     const formRefHeight = formRef.current.getBoundingClientRect().height;
-    formContainerRef =
-      formContainerRef.current.style.height = `${formRefHeight}px`;
+    formContainerRef = formContainerRef.current.style.height = `${
+      formRefHeight + 150
+    }px`;
   }, [formRef]);
 
   /** FORM CONTAINER HEIGHT END */
@@ -77,6 +78,7 @@ const NewListing = () => {
       }));
     }
   };
+
   // Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,10 +92,8 @@ const NewListing = () => {
 
     if (
       !listing.title ||
-      !listing.tagline ||
       !listing.desc ||
       !listing.address ||
-      !listing.owner ||
       !listing.phone ||
       !listing.category ||
       !listing.images
@@ -211,12 +211,17 @@ const NewListing = () => {
               <Nav.Link href="#contact" className="border-bottom">
                 Contact Info
               </Nav.Link>
+              <Nav.Link href="#hours" className="border-bottom">
+                Business Hours
+              </Nav.Link>
             </Nav>
           </aside>
         </Col>
+
         <Col md={8} ref={formRef}>
           <div className="form px-3 py-5">
             <h4 className="mb-4 text-center">Primary Listing Details</h4>
+
             <Form
               onSubmit={handleSubmit}
               className="py-3 px-2 mt-2 mx-auto"
@@ -224,7 +229,9 @@ const NewListing = () => {
             >
               <div className="form__section" id="name">
                 <Form.Group className="mb-3">
-                  <Form.Label>Listing Title</Form.Label>
+                  <Form.Label className="fw-bold mb-3">
+                    Listing Title <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="title"
@@ -234,7 +241,7 @@ const NewListing = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Tag Line</Form.Label>
+                  <Form.Label className="fw-bold mb-3">Tag Line</Form.Label>
                   <Form.Control
                     type="text"
                     name="tagline"
@@ -244,8 +251,12 @@ const NewListing = () => {
                   />
                 </Form.Group>
               </div>
+
               <div className="form__section" id="desc">
                 <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold mb-3">
+                    Description <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <FloatingLabel label="Description of the listing">
                     <Form.Control
                       as="textarea"
@@ -258,9 +269,12 @@ const NewListing = () => {
                   </FloatingLabel>
                 </Form.Group>
               </div>
+
               <div className="form__section" id="category">
                 <Form.Group className="mb-3">
-                  <Form.Label>Categories</Form.Label>
+                  <Form.Label className="fw-bold mb-3">
+                    Categories <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <Form.Select
                     name="category"
                     onChange={handleChange}
@@ -274,9 +288,12 @@ const NewListing = () => {
                   </Form.Select>
                 </Form.Group>
               </div>
+
               <div className="form__section" id="gallery">
                 <Form.Group className="mb-3">
-                  <Form.Label>Images</Form.Label>
+                  <Form.Label className="fw-bold mb-3">
+                    Images <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <small className="d-block mt-2 mb-3 fst-italic">
                     * Maximum 4 images allowed
                   </small>
@@ -286,11 +303,13 @@ const NewListing = () => {
                     multiple
                     onChange={handleChange}
                     accept=".jpg, .jpeg, .png"
-                    placeholder="Enter Owner's name..."
                   />
                 </Form.Group>
+
+                {/* Preview the images before submit */}
+
                 <div className="d-flex flex-wrap">
-                  {Array.from(listing.images).map((image, idx) => {
+                  {Array.from(listing.images).map((imageUrl, idx) => {
                     return (
                       <div key={idx} style={{ position: "relative" }}>
                         <div
@@ -302,7 +321,7 @@ const NewListing = () => {
                           }}
                         >
                           <img
-                            src={URL.createObjectURL(image)}
+                            src={URL.createObjectURL(imageUrl)}
                             className="w-100 h-100"
                             style={{ objectFit: "cover" }}
                           />
@@ -318,6 +337,7 @@ const NewListing = () => {
                             color: "white",
                             padding: "0",
                           }}
+                          onClick={URL.revokeObjectURL(imageUrl)}
                         >
                           <MdClose />
                         </span>
@@ -325,10 +345,14 @@ const NewListing = () => {
                     );
                   })}
                 </div>
+                {/* Preview the images before submit end */}
               </div>
+
               <div className="form__section" id="contact">
                 <Form.Group className="mb-3">
-                  <Form.Label>Address</Form.Label>
+                  <Form.Label className="fw-bold mb-3">
+                    Address <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="address"
@@ -338,7 +362,9 @@ const NewListing = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" id="contact">
-                  <Form.Label>Phone</Form.Label>
+                  <Form.Label className="fw-bold mb-3">
+                    Phone <span style={{ color: "red" }}>*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="phone"
@@ -348,7 +374,7 @@ const NewListing = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Website</Form.Label>
+                  <Form.Label className="fw-bold mb-3">Website</Form.Label>
                   <Form.Control
                     type="text"
                     name="website"
@@ -358,7 +384,7 @@ const NewListing = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Owner</Form.Label>
+                  <Form.Label className="fw-bold mb-3">Owner</Form.Label>
                   <Form.Control
                     type="text"
                     name="owner"
@@ -377,10 +403,13 @@ const NewListing = () => {
                   />
                 </Form.Group>
               </div>
+
               <div className="form__section" id="hours">
                 <Form.Group className="mb-3">
-                  <Form.Label>Business Hours</Form.Label>
-                  <Form.Select name="hours"></Form.Select>
+                  <Form.Label className="fw-bold mb-3">
+                    Business Hours
+                  </Form.Label>
+                  <Form.Select name="hours">Days</Form.Select>
                 </Form.Group>
               </div>
               <br />
