@@ -5,15 +5,7 @@ import { MdPlace } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const ListingCard = ({
-  imgUrls,
-  id,
-  title,
-  address,
-  tagline,
-  editListing,
-  deleteListing,
-}) => {
+const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
   return (
     <div className="container">
       <motion.div
@@ -57,8 +49,6 @@ const ListingCard = ({
                 }`}
               </span>
             </Card.Text>
-            {deleteListing && <FaTrash />}
-            {editListing && "Edit"}
           </Card.Body>
         </Card>
       </motion.div>

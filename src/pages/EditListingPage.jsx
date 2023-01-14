@@ -152,16 +152,16 @@ const EditListingPage = () => {
       return;
     });
 
-    const EditListingPage = {
+    const editedListing = {
       ...listing,
       imgUrls,
       timestamp: serverTimestamp(),
       userRef: user.uid,
     };
-    delete EditListingPage.images;
+    delete editedListing.images;
 
     const listingRef = doc(db, "listings", id);
-    await updateDoc(listingRef, EditListingPage);
+    await updateDoc(listingRef, editedListing);
 
     navigate("/listings");
     setIsLoading(false);
