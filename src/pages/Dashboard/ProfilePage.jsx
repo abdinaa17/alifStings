@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../config/firebase";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Sidebar from "./Sidebar";
-import { cleanUpError } from "../../utils/cleanUpError";
+import { cleanUpError } from "../../utils/helperFunctions";
 import { Message } from "../../components";
 
 const ProfilePage = () => {

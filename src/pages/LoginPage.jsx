@@ -8,7 +8,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import loginImg from "../assets/images/login.svg";
 import { auth } from "../config/firebase";
 import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
-import { cleanUpError } from "../utils/cleanUpError";
+import { cleanUpError } from "../utils/helperFunctions";
 import { Message } from "../components";
 
 const Login = () => {

@@ -19,8 +19,7 @@ import { Link } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Sidebar from "./Sidebar";
-import { cleanUpError } from "../../utils/cleanUpError";
-import { secondsToDate } from "../../utils/secondsToDate";
+import { secondsToDate, cleanUpError } from "../../utils/helperFunctions";
 import { Message } from "../../components";
 
 const DashboardPage = () => {

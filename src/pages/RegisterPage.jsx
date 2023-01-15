@@ -11,7 +11,7 @@ import { Message } from "../components";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ContinueWithGoogle from "../components/User/ContinueWithGoogle";
 import { auth, db } from "../config/firebase";
-import { cleanUpError } from "../utils/cleanUpError";
+import { cleanUpError } from "../utils/helperFunctions";
 
 const Register = () => {
   const [email, setEmail] = useState("");
