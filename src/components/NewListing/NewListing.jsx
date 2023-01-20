@@ -19,6 +19,7 @@ import { MdClose } from "react-icons/md";
 import { FaArrowAltCircleUp, FaWindowMinimize } from "react-icons/fa";
 import { useEffect } from "react";
 
+// Initialize firebase storage
 const storage = getStorage();
 
 const NewListing = () => {
@@ -42,10 +43,8 @@ const NewListing = () => {
 
   /** FORM CONTAINER HEIGHT BEGIN
    We want to dynamically set the height of the form container so that when we add more fields to the form, the height adjusts accordingly. 
-
    We take this approach because we set the form navigation to position:sticky and its parent container 100% height of the form container. This enables the form navigation to always stay in same view as the form and not cross over to the footer.
    *  */
-
   const formRef = useRef(null);
   let formContainerRef = useRef(null);
   useEffect(() => {
@@ -54,7 +53,6 @@ const NewListing = () => {
       formRefHeight + 150
     }px`;
   }, [formRef]);
-
   /** FORM CONTAINER HEIGHT END */
 
   const handleChange = (e) => {
@@ -78,18 +76,15 @@ const NewListing = () => {
       }));
     }
   };
-
   // Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
     if (!user) {
       setIsLoading(false);
       navigate("/login", { state: { from: "/new-listing" } });
       return;
     }
-
     if (
       !listing.title ||
       !listing.desc ||
@@ -102,9 +97,7 @@ const NewListing = () => {
       setError("Fill the required fields to continue");
       return;
     }
-
     // Check if user has uploaded the max allowed images
-
     if (listing.images.length > 4) {
       setIsLoading(false);
       setError("Maximum 4 images are allowed");
@@ -112,7 +105,6 @@ const NewListing = () => {
     }
 
     // We'll upload the images to firebase storage and then extract the urls and push it to our firestore db.
-
     const storeImg = async (img) => {
       return new Promise((resolve, reject) => {
         const fileName = `images/${img.name}-${uuidv4()}`;
@@ -135,7 +127,6 @@ const NewListing = () => {
         );
       });
     };
-
     const imgUrls = await Promise.all(
       listing.images && [...listing.images].map((img) => storeImg(img))
     ).catch((err) => {
@@ -143,22 +134,16 @@ const NewListing = () => {
       setError(err);
       return;
     });
-
     const newListing = {
       ...listing,
       imgUrls,
       timestamp: serverTimestamp(),
       userRef: user.uid,
     };
-
     delete newListing.images;
-
     const listingRef = await addDoc(collection(db, "listings"), newListing);
-
     navigate("/listings", { replace: true });
-
     setIsLoading(false);
-
     setListing({
       title: "",
       tagline: "",
