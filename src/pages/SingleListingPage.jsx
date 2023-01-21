@@ -1,23 +1,13 @@
 // Global Imports
 import { useState, useEffect } from "react";
 import {
-  addDoc,
-  collection,
+  arrayUnion,
   doc,
   getDoc,
-  serverTimestamp,
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import {
-  Col,
-  Row,
-  Button,
-  Card,
-  Carousel,
-  ListGroup,
-  Form,
-} from "react-bootstrap";
+import { Col, Row, Button, Card, Carousel, Form } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { MdPlace } from "react-icons/md";
 import {
@@ -36,7 +26,7 @@ import { LoadingSpinner, Message, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
 import webIcon from "../assets/images/www.png";
 import { auth, db } from "../config/firebase";
-import { cleanUpError } from "../utils/cleanUpError";
+import { secondsToDate, cleanUpError } from "../utils/helperFunctions";
 
 const SingleListing = () => {
   const [user] = useAuthState(auth);
@@ -92,20 +82,19 @@ const SingleListing = () => {
     try {
       const newReview = {
         ...review,
+        userId: user?.uid,
         createdAt: Timestamp.fromDate(new Date()),
         author: user?.email,
       };
-
-      reviews.push(newReview);
 
       const listingRef = doc(db, "listings", id);
 
       await updateDoc(listingRef, {
         ...listing,
-        reviews,
+        reviews: arrayUnion(newReview),
       });
 
-      // window
+      window.location.reload();
       setIsLoading(false);
 
       setReview({
@@ -165,31 +154,44 @@ const SingleListing = () => {
               </Col>
             </Row>  */}
             <p className="mb-4">{listing.desc}</p>
-            <Row>
+            <hr />
+            <section className="w-100">
+              <h3>
+                {listing.reviews?.length === 1
+                  ? `${listing.reviews?.length} review`
+                  : `${listing.reviews?.length} reviews`}
+                &nbsp;for {listing.title}
+              </h3>
+              {listing.reviews ? (
+                <>
+                  {listing.reviews.map((list, id) => {
+                    return (
+                      <article key={id} className="w-100 pt-2 pe-5 ">
+                        <h5
+                          className={`badge ${
+                            user === user?.uid ? "bg-success" : "bg-primary"
+                          } text-capitalize`}
+                        >
+                          {list.author.split("@")[0]}
+                        </h5>
+                        <div className="d-flex">
+                          <Rating rating={list.rating} />
+                          <p className="ms-4">
+                            {secondsToDate(list.createdAt.seconds)}
+                          </p>
+                        </div>
+                        <p>{list.comment}</p>
+                      </article>
+                    );
+                  })}
+                </>
+              ) : (
+                <Message variant="danger">No Reviews yet</Message>
+              )}
+            </section>
+            <Row className="mt-5">
               <Col md={6}>
-                <h2>Reviews</h2>
-                {listing ? (
-                  <>
-                    {listing.reviews.map((list, id) => {
-                      return (
-                        <Card key={id}>
-                          <Card.Body>
-                            <Card.Title>{list.author}</Card.Title>
-                            {/* <Card.Subtitle>{list.createdAt}</Card.Subtitle> */}
-                            <Card.Text>{list.comment}</Card.Text>
-                          </Card.Body>
-                        </Card>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <Message variant="danger">No Reviews yet</Message>
-                )}
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
-                <h2>Review this listing</h2>
+                <h4>Add review</h4>
                 {user ? (
                   <>
                     <Form onSubmit={handleReview} className="form__section">
