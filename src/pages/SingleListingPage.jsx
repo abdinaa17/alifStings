@@ -26,7 +26,7 @@ import { LoadingSpinner, Message, Rating } from "../components";
 import cBusMap from "../assets/images/cbus.png";
 import webIcon from "../assets/images/www.png";
 import { auth, db } from "../config/firebase";
-import { secondsToDate, cleanUpError } from "../utils/helperFunctions";
+import { secondsToDate, cleanUpError, excerpt } from "../utils/helperFunctions";
 
 const SingleListing = () => {
   const [user] = useAuthState(auth);
@@ -36,10 +36,9 @@ const SingleListing = () => {
     rating: 0,
     comment: "",
   });
-  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState("");
   const [carouselIndex, setCarouselIndex] = useState(0);
-
+  const [isExcerpt, setIsExcerpt] = useState(false);
   const { id } = useParams();
 
   const fetchListing = async () => {
@@ -57,7 +56,7 @@ const SingleListing = () => {
 
   useEffect(() => {
     fetchListing();
-  }, [id]);
+  }, []);
 
   // Get the review for current listing
   const { rating, comment } = review;
@@ -102,10 +101,8 @@ const SingleListing = () => {
         comment: "",
       });
     } catch (err) {
-      // const errorMessage = cleanUpError(err.code);
-      // setError(errorMessage);
-      setError(err);
-      console.log(err);
+      const errorMessage = cleanUpError(err.code);
+      setError(errorMessage);
     }
   };
   if (isLoading) {
@@ -162,7 +159,7 @@ const SingleListing = () => {
                   : `${listing.reviews?.length} reviews`}
                 &nbsp;for {listing.title}
               </h3>
-              {listing.reviews ? (
+              {listing.reviews > 0 ? (
                 <>
                   {listing.reviews.map((list, id) => {
                     return (
@@ -180,7 +177,18 @@ const SingleListing = () => {
                             {secondsToDate(list.createdAt.seconds)}
                           </p>
                         </div>
-                        <p>{list.comment}</p>
+                        <p>
+                          {isExcerpt
+                            ? excerpt(list.comment, 120)
+                            : list.comment}
+                          <span
+                            role="button"
+                            onClick={() => setIsExcerpt(!isExcerpt)}
+                            className="ms-2"
+                          >
+                            Read more...
+                          </span>
+                        </p>
                       </article>
                     );
                   })}

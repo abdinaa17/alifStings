@@ -53,6 +53,7 @@ const DashboardPage = () => {
   useEffect(() => {
     fetchUserListings();
   }, [user.uid]);
+
   // Log out user function
   const logOutUser = async () => {
     setError("");
