@@ -7,7 +7,7 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import { Col, Row, Button, Card, Carousel, Form } from "react-bootstrap";
+import { Col, Row, Button, Card, Carousel, Form, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { MdPlace } from "react-icons/md";
 import {
@@ -38,7 +38,8 @@ const SingleListing = () => {
   });
   const [error, setError] = useState("");
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isExcerpt, setIsExcerpt] = useState(false);
+  const [reviewExcerpt, setReviewExcerpt] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
   const { id } = useParams();
 
   const fetchListing = async () => {
@@ -58,6 +59,7 @@ const SingleListing = () => {
     fetchListing();
   }, [id]);
 
+  //
   // Get the review for current listing
   const { rating, comment } = review;
 
@@ -74,10 +76,21 @@ const SingleListing = () => {
 
     if (!rating || !comment) {
       setIsLoading(false);
-      setError("No review provided");
+      setError("No review provided. Please complete all fields to continue.");
       return;
     }
 
+    /**
+     * We wanna limit a user to submit a review once per listing.
+     * If the user has alrady submitted a review, then their information
+     *  will be found in the listing.reviews array.
+     **/
+    const authorExists = listing.reviews.map((list) => list.author);
+    if (authorExists) {
+      setIsLoading(false);
+      setError("You already submitted a review for this listing.");
+      return;
+    }
     try {
       const newReview = {
         ...review,
@@ -108,6 +121,8 @@ const SingleListing = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  console.log(user);
   return (
     <section className="page py-5">
       <div className="container">
@@ -167,7 +182,9 @@ const SingleListing = () => {
                       <article key={id} className="w-100 pt-2 pe-5 ">
                         <h5
                           className={`badge ${
-                            user === user?.uid ? "bg-success" : "bg-primary"
+                            list.userId === user?.uid
+                              ? "bg-primary"
+                              : "bg-success"
                           } text-capitalize`}
                         >
                           {list.author.split("@")[0]}
@@ -179,16 +196,9 @@ const SingleListing = () => {
                           </p>
                         </div>
                         <p>
-                          {isExcerpt
+                          {reviewExcerpt
                             ? excerpt(list.comment, 120)
                             : list.comment}
-                          <span
-                            role="button"
-                            onClick={() => setIsExcerpt(!isExcerpt)}
-                            className="ms-2"
-                          >
-                            Read more...
-                          </span>
                         </p>
                       </article>
                     );
@@ -198,43 +208,66 @@ const SingleListing = () => {
                 <Message variant="danger">No Reviews yet</Message>
               )}
             </section>
-            <Row className="mt-5">
+            <Row className="my-5">
               <Col md={6}>
-                <h4>Add review</h4>
+                <Button onClick={() => setShowReviewModal(true)}>
+                  Write a review
+                </Button>
                 {user ? (
                   <>
-                    <Form onSubmit={handleReview} className="form__section">
-                      <Form.Group className="mb-3">
-                        <Form.Label>Rating</Form.Label>
-                        <Form.Control
-                          as="select"
-                          name="rating"
-                          value={rating}
-                          onChange={handleChange}
-                        >
-                          <option>Select...</option>
-                          <option value="1">1-Poor</option>
-                          <option value="2">2-Fair</option>
-                          <option value="3">3-Good</option>
-                          <option value="4">4-Very good</option>
-                          <option value="5">5-Excellent</option>
-                        </Form.Control>
-                      </Form.Group>
-                      <Form.Group>
-                        <Form.Label>Comment</Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          name="comment"
-                          value={comment}
-                          onChange={handleChange}
-                          style={{ height: "150px" }}
-                        />
-                      </Form.Group>
-                      <Button type="submit" className="w-100 mt-3">
-                        Submit
-                      </Button>
-                    </Form>
-                    {error && <Message variant="danger">{error}</Message>}
+                    <Modal
+                      show={showReviewModal}
+                      onHide={() => setShowReviewModal(false)}
+                      centered
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>{listing.title}</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        {" "}
+                        <Form onSubmit={handleReview} className="form__section">
+                          <Form.Group className="mb-3">
+                            <Form.Label>Rating</Form.Label>
+                            <Form.Control
+                              as="select"
+                              name="rating"
+                              value={rating}
+                              onChange={handleChange}
+                            >
+                              <option>Select...</option>
+                              <option value="1">1-Poor</option>
+                              <option value="2">2-Fair</option>
+                              <option value="3">3-Good</option>
+                              <option value="4">4-Very good</option>
+                              <option value="5">5-Excellent</option>
+                            </Form.Control>
+                          </Form.Group>
+                          <Form.Group>
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Control
+                              as="textarea"
+                              name="comment"
+                              value={comment}
+                              onChange={handleChange}
+                              style={{ height: "150px" }}
+                            />
+                          </Form.Group>
+                          <Button type="submit" className="w-100 mt-3">
+                            Post review
+                          </Button>
+                        </Form>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        {error && (
+                          <Message
+                            variant="danger"
+                            className="capitalize-first mx-auto"
+                          >
+                            {error}
+                          </Message>
+                        )}
+                      </Modal.Footer>
+                    </Modal>
                   </>
                 ) : (
                   <Message>
