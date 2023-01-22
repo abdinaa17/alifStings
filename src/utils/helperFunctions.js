@@ -15,3 +15,8 @@ export const secondsToDate = (sec) => {
   const fullDate = new Date(sec * 1000).toLocaleDateString("en-US", options);
   return fullDate;
 };
+export const excerpt = (str, len) => {
+  if (str.length < len) return;
+
+  return str.substring(0, len);
+};

@@ -56,7 +56,7 @@ const SingleListing = () => {
 
   useEffect(() => {
     fetchListing();
-  }, []);
+  }, [id]);
 
   // Get the review for current listing
   const { rating, comment } = review;
@@ -122,6 +122,7 @@ const SingleListing = () => {
               activeIndex={carouselIndex}
               onSelect={handleSelect}
               className="mb-3"
+              interval={null}
             >
               {listing &&
                 listing.imgUrls.map((image, idx) => {
@@ -159,7 +160,7 @@ const SingleListing = () => {
                   : `${listing.reviews?.length} reviews`}
                 &nbsp;for {listing.title}
               </h3>
-              {listing.reviews > 0 ? (
+              {listing.reviews ? (
                 <>
                   {listing.reviews.map((list, id) => {
                     return (
