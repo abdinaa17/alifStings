@@ -50,7 +50,7 @@ const NewListing = () => {
   useEffect(() => {
     const formRefHeight = formRef.current.getBoundingClientRect().height;
     formContainerRef = formContainerRef.current.style.height = `${
-      formRefHeight + 150
+      formRefHeight + 100
     }px`;
   }, [formRef]);
   /** FORM CONTAINER HEIGHT END */
@@ -196,9 +196,9 @@ const NewListing = () => {
               <Nav.Link href="#contact" className="border-bottom">
                 Contact Info
               </Nav.Link>
-              <Nav.Link href="#hours" className="border-bottom">
+              {/* <Nav.Link href="#hours" className="border-bottom">
                 Business Hours
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </aside>
         </Col>
@@ -389,14 +389,14 @@ const NewListing = () => {
                 </Form.Group>
               </div>
 
-              <div className="form__section" id="hours">
+              {/* <div className="form__section" id="hours">
                 <Form.Group className="mb-3">
                   <Form.Label className="fw-bold mb-3">
                     Business Hours
                   </Form.Label>
                   <Form.Select name="hours">Days</Form.Select>
                 </Form.Group>
-              </div>
+              </div> */}
               <br />
               {user ? (
                 <Button type="submit" className="w-100 btn-lg">
