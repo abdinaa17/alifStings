@@ -85,12 +85,12 @@ const SingleListing = () => {
      * If the user has alrady submitted a review, then their information
      *  will be found in the listing.reviews array.
      **/
-    const authorExists = listing.reviews.map((list) => list.author);
-    if (authorExists) {
-      setIsLoading(false);
-      setError("You already submitted a review for this listing.");
-      return;
-    }
+    // const authorExists = listing.reviews.map((list) => list.author);
+    // if (authorExists) {
+    //   setIsLoading(false);
+    //   setError("You already submitted a review for this listing.");
+    //   return;
+    // }
     try {
       const newReview = {
         ...review,
@@ -106,7 +106,6 @@ const SingleListing = () => {
         reviews: arrayUnion(newReview),
       });
 
-      window.location.reload();
       setIsLoading(false);
 
       setReview({
