@@ -156,7 +156,7 @@ const SingleListing = () => {
                 })}
             </Carousel>
             <h1>{listing.title}</h1>
-            <p className="opacity-75">{listing.tagline}</p>
+            {listing.tagline && <p className="opacity-75">{listing.tagline}</p>}
             {/* <Row>
               <Col>
                 <Rating rating={rating} />
@@ -319,21 +319,24 @@ const SingleListing = () => {
                     {listing.phone}
                   </a>
                 </Card.Subtitle>
-                <Card.Subtitle className="my-2">
-                  <img
-                    style={{ width: "20px", display: "inline-block" }}
-                    src={webIcon}
-                    className="me-4"
-                  />{" "}
-                  <a
-                    href={listing.website}
-                    target="_blank"
-                    className="me-4 text-info underline"
-                  >
-                    Website
-                  </a>{" "}
-                  <FaExternalLinkAlt />
-                </Card.Subtitle>
+                {listing.website && (
+                  <Card.Subtitle className="my-2">
+                    <img
+                      style={{ width: "20px", display: "inline-block" }}
+                      src={webIcon}
+                      className="me-4"
+                    />{" "}
+                    <a
+                      href={listing.website}
+                      target="_blank"
+                      className="me-4 text-info underline"
+                    >
+                      Website
+                    </a>{" "}
+                    <FaExternalLinkAlt />
+                  </Card.Subtitle>
+                )}
+
                 <Card.Subtitle className="my-3">
                   <FaRegClock className="me-4" />{" "}
                   <span className="text-success">Open Now</span>
