@@ -7,7 +7,10 @@ const Faqs = () => {
       <h2 className="text-uppercase text-center my-5 mx-auto">
         frequently asked questions
       </h2>
-      <Accordion defaultActiveKey="0">
+      <Accordion
+        defaultActiveKey="0"
+        style={{ maxWidth: "1120px", margin: "0 auto" }}
+      >
         <Accordion.Item eventKey="0">
           <Accordion.Header>How Do I List My Businsess</Accordion.Header>
           <Accordion.Body>
