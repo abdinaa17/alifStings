@@ -16,7 +16,7 @@ import { v4 as uuidv4 } from "uuid";
 import { LoadingSpinner, Message } from "../index";
 import { auth, db } from "../../config/firebase";
 import { MdClose } from "react-icons/md";
-import { FaArrowAltCircleUp, FaWindowMinimize } from "react-icons/fa";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 import { useEffect } from "react";
 
 // Initialize firebase storage
@@ -38,7 +38,7 @@ const NewListing = () => {
     featured: false,
     images: [],
   });
-
+  const [preview, setPreview] = useState([]);
   const navigate = useNavigate();
 
   /** FORM CONTAINER HEIGHT BEGIN
@@ -76,6 +76,17 @@ const NewListing = () => {
       }));
     }
   };
+
+  // remove preview img
+  const removeImg = (img) => {
+    setListing((prev) => ({
+      ...prev,
+      images: Array.from(listing.images).filter((image) => image !== img),
+    }));
+    // Releasing object created throught createObjectURL for memory management
+    URL.revokeObjectURL(img);
+  };
+
   // Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -206,7 +217,6 @@ const NewListing = () => {
         <Col md={8} ref={formRef}>
           <div className="form px-3 py-5">
             <h4 className="mb-4 text-center">Primary Listing Details</h4>
-
             <Form
               onSubmit={handleSubmit}
               className="py-3 px-2 mt-2 mx-auto"
@@ -322,7 +332,7 @@ const NewListing = () => {
                             color: "white",
                             padding: "0",
                           }}
-                          onClick={URL.revokeObjectURL(imageUrl)}
+                          onClick={() => removeImg(imageUrl)}
                         >
                           <MdClose />
                         </span>
