@@ -168,6 +168,9 @@ hr::after {
   .form__nav {
     display: none;
   }
+  .form__section {
+    padding: 2px;
+  }
 }
 @media screen and (min-width: 768px) {
   .mobile__view {
