@@ -209,11 +209,11 @@ const SingleListing = () => {
             </section>
             <Row className="my-5">
               <Col md={6}>
-                <Button onClick={() => setShowReviewModal(true)}>
-                  Write a review
-                </Button>
                 {user ? (
                   <>
+                    <Button onClick={() => setShowReviewModal(true)}>
+                      Write a review
+                    </Button>
                     <Modal
                       show={showReviewModal}
                       onHide={() => setShowReviewModal(false)}
