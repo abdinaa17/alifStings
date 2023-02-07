@@ -121,7 +121,6 @@ const SingleListing = () => {
     return <LoadingSpinner />;
   }
 
-  console.log(user);
   return (
     <section className="page py-5">
       <div className="container">
