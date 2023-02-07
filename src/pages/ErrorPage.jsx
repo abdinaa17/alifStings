@@ -11,8 +11,10 @@ const Error = () => {
         <Col md={4}>
           <h1>Oops!</h1>
           <h2>404 - Page not found</h2>
-          <Link to="/" className="mt-2">
-            <Button variant="dark">Back To Home....</Button>
+          <Link to="/">
+            <Button className="mb-5 px-4" variant="custom">
+              Go home
+            </Button>
           </Link>
         </Col>
         <Col md={8}>
