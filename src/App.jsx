@@ -27,12 +27,14 @@ import {
   ProfilePage,
   EditListingPage,
 } from "./pages";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [user] = useAuthState(auth);
   return (
     <main>
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
