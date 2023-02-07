@@ -43,9 +43,6 @@ const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
             <Card.Text className="my-3 d-flex align-items-center">
               <MdPlace className="text-success" />
               <span className="px-1">
-                {/* {`${
-                  address.length > 23 ? address.slice(0, 28) + "..." : address
-                }`} */}
                 {address.length > 23 ? excerpt(address, 28) + "..." : address}
               </span>
             </Card.Text>
