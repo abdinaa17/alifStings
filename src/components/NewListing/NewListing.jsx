@@ -180,7 +180,7 @@ const NewListing = () => {
           Fill the Form to add new listing
         </h1>
       </div>
-      <Row className="container mb-3" ref={formContainerRef}>
+      <Row className="mb-3" ref={formContainerRef}>
         <Col md={4} className="form__nav h-100">
           <aside
             className="form px-3 py-5 text-center"
@@ -215,7 +215,7 @@ const NewListing = () => {
         </Col>
 
         <Col md={8} ref={formRef}>
-          <div className="form px-3 py-5">
+          <div className="form py-5">
             <h4 className="mb-4 text-center">Primary Listing Details</h4>
             <Form
               onSubmit={handleSubmit}
