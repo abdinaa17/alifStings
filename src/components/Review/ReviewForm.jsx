@@ -1,6 +1,6 @@
 // Global Imports
 import { Col, Row, Form, Modal, Button } from "react-bootstrap";
-import Message from "./Message/Message";
+import Message from "../Message/Message";
 
 const Review = ({
   listing,
