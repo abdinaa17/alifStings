@@ -15,6 +15,7 @@ import PrivateRoute from "./Route/PrivateRoute";
 import ListingCard from "./ListingCard/ListingCard";
 import ContinueWithGoogle from "./User/ContinueWithGoogle";
 import Message from "./Message/Message";
+import Review from "./Review";
 
 export {
   Header,
@@ -34,4 +35,5 @@ export {
   PrivateRoute,
   ContinueWithGoogle,
   Message,
+  Review,
 };
