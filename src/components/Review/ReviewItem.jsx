@@ -6,14 +6,13 @@ const ReviewItem = ({ comment }) => {
   return (
     <div>
       <p>
-        {isReadMore && comment.length > 2 ? excerpt(comment, 120) : comment}{" "}
-        &nbsp;
+        {isReadMore ? excerpt(comment, 120) + "..." : comment} &nbsp;
         <span
           onClick={() => setIsReadMore(!isReadMore)}
           className="fw-bolder"
           role="button"
         >
-          {isReadMore ? "Read more..." : "Read less"}
+          {isReadMore ? "Read more" : "Read less"}
         </span>
       </p>
     </div>

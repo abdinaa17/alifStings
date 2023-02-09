@@ -16,7 +16,7 @@ export const secondsToDate = (sec) => {
   return fullDate;
 };
 export const excerpt = (str, len) => {
-  if (str.length < len) return;
+  if (str.length < len) return str;
 
   return str.substring(0, len);
 };
