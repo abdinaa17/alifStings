@@ -1,5 +1,6 @@
 // Global Imports
 import { Col, Row, Form, Modal, Button } from "react-bootstrap";
+import { FaStar } from "react-icons/fa";
 import Message from "../Message/Message";
 
 const Review = ({
@@ -17,7 +18,9 @@ const Review = ({
       <Col md={6}>
         {user ? (
           <>
-            <Button onClick={() => setIsModal(true)}>Write a review</Button>
+            <Button onClick={() => setIsModal(true)}>
+              <FaStar /> Write a review
+            </Button>
             <Modal show={isModal} onHide={() => setIsModal(false)} centered>
               <Modal.Header closeButton>
                 <Modal.Title>{listing.title}</Modal.Title>

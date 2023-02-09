@@ -16,6 +16,7 @@ import ListingCard from "./ListingCard/ListingCard";
 import ContinueWithGoogle from "./User/ContinueWithGoogle";
 import Message from "./Message/Message";
 import ReviewForm from "./Review/ReviewForm";
+import ReviewItem from "./Review/ReviewItem";
 
 export {
   Header,
@@ -36,4 +37,5 @@ export {
   ContinueWithGoogle,
   Message,
   ReviewForm,
+  ReviewItem,
 };
