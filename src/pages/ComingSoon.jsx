@@ -8,7 +8,7 @@ import comingSoon from "../assets/images/coming-soon.svg";
 const ComingSoon = () => {
   return (
     <section className="page p-5">
-      <div className="container vh-100">
+      <div className="container">
         <div className="intro">
           <h1>Coming Soon!</h1>
           <p className="lead">This page is under construction...</p>
@@ -20,7 +20,7 @@ const ComingSoon = () => {
         </Link>
         <Row className="mt-5">
           <Col md={6}>
-            <div className="mission">
+            <div>
               <img src={comingSoon} alt="Coming Soon" />
             </div>
           </Col>
