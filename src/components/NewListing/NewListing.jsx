@@ -83,6 +83,7 @@ const NewListing = () => {
       ...prev,
       images: Array.from(listing.images).filter((image) => image !== img),
     }));
+
     // Releasing object created throught createObjectURL for memory management
     URL.revokeObjectURL(img);
   };
@@ -303,18 +304,11 @@ const NewListing = () => {
 
                 {/* Preview the images before submit */}
 
-                <div className="d-flex flex-wrap">
+                <div className="d-flex justify-content-center align-items-center flex-wrap">
                   {Array.from(listing.images).map((imageUrl, idx) => {
                     return (
                       <div key={idx} style={{ position: "relative" }}>
-                        <div
-                          className="position-relative"
-                          style={{
-                            width: "150px",
-                            height: "150px",
-                            margin: "2rem 1rem 2rem 0",
-                          }}
-                        >
+                        <div className="preview__img position-relative">
                           <img
                             src={URL.createObjectURL(imageUrl)}
                             className="w-100 h-100"
