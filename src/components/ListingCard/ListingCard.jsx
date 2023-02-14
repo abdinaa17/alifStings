@@ -6,7 +6,15 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { excerpt } from "../../utils/helperFunctions";
 
-const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
+// Local Imports
+import { Rating } from "../../components";
+const ListingCard = ({ imgUrls, id, title, address, tagline, reviews }) => {
+  let averageRating = 0;
+  if (reviews) {
+    averageRating = reviews.reduce((acc, review) => {
+      return (acc += review.rating / reviews.length);
+    }, 0);
+  }
   return (
     <div className="container">
       <motion.div
@@ -25,14 +33,14 @@ const ListingCard = ({ imgUrls, id, title, address, tagline }) => {
               loading="lazy"
             />
           </Link>
-
           <Card.Body>
             <Card.Text className="w-50">
+              {/* <FaStar color="gold" />
               <FaStar color="gold" />
               <FaStar color="gold" />
               <FaStar color="gold" />
-              <FaStar color="gold" />
-              <FaStarHalf color="gold" />
+              <FaStarHalf color="gold" /> */}
+              {reviews && <Rating rating={averageRating} />}
             </Card.Text>
             <Card.Title className="my-2">
               {title.length > 23 ? excerpt(title, 23) + "..." : title}
