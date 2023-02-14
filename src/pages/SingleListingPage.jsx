@@ -22,11 +22,17 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 
 //Local Imports
-import { LoadingSpinner, Message, Rating } from "../components";
+import {
+  LoadingSpinner,
+  Message,
+  Rating,
+  ReviewForm,
+  ReviewItem,
+} from "../components";
 import cBusMap from "../assets/images/cbus.png";
 import webIcon from "../assets/images/www.png";
 import { auth, db } from "../config/firebase";
-import { secondsToDate, cleanUpError, excerpt } from "../utils/helperFunctions";
+import { secondsToDate, cleanUpError } from "../utils/helperFunctions";
 
 const SingleListing = () => {
   const [user] = useAuthState(auth);
@@ -38,8 +44,7 @@ const SingleListing = () => {
   });
   const [error, setError] = useState("");
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [reviewExcerpt, setReviewExcerpt] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const { id } = useParams();
 
   const fetchListing = async () => {
@@ -59,10 +64,6 @@ const SingleListing = () => {
     fetchListing();
   }, [id]);
 
-  //
-  // Get the review for current listing
-  const { rating, comment } = review;
-
   const handleChange = (e) => {
     setReview((prev) => ({
       ...prev,
@@ -74,9 +75,9 @@ const SingleListing = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!rating || !comment) {
+    if (!review.rating || !review.comment) {
       setIsLoading(false);
-      setError("No review provided. Please complete all fields to continue.");
+      setError("Required fields missing. Please complete all to continue.");
       return;
     }
 
@@ -107,7 +108,7 @@ const SingleListing = () => {
       });
 
       setIsLoading(false);
-
+      setIsModal(false);
       setReview({
         rating: 0,
         comment: "",
@@ -156,136 +157,61 @@ const SingleListing = () => {
             </Carousel>
             <h1>{listing.title}</h1>
             {listing.tagline && <p className="opacity-75">{listing.tagline}</p>}
-            {/* <Row>
-              <Col>
-                <Rating rating={rating} />
-              </Col>
-              <Col>
-                <p>{numReviews} reviews</p>
-              </Col>
-            </Row>  */}
-            <p className="mb-4">{listing.desc}</p>
+            <p>{listing.desc}</p>
             <hr />
             <section className="w-100">
-              <h3>
-                {listing.reviews?.length === 1
-                  ? `${listing.reviews?.length} review`
-                  : `${listing.reviews?.length} reviews`}
-                &nbsp;for {listing.title}
-              </h3>
+              {listing.reviews && listing.reviews.length > 0 ? (
+                <h3 className="my-4">
+                  {listing.reviews.length === 1
+                    ? `${listing.reviews?.length} review`
+                    : `${listing.reviews?.length} reviews`}
+                  &nbsp;for {listing.title}
+                </h3>
+              ) : (
+                ""
+              )}
+
               {listing.reviews ? (
                 <>
-                  {listing.reviews.map((list, id) => {
+                  {listing.reviews.map((review, id) => {
                     return (
                       <article key={id} className="w-100 pt-2 pe-5 ">
                         <h5
                           className={`badge ${
-                            list.userId === user?.uid
+                            review.userId === user?.uid
                               ? "bg-primary"
                               : "bg-success"
                           } text-capitalize`}
                         >
-                          {list.author.split("@")[0]}
+                          {review.author.split("@")[0]}
                         </h5>
                         <div className="d-flex">
-                          <Rating rating={list.rating} />
+                          <Rating rating={review.rating} />
                           <p className="ms-4">
-                            {secondsToDate(list.createdAt.seconds)}
+                            {secondsToDate(review.createdAt.seconds)}
                           </p>
                         </div>
-                        <p>
-                          {reviewExcerpt
-                            ? excerpt(list.comment, 120)
-                            : list.comment}
-                        </p>
+                        <ReviewItem comment={review.comment} />
                       </article>
                     );
                   })}
                 </>
               ) : (
-                <Message variant="danger">No Reviews yet</Message>
+                <Message variant="danger" className="my-4">
+                  No Reviews yet
+                </Message>
               )}
             </section>
-            <Row className="my-5">
-              <Col md={6}>
-                {user ? (
-                  <>
-                    <Button onClick={() => setShowReviewModal(true)}>
-                      Write a review
-                    </Button>
-                    <Modal
-                      show={showReviewModal}
-                      onHide={() => setShowReviewModal(false)}
-                      centered
-                    >
-                      <Modal.Header closeButton>
-                        <Modal.Title>{listing.title}</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        {" "}
-                        <Form onSubmit={handleReview} className="form__section">
-                          <Form.Group className="mb-3">
-                            <Form.Label>Rating</Form.Label>
-                            <Form.Control
-                              as="select"
-                              name="rating"
-                              value={rating}
-                              onChange={handleChange}
-                            >
-                              <option>Select...</option>
-                              <option value="1">1-Poor</option>
-                              <option value="2">2-Fair</option>
-                              <option value="3">3-Good</option>
-                              <option value="4">4-Very good</option>
-                              <option value="5">5-Excellent</option>
-                            </Form.Control>
-                          </Form.Group>
-                          <Form.Group>
-                            <Form.Label>Comment</Form.Label>
-                            <Form.Control
-                              as="textarea"
-                              name="comment"
-                              value={comment}
-                              onChange={handleChange}
-                              style={{ height: "150px" }}
-                            />
-                          </Form.Group>
-                          <Button type="submit" className="w-100 mt-3">
-                            Post review
-                          </Button>
-                        </Form>
-                      </Modal.Body>
-                      <Modal.Footer>
-                        {error && (
-                          <Message
-                            variant="danger"
-                            className="capitalize-first mx-auto"
-                          >
-                            {error}
-                          </Message>
-                        )}
-                      </Modal.Footer>
-                    </Modal>
-                  </>
-                ) : (
-                  <Message>
-                    <p>
-                      Please{" "}
-                      <Link
-                        to="/login"
-                        style={{
-                          color: "inherit",
-                          borderBottom: "2px solid #000",
-                        }}
-                      >
-                        Log In
-                      </Link>{" "}
-                      to leave a review
-                    </p>
-                  </Message>
-                )}
-              </Col>
-            </Row>
+            <ReviewForm
+              handleReview={handleReview}
+              listing={listing}
+              user={user}
+              isModal={isModal}
+              setIsModal={setIsModal}
+              handleChange={handleChange}
+              review={review}
+              error={error}
+            />
           </Col>
           <Col className=" px-2" md={4}>
             <Card className="cursor-pointer">
